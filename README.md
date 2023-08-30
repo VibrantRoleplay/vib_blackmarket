@@ -7,3 +7,4 @@ Black market resource for illegal sales and crafting
 - ox_lib
 - ox_inventory
 - ox_target
+- scully_emotemenu
