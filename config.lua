@@ -2,7 +2,7 @@ Config = Config or {}
 
 Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
-Config.UseProps = true -- false = Peds don't hold any props
+Config.UseProps = false -- false = Peds don't hold any props
 
 Config.BlackMarketAccess = {
     EntranceInfo = {
@@ -44,9 +44,9 @@ Config.MarketPeds = {
         AnimationClip = "idle_c", -- Animation ped plays
         PropItem = "p_amb_coffeecup_01",
         PropBone = 28422, -- Bone index the prop is attached to
-        Propx = 0.0, -- x coord of prop
-        Propy = 0.01, -- y coord of prop
-        Propz = 0.05, -- z coord of prop
+        PropX = 0.0, -- x coord of prop
+        PropY = 0.01, -- y coord of prop
+        PropZ = 0.05, -- z coord of prop
         PropRotX = 0.0, -- x axis rotation of prop
         PropRotY = 0.0, -- y axis rotation of prop
         PropRotZ = -1.5, -- z axis rotation of prop
@@ -63,13 +63,13 @@ Config.MarketPeds = {
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
         PropItem = "p_amb_coffeecup_01",
-        PropBone = 58868, -- Bone index the prop is attached to
-        Propx = 0.0, -- x coord of prop
-        Propy = 0.01, -- y coord of prop
-        Propz = 0.05, -- z coord of prop
+        PropBone = 28422, -- Bone index the prop is attached to
+        PropX = 0.0, -- x coord of prop
+        PropY = 0.0, -- y coord of prop
+        PropZ = 0.0, -- z coord of prop
         PropRotX = 0.0, -- x axis rotation of prop
         PropRotY = 0.0, -- y axis rotation of prop
-        PropRotZ = -20.0, -- z axis rotation of prop
+        PropRotZ = 0.0, -- z axis rotation of prop
         ItemsForSale = {
             can = 10,
             cola = 10,
@@ -84,9 +84,9 @@ Config.MarketPeds = {
         AnimationClip = "idle_c",
         PropItem = "p_amb_coffeecup_01",
         PropBone = 28422, -- Bone index the prop is attached to
-        Propx = 0.0, -- x coord of prop
-        Propy = 0.0, -- y coord of prop
-        Propz = 0.0, -- z coord of prop
+        PropX = 0.0, -- x coord of prop
+        PropY = 0.0, -- y coord of prop
+        PropZ = 0.0, -- z coord of prop
         PropRotX = 0.0, -- x axis rotation of prop
         PropRotY = 0.0, -- y axis rotation of prop
         PropRotZ = -1.5, -- z axis rotation of prop

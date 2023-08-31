@@ -13,8 +13,9 @@ CreateThread(function()
         if Config.UseProps then
             local Model = v.PropItem
             lib.requestModel(Model)
-            -- pedProp = CreateObject(Model, 0, 0, 0, true, true, true)
-            AttachEntityToEntity(pedProp, MarketPeds, v.PropBone, v.PropX, v.PropY, v.PropZ, v.PropRotX, v.ropRotY, v.PropRotZ, false, false, false, true, 2, true)
+            local pedProp = CreateObject(Model, 0, 0, 0, true, true, false)
+            print(json.encode(v.PropBone, {indent = true}))
+            AttachEntityToEntity(pedProp, MarketPeds, v.PropBone, v.PropX, v.PropY, v.PropZ, v.PropRotX, v.PropRotY, v.PropRotZ, true, true, false, true, 1, true)
         end
         
         local coords = v.Location
