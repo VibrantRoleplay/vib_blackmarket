@@ -1,8 +1,8 @@
 Config = Config or {}
 
-Config.Debug = true
+Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
-Config.UseProps = false -- false = Peds don't hold any props
+Config.UseProps = true -- false = Peds don't hold any props
 
 Config.BlackMarketAccess = {
     EntranceInfo = {
@@ -40,9 +40,16 @@ Config.MarketPeds = {
         Name = "Supplies", -- Must be Unique
         Model = "s_m_m_ciasec_01", -- Ped model
         Location = vector4(891.83, -3211.57, -99.21, 204.62), -- Location ped spawns
-        AnimationDict = "amb@world_human_welding@male@base", -- Dict for animation
-        AnimationClip = "base", -- Animation ped plays
-        Prop = "prop_weld_torch",
+        AnimationDict = "amb@world_human_drinking@coffee@male@idle_a", -- Dict for animation
+        AnimationClip = "idle_c", -- Animation ped plays
+        PropItem = "p_amb_coffeecup_01",
+        PropBone = 28422, -- Bone index the prop is attached to
+        Propx = 0.0, -- x coord of prop
+        Propy = 0.01, -- y coord of prop
+        Propz = 0.05, -- z coord of prop
+        PropRotX = 0.0, -- x axis rotation of prop
+        PropRotY = 0.0, -- y axis rotation of prop
+        PropRotZ = -1.5, -- z axis rotation of prop
         ItemsForSale = { -- Item = Price
             lockpick = 10,
             screwdriverset = 10,
@@ -53,9 +60,16 @@ Config.MarketPeds = {
         Name = "Ammo",
         Model = "s_m_m_fibsec_01",
         Location = vector4(904.74, -3230.82, -99.27, 345.69),
-        AnimationDict = "amb@world_human_aa_coffee@base",
-        AnimationClip = "base",
-        Prop = "apa_mp_h_acc_vase_02",
+        AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
+        AnimationClip = "idle_c",
+        PropItem = "p_amb_coffeecup_01",
+        PropBone = 58868, -- Bone index the prop is attached to
+        Propx = 0.0, -- x coord of prop
+        Propy = 0.01, -- y coord of prop
+        Propz = 0.05, -- z coord of prop
+        PropRotX = 0.0, -- x axis rotation of prop
+        PropRotY = 0.0, -- y axis rotation of prop
+        PropRotZ = -20.0, -- z axis rotation of prop
         ItemsForSale = {
             can = 10,
             cola = 10,
@@ -66,9 +80,16 @@ Config.MarketPeds = {
         Name = "Attachments",
         Model = "s_m_m_highsec_01",
         Location = vector4(908.93, -3207.19, -98.19, 115.63),
-        AnimationDict = "amb@code_human_wander_gardener_leaf_blower@base",
-        AnimationClip = "static",
-        Prop = "prop_leaf_blower_01",
+        AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
+        AnimationClip = "idle_c",
+        PropItem = "p_amb_coffeecup_01",
+        PropBone = 28422, -- Bone index the prop is attached to
+        Propx = 0.0, -- x coord of prop
+        Propy = 0.0, -- y coord of prop
+        Propz = 0.0, -- z coord of prop
+        PropRotX = 0.0, -- x axis rotation of prop
+        PropRotY = 0.0, -- y axis rotation of prop
+        PropRotZ = -1.5, -- z axis rotation of prop
         ItemsForSale = {
             at_scope_macro = 10,
             at_scope_small = 10,

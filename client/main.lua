@@ -120,8 +120,8 @@ function SpawnKidnapPed()
     Wait(3500)
     TaskTurnPedToFaceCoord(kidnapPed, playerCoords.x, playerCoords.y, playerCoords.z, 2000)
     TaskAimGunAtEntity(kidnapPed, player, -1)
-    headbagObject = CreateObject(headbagProp, 0, 0, 0, true, true, true);
-    AttachEntityToEntity(headbagObject, player, GetPedBoneIndex(player, 12844), 0.2, 0.04, 0, 0, 270.0, 60.0, true, true, false, true, 1, true);
+    headbagObject = CreateObject(headbagProp, 0, 0, 0, true, true, true)
+    AttachEntityToEntity(headbagObject, player, GetPedBoneIndex(player, 12844), 0.2, 0.04, 0, 0, 270.0, 60.0, true, true, false, true, 1, true)
     SetEntityCompletelyDisableCollision(headbagObject, false, true)
     SendNUIMessage({
         type = "openGeneral"

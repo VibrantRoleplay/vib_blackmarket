@@ -11,9 +11,10 @@ CreateThread(function()
             TaskPlayAnim(MarketPeds, v.AnimationDict, v.AnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
         end
         if Config.UseProps then
-            local Model = v.Prop
+            local Model = v.PropItem
             lib.requestModel(Model)
-            AttachEntityToEntity(Model, MarketPeds, 57005, 0.0, 0.0, 0.0, 0.0, 0.0, 180.0, false, false, false, true, 2, true)
+            -- pedProp = CreateObject(Model, 0, 0, 0, true, true, true)
+            AttachEntityToEntity(pedProp, MarketPeds, v.PropBone, v.PropX, v.PropY, v.PropZ, v.PropRotX, v.ropRotY, v.PropRotZ, false, false, false, true, 2, true)
         end
         
         local coords = v.Location
