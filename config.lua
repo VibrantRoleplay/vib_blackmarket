@@ -25,7 +25,7 @@ Config.BlackMarketAccess = {
             vector4(1119.57, -2147.11, 30.83, 354.01),
             vector4(935.48, -1517.98, 31.02, 352.9),
         },
-        SeatNumber = 2, -- Seat numbers start at -1 (-1 == drivers seat) - If you choose a 2 door car, it';ll either be [-1] or [0]
+        SeatNumber = 2, -- Seat numbers start at -1 (-1 == drivers seat) - If you choose a 2 door car, it'll either be [-1] or [0]
     },
     KidnapPedInfo = {
         KidnapPedModel = "a_m_m_acult_01",
