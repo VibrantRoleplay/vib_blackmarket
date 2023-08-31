@@ -11,6 +11,7 @@ RegisterNetEvent('blackmarket:Menu', function(v)
 
         headerMenu[#headerMenu + 1] = {
             title = "Purchase "..exports.ox_inventory:Items(k).label,
+            image = "nui://ox_inventory/web/images/"..k..".png",
             description = "My price today for this is $"..v,
             icon = 'fa-solid fa-dollar',
             event = "blackmarket:BuyInput",
