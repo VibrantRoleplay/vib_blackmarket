@@ -35,6 +35,14 @@ Config.BlackMarketAccess = {
     },
 }
 
+Config.SalesPed = {
+    SalesPed = { -- Must be unique
+        Name = "Sales Ped", -- Name of ped, shown in context menu
+        Model = "", -- Ped model
+        Location = "", -- Location ped spawns
+    },
+}
+
 Config.MarketPeds = {
     SuppliesPed = { -- Must be unique
         Name = "Supplies", -- Must be Unique
