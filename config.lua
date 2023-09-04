@@ -36,6 +36,7 @@ Config.BlackMarketAccess = {
 }
 
 Config.SalesPed = {
+    All sellable = false -- true = All items are sellable always, false = only 1 random item per restart is sellable
     SalesPed = { -- Must be unique
         Name = "Sales Ped", -- Name of ped, shown in context menu
         Model = "", -- Ped model
