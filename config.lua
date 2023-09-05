@@ -43,12 +43,12 @@ Config.SalesPed = {
         Location = "", -- Location ped spawns
     },
     SellableItems = {
-        {item  = "Thermite", value = 100},
+        Thermite = 100,
     },
     RareItems = {
         ChanceForRareItemSale = 50,
         SellableRareItems = {
-            {item = "police_badge", value = 100}, 
+            police_badge = 100, 
         },
     },
 }
