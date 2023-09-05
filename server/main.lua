@@ -1,5 +1,7 @@
 QBCore = exports["qb-core"]:GetCoreObject()
 
+math.randomseed(os.time())
+
 -------------
 --Variables--
 -------------
@@ -37,10 +39,6 @@ RegisterNetEvent("blackmarket:server:SellItems", function(args)
     local itemCount = exports.ox_inventory:Search(source, 'count', args.item)
     local payOut = itemCount * args.price
 
-    if Config.Debug then
-        print(json.encode(args.price, {indent = true}))
-    end
-
     if exports.ox_inventory:RemoveItem(source, args.item, itemCount) then
         exports.ox_inventory:AddItem(source, "black_money", payOut)
         lib.notify(source, {
@@ -64,8 +62,12 @@ end)
 
 lib.callback.register('blackmarket:server:GenerateNumberCode', function(source)
     local correctCode = Config.EntranceTypes.NumberCode
-    if Config.Debug then
-        print("This is the current code: "..correctCode)
-    end
+    
     return correctCode
+end)
+
+lib.callback.register('blackmarket:server:CheckRareItem', function(source)
+    local canSellRare = Config.ItemSelling.ItemInfo.RareItemSalesChance < math.random(1, 100)
+
+    return canSellRare
 end)

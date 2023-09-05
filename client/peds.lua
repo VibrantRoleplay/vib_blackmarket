@@ -14,7 +14,6 @@ CreateThread(function()
             local Model = v.PropItem
             lib.requestModel(Model)
             local pedProp = CreateObject(Model, 0, 0, 0, true, true, false)
-            print(json.encode(v.PropBone, {indent = true}))
             AttachEntityToEntity(pedProp, MarketPeds, v.PropBone, v.PropX, v.PropY, v.PropZ, v.PropRotX, v.PropRotY, v.PropRotZ, true, true, false, true, 1, true)
         end
         
@@ -105,8 +104,6 @@ CreateThread(function()
     local Sales = Config.ItemSelling.SalesPed
     local pedCoords = Config.ItemSelling.SalesPed.SalesPedLocation
     local SellingData = Config.ItemSelling.ItemInfo
-
-    print(json.encode(Sales, {indent = true}))
 
     lib.requestModel(Sales.SalesPedModel)
     salesPed = CreatePed(1, Sales.SalesPedModel, Sales.SalesPedLocation, false, true)

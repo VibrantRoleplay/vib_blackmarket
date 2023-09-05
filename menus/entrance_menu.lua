@@ -58,11 +58,6 @@ RegisterNetEvent("blackmarket:RiddleInput", function()
         },
     })
 
-    if Config.Debug then
-        print(json.encode(input, { pretty = true }))
-        print(json.encode(options, { pretty = true }))
-    end
-
     if not input or not input[1] then
         return
     end
@@ -76,10 +71,6 @@ RegisterNetEvent("blackmarket:RiddleInput", function()
 
     local function formatAnswer(str)
         return str:lower():gsub("%s+", "")
-    end
-
-    if Config.Debug then
-        print("FORMATTED", formatAnswer(selectedAnswer), formatAnswer(riddle.Correct_Answer))
     end
 
     if formatAnswer(selectedAnswer) == formatAnswer(riddle.Correct_Answer) then

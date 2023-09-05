@@ -44,7 +44,6 @@ Config.ItemSelling = {
         SalesPedAnimationClip = "base",
     },
     ItemInfo = {
-        AllSellable = false, -- [true] = All items are sellable always, [false] = only 1 random item per restart is sellable
         RareItemSalesChance = 50, -- Chance for a rare item to be sellable per restart (It will only choose 1 random rare item per restart)
         StandardItems = {
             copperbar = 100,
@@ -52,7 +51,6 @@ Config.ItemSelling = {
         },
         RareItems = {
             goldbar = 1000,
-            titaniumbar = 2500,
         },
     }
 }

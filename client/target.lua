@@ -3,11 +3,6 @@ CreateThread(function()
     local zoneOptions = Config.Hacking.ZoneOptions
     
     for _, hackLocations in pairs(locations) do
-
-        if Config.Debug then
-            print(json.encode(hackLocations, {indent = true}))
-        end
-
         exports.ox_target:addSphereZone({
             name = "Hack zones",
             coords = hackLocations,

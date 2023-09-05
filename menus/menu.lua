@@ -3,10 +3,6 @@ RegisterNetEvent('blackmarket:Menu', function(v)
 
     local tableData = v
 
-    if Config.Debug then
-        print(json.encode(tableData, {indent = true}))
-    end
-
     for k, v in pairs(v.args.ItemsForSale) do
 
         headerMenu[#headerMenu + 1] = {
