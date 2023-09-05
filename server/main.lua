@@ -32,6 +32,32 @@ RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
     end
 end)
 
+RegisterNetEvent("blackmarket:server:SellItems", function(args)
+    local Player = QBCore.Functions.GetPlayer(source)
+    local itemCount = exports.ox_inventory:Search(source, 'count', args.item)
+    local payOut = itemCount * args.price
+
+    if Config.Debug then
+        print(json.encode(args.price, {indent = true}))
+    end
+
+    if exports.ox_inventory:RemoveItem(source, args.item, itemCount) then
+        exports.ox_inventory:AddItem(source, "black_money", payOut)
+        lib.notify(source, {
+            title = "Attention",
+            description = "You've made $"..payOut,
+            type = 'success'
+        })
+    else
+        lib.notify(source, {
+            title = "Attention",
+            description = "You fucked it, uwu O_o",
+            type = 'error'
+        })
+    end
+
+end)
+
 -------------
 --Callbacks--
 -------------

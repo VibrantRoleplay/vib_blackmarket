@@ -100,3 +100,38 @@ CreateThread(function()
         },
     })
 end)
+
+CreateThread(function()
+    local Sales = Config.ItemSelling.SalesPed
+    local pedCoords = Config.ItemSelling.SalesPed.SalesPedLocation
+    local SellingData = Config.ItemSelling.ItemInfo
+
+    print(json.encode(Sales, {indent = true}))
+
+    lib.requestModel(Sales.SalesPedModel)
+    salesPed = CreatePed(1, Sales.SalesPedModel, Sales.SalesPedLocation, false, true)
+    SetEntityInvincible(salesPed, true)
+    SetBlockingOfNonTemporaryEvents(salesPed, true)
+    FreezeEntityPosition(salesPed, true)
+
+    if Config.UseAnims then
+        lib.requestAnimDict(Sales.SalesPedAnimationDict)
+        TaskPlayAnim(salesPed, Sales.SalesPedAnimationDict, Sales.SalesPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+    end
+
+    exports.ox_target:addSphereZone({
+        coords = vec3(pedCoords.x, pedCoords.y, pedCoords.z+1),
+        radius = 1,
+        debug = Config.Debug,
+        options = {
+            {
+                icon = "fa-solid fa-box-archive",
+                label = "Speak to "..Sales.SalesPedName,
+                event = 'blackmarket:SellingMenu',
+                args = SellingData,
+                debug = Config.Debug,
+                distance = 2, 
+            },
+        },
+    })
+end)

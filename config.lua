@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.Debug = false
+Config.Debug = true
 Config.UseAnims = true -- false = Peds have no animations and just stand still
 Config.UseProps = false -- false = Peds don't hold any props
 
@@ -25,7 +25,7 @@ Config.BlackMarketAccess = {
             vector4(1119.57, -2147.11, 30.83, 354.01),
             vector4(935.48, -1517.98, 31.02, 352.9),
         },
-        SeatNumber = 2, -- Seat numbers start at -1 (-1 == drivers seat) - If you choose a 2 door car, it'll either be [-1] or [0]
+        SeatNumber = 2, -- Seat number the player is placed in after leaving the black market (Drivers seat == -1)
     },
     KidnapPedInfo = {
         KidnapPedModel = "a_m_m_acult_01",
@@ -35,22 +35,26 @@ Config.BlackMarketAccess = {
     },
 }
 
-Config.SalesPed = {
-    AllSellable = false -- true = All items are sellable always, false = only 1 random item per restart is sellable
+Config.ItemSelling = {
     SalesPed = { -- Must be unique
-        Name = "Sales Ped", -- Name of ped, shown in context menu
-        Model = "", -- Ped model
-        Location = "", -- Location ped spawns
+        SalesPedModel = "a_m_m_malibu_01",
+        SalesPedName = "Sales Ped",
+        SalesPedLocation = vector4(-1653.34, -3137.76, 13.99, 309.36),
+        SalesPedAnimationDict = "amb@prop_human_seat_deckchair@male@base",
+        SalesPedAnimationClip = "base",
     },
-    SellableItems = {
-        Thermite = 100,
-    },
-    SellableRareItems = {
-        ChanceForRareItemSale = 50,
-        SellableRareItems = {
-            police_badge = 100, 
+    ItemInfo = {
+        AllSellable = false, -- [true] = All items are sellable always, [false] = only 1 random item per restart is sellable
+        RareItemSalesChance = 50, -- Chance for a rare item to be sellable per restart (It will only choose 1 random rare item per restart)
+        StandardItems = {
+            copperbar = 100,
+            silverbar = 250,
         },
-    },
+        RareItems = {
+            goldbar = 1000,
+            titaniumbar = 2500,
+        },
+    }
 }
 
 Config.MarketPeds = {
