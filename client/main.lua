@@ -127,7 +127,7 @@ function SpawnKidnapPed()
         type = "openGeneral"
     })
     Wait(5000)
-    -- TeleportPlayer()
+    TeleportPlayer()
     DeleteEntity(kidnapPed)
 end
 
