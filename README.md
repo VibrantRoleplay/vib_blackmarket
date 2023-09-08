@@ -22,4 +22,3 @@ The kidnap ped is there so other players see you being taken away, otherwise it'
 - Tidy up all debug options
 - Improve ped spawn threads
 - Update variable names for clearer understanding
-- Add sales shop for players to receive dirty money
