@@ -91,7 +91,7 @@ RegisterNetEvent("blackmarket:GiveCode", function()
         local code = correctCode
         lib.notify({
             title = "Attention",
-            description = 'The access code is: '..code.. '. Make sure you right it down!',
+            description = 'The access code is: '..code.. '. Make sure you write it down!',
             type = 'inform',
             duration = 6000,
         })
