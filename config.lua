@@ -25,7 +25,7 @@ Config.BlackMarketAccess = {
             vector4(1119.57, -2147.11, 30.83, 354.01),
             vector4(935.48, -1517.98, 31.02, 352.9),
         },
-        SeatNumber = 2, -- Seat number the player is placed in after leaving the black market (Drivers seat == -1)
+        SeatNumber = 1, -- Seat number the player is placed in after leaving the black market (Drivers seat == -1)
     },
     KidnapPedInfo = {
         KidnapPedModel = "a_m_m_acult_01",
