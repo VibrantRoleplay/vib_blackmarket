@@ -175,10 +175,7 @@ function LeavingMarket()
         TaskWarpPedIntoVehicle(player, JobVehicle, Exit.SeatNumber)
         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(JobVehicle))
         SetVehicleEngineOn(JobVehicle, true, true)
-        TriggerServerEvent('vib-lib:server:clearinventory', "trunk"..plate)
-        Wait(500)
-        TriggerServerEvent('vib-lib:server:clearinventory', "glove"..plate)
+        TriggerServerEvent("blackmarket:server:ClearInventory", QBCore.Functions.GetPlate(JobVehicle))
     end, dropoffLocation, true)
-
     DoScreenFadeIn(1000)
 end
