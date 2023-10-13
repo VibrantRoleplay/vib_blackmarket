@@ -46,11 +46,12 @@ Config.ItemSelling = {
     ItemInfo = {
         RareItemSalesChance = 50, -- Chance for a rare item to be sellable per restart (It will only choose 1 random rare item per restart)
         StandardItems = {
-            copperbar = 100,
-            silverbar = 250,
+            {item = "copperbar", price = 10},
+            {item = "silverbar", price = 10},
+            {item = "advancedlockpick", price = 10},
         },
         RareItems = {
-            goldbar = 1000,
+            {item = "goldbar", price = 10},
         },
     }
 }
