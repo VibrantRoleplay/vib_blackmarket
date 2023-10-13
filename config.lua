@@ -71,9 +71,9 @@ Config.MarketPeds = {
         PropRotY = 0.0, -- y axis rotation of prop
         PropRotZ = -1.5, -- z axis rotation of prop
         ItemsForSale = { -- Item = Price
-            lockpick = 10,
-            screwdriverset = 10,
-            advancedlockpick = 10,
+            {item = "lockpick", price = 10},
+            {item = "screwdriverset", price = 10},
+            {item = "advancedlockpick", price = 10},
         },
     },
     AmmoPed = {
@@ -91,9 +91,9 @@ Config.MarketPeds = {
         PropRotY = 0.0, -- y axis rotation of prop
         PropRotZ = 0.0, -- z axis rotation of prop
         ItemsForSale = {
-            can = 10,
-            cola = 10,
-            weapon_pistol = 10,
+            {item = "ammo-9", price = 10},
+            {item = "ammo-rifle", price = 10},
+            {item = "ammo-shotgun", price = 10},
         },
     },
     AttachmentsPed = {
@@ -111,9 +111,9 @@ Config.MarketPeds = {
         PropRotY = 0.0, -- y axis rotation of prop
         PropRotZ = -1.5, -- z axis rotation of prop
         ItemsForSale = {
-            at_scope_macro = 10,
-            at_scope_small = 10,
-            at_scope_medium = 10,
+            {item = "at_scope_macro", price = 10},
+            {item = "at_scope_small", price = 10},
+            {item = "at_scope_medium", price = 10},
         },
     },
 }

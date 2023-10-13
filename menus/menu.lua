@@ -3,17 +3,17 @@ RegisterNetEvent('blackmarket:Menu', function(v)
 
     local tableData = v
 
-    for item, price in pairs(v.args.ItemsForSale) do
+    for _, itemData in pairs(v.args.ItemsForSale) do
 
         headerMenu[#headerMenu + 1] = {
-            title = "Purchase "..exports.ox_inventory:Items(item).label,
-            image = "nui://ox_inventory/web/images/"..item..".png",
-            description = "My price today for this is $"..price,
+            title = "Purchase "..exports.ox_inventory:Items(itemData.item).label,
+            image = "nui://ox_inventory/web/images/"..itemData.item..".png",
+            description = "My price today for this is $"..itemData.price,
             icon = 'fa-solid fa-dollar',
             event = "blackmarket:BuyInput",
             args = {
-                item = item,
-                price = price
+                item = itemData.item,
+                price = itemData.price
             },
         }
     end
