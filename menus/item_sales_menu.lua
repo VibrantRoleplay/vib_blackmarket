@@ -1,5 +1,6 @@
 RegisterNetEvent('blackmarket:SellingMenu', function(args)
 	local headerMenu = {}
+    
     local standardItems = args.args.StandardItems
     local rareItems = args.args.RareItems
     local canSellRare = lib.callback.await("blackmarket:server:CheckRareItem", false)
