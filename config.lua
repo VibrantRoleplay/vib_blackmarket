@@ -166,6 +166,7 @@ Config.EntranceTypes = {
 }
 
 Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode] for the entrance
+    HackItem = "laptop",
     ZoneOptions = {
         HackDuration = 10000, -- How long the hack takes in ms
         HackProgressbarLabel = "Doing hacker stuff",

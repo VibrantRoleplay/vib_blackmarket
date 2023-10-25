@@ -19,9 +19,19 @@ end)
 RegisterNetEvent("blackmarket:client:GetCode", function()
     local player = cache.ped
     local zoneOptions = Config.Hacking.ZoneOptions
-    lib.requestAnimDict("amb@world_human_bum_wash@male@low@idle_a")
+    local hackItem = exports.ox_inventory:Search('count', Config.Hacking.HackItem)
+    
+    if hackItem == 0 then
+        lib.notify({
+            title = 'Missing items',
+            description = "You're missing tools",
+            type = 'error',
+        })
+        return
+    end
 
     if RecentHack == 0 or GetGameTimer() > RecentHack then
+        lib.requestAnimDict("amb@world_human_bum_wash@male@low@idle_a")
         TaskPlayAnim(player, 'amb@world_human_bum_wash@male@low@idle_a', 'idle_a', 1.0, 1.0, -1, 01, 0, true, true, true)
         Wait(2500)
         exports['ps-ui']:VarHack(function(success)
@@ -58,14 +68,14 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
                     lib.notify({
                         title = 'Good job',
                         description = "You got what you came for!",
-                        type = 'success'
+                        type = 'success',
                     })
                 else
                     ClearPedTasksImmediately(player)
                     lib.notify({
                         title = 'Canceled',
                         description = "Canceled",
-                        type = 'error'
+                        type = 'error',
                     })
                 end
             else
@@ -73,7 +83,7 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
                 lib.notify({
                     title = 'Failed',
                     description = "You failed, best get moving!",
-                    type = 'error'
+                    type = 'error',
                 })
             end
         end, 4, 6)
@@ -81,7 +91,7 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
         lib.notify({
             title = 'Attention',
             description = 'Looks like someone already hit this',
-            type = 'inform'
+            type = 'inform',
         })
     end
 end)
