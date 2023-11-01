@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.Debug = true
+Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
 Config.UseProps = false -- false = Peds don't hold any props
 
