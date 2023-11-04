@@ -181,3 +181,19 @@ Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode]
         vector3(-2033.56, -370.31, 20.09),
     },
 }
+
+-----------------
+--Money Washing--
+-----------------
+
+Config.MoneyWashing = {
+    {
+        ShopName = "",
+        TargetZone = vector4(),
+        WashTime = {
+            minutes = {
+                10,
+            },
+        },
+    }
+}
