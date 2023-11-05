@@ -132,3 +132,31 @@ CreateThread(function()
         },
     })
 end)
+
+CreateThread(function()
+    for _, shop in pairs(Config.Laundering) do
+        lib.requestModel(shop.PedModel)
+
+        ShopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
+        SetEntityInvincible(ShopKeeper, true)
+        SetBlockingOfNonTemporaryEvents(ShopKeeper, true)
+        FreezeEntityPosition(ShopKeeper, true)
+
+        exports.ox_target:addSphereZone({
+            coords = vec3(shop.PedSpawn.x, shop.PedSpawn.y, shop.PedSpawn.z+1),
+            radius = 1,
+            debug = Config.Debug,
+            options = {
+                {
+                    icon = "fa-solid fa-basket-shopping",
+                    iconColor = "white",
+                    label = "Speak to "..shop.ShopName.." owner",
+                    event = 'blackmarket:LaunderMenu',
+                    args = shop,
+                    debug = Config.Debug,
+                    distance = 2, 
+                },
+            },
+        })
+    end
+end)

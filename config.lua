@@ -186,14 +186,17 @@ Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode]
 --Money Washing--
 -----------------
 
-Config.MoneyWashing = {
+Config.Laundering = {
     {
-        ShopName = "",
-        TargetZone = vector4(),
-        WashTime = {
-            minutes = {
-                10,
-            },
-        },
+        ShopName = "Sandy 24/7", -- Unique name per shop
+        PedModel = "mp_m_shopkeep_01", -- Model of ped that spawns in shop
+        PedSpawn = vector3(1960.15, 3748.89, 31.34), -- Location of each ped
+        WashTime = 10, -- Duration in minutes
+    },
+    {
+        ShopName = "Sandy 24/7 2",
+        PedModel = "mp_m_shopkeep_01",
+        PedSpawn = vector3(1955.91, 3747.17, 31.66),
+        WashTime = 10,
     }
 }
