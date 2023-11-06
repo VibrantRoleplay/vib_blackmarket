@@ -186,6 +186,8 @@ Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode]
 --Money Washing--
 -----------------
 
+Config.DirtyMoneyItem = "black_money"
+
 Config.Laundering = {
     {
         ShopName = "Sandy 24/7", -- Unique name per shop

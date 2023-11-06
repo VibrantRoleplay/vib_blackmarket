@@ -33,4 +33,9 @@ end)
 --Events--
 ----------
 
-RegisterNetEvent('blackmarket:server:CheckStoreInfo')
+RegisterNetEvent('blackmarket:server:StartWashing', function(input, data)
+	local src = source
+	local moneyAmount = input[1]
+
+	exports.ox_inventory:RemoveItem(src, "black_money", moneyAmount)
+end)
