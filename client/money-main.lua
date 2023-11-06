@@ -40,6 +40,7 @@ end)
 
 RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
     local player = cache.ped
+    local citizenId = QBCore.Functions.GetPlayerData().citizenid
 
     if lib.progressCircle({
         duration = 1000,
@@ -59,7 +60,7 @@ RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
         -- },
     })
     then
-        TriggerServerEvent('blackmarket:server:StartWashing', input, data)
+        TriggerServerEvent('blackmarket:server:StartWashing', input, data, citizenId)
         lib.alertDialog({
 			header = "Store owner says:",
 			content = "You've started washing $"..input[1].." at: "..data.ShopName,

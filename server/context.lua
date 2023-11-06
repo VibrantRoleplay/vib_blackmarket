@@ -1,7 +1,4 @@
 Context = {
-    StoreInfo = {
-        CurrentlyWashing = false,
-        AmountBeingWashed = 0,
-    },
+    StoreInfo = {},
     WashTimes = {},
 }

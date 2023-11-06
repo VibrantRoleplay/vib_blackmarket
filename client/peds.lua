@@ -158,5 +158,6 @@ CreateThread(function()
                 },
             },
         })
+        TriggerServerEvent('blackmarket:server:UpdateStores', shop)
     end
 end)

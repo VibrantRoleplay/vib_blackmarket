@@ -33,11 +33,24 @@ end)
 --Events--
 ----------
 
-RegisterNetEvent('blackmarket:server:StartWashing', function(input, data)
+RegisterNetEvent('blackmarket:server:UpdateStores', function(data)
+	Context.StoreInfo[data.ShopName] = {
+		CurrentlyWashing = false,
+		AmountBeingWashed = 0,
+		Owner = nil,
+	}
+end)
+
+RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citizenId)
 	local src = source
 	local moneyAmount = input[1]
 
 	exports.ox_inventory:RemoveItem(src, "black_money", moneyAmount)
+	Context.StoreInfo[data.ShopName] = {
+		CurrentlyWashing = true,
+		AmountBeingWashed = moneyAmount,
+		Owner = citizenId
+	}
 end)
 
 -------------
