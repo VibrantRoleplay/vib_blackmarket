@@ -3,7 +3,6 @@ RegisterNetEvent('blackmarket:client:StartWashing', function(data)
 
     lib.callback("blackmarket:server:GetWashTime", false, function(cooldown)
         if cooldown > 0 then
-            print("cooldown remaining: ", cooldown)
             lib.alertDialog({
                 header = "Too busy",
                 content = "I'm far too busy, come back another time my friend!",
@@ -25,7 +24,7 @@ RegisterNetEvent('blackmarket:client:StartWashing', function(data)
             return
         end
         local moneyAmount = exports.ox_inventory:Search('count', Config.DirtyMoneyItem)
-        print(json.encode(moneyAmount, {indent = true}))
+
         if moneyAmount >= input[1] then
             TriggerEvent('blackmarket:client:LaunderMoney', input, data.args)
             TriggerServerEvent('blackmarket:server:TriggerWashTimer', data)
@@ -41,9 +40,6 @@ end)
 
 RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
     local player = cache.ped
-
-    print("input: ", json.encode(input[1], {indent = true}))
-    print("data: ", json.encode(data, {indent = true}))
 
     if lib.progressCircle({
         duration = 1000,

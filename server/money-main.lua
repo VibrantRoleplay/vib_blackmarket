@@ -39,3 +39,11 @@ RegisterNetEvent('blackmarket:server:StartWashing', function(input, data)
 
 	exports.ox_inventory:RemoveItem(src, "black_money", moneyAmount)
 end)
+
+-------------
+--Callbacks--
+-------------
+
+lib.callback.register("blackmarket:server:GetStoreInfo", function(source, data)
+	return Context.StoreInfo[data]
+end)
