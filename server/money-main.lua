@@ -1,6 +1,6 @@
-------------------
---Cooldown Stuff--
-------------------
+--------------------
+--Wash Timer Stuff--
+--------------------
 
 RegisterNetEvent("blackmarket:server:TriggerWashTimer", function(data)
 	local newData = data.args
@@ -25,7 +25,7 @@ lib.callback.register("blackmarket:server:GetWashTime", function(_, data)
 	if washtime <= 0 then
 		Context.WashTimes[newData.ShopName] = -1
 	end
-
+	
 	return washtime
 end)
 
@@ -36,12 +36,14 @@ end)
 RegisterNetEvent('blackmarket:server:UpdateStores', function(data)
 	Context.StoreInfo[data.ShopName] = {
 		CurrentlyWashing = false,
+		WashingComplete = false,
 		AmountBeingWashed = 0,
 		Owner = nil,
+		storeCut = nil,
 	}
 end)
 
-RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citizenId)
+RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citizenId, moneyLaunderingLoss)
 	local src = source
 	local moneyAmount = input[1]
 
@@ -49,7 +51,8 @@ RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citize
 	Context.StoreInfo[data.ShopName] = {
 		CurrentlyWashing = true,
 		AmountBeingWashed = moneyAmount,
-		Owner = citizenId
+		Owner = citizenId,
+		StoreCut = moneyLaunderingLoss,
 	}
 end)
 
