@@ -3,7 +3,6 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
         lib.callback('blackmarket:server:GetWashTime', false, function(cooldown)
             local headerMenu = {}
             local citizenId = QBCore.Functions.GetPlayerData().citizenid
-            print(json.encode(cooldown, {indent = true}))
 
             if not storeInfo.CurrentlyWashing then
                 headerMenu[#headerMenu + 1] = {
@@ -16,15 +15,31 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
                 }
             else
                 if citizenId == storeInfo.Owner then
-                    headerMenu[#headerMenu + 1] = {
-                        title = "Busy",
-                        description = "I'm currently washing your $"..storeInfo.AmountBeingWashed,
-                        progress = cooldown,
-                        colorScheme = "green",
-                        icon = 'fa-solid fa-xmark',
-                        iconColor = "red",
-                        readOnly = true,
-                    }
+                    if cooldown > 0 then
+                        headerMenu[#headerMenu + 1] = {
+                            title = "Busy",
+                            description = "I'm currently washing your $"..storeInfo.AmountBeingWashed,
+                            progress = cooldown,
+                            colorScheme = "green",
+                            icon = 'fa-solid fa-xmark',
+                            iconColor = "red",
+                            readOnly = true,
+                        }
+                    elseif cooldown <= 0 then
+                        local returnValue = (storeInfo.AmountBeingWashed - storeInfo.StoreCut)
+
+                        headerMenu[#headerMenu + 1] = {
+                            title = "Busy",
+                            description = "I've washed your money ... my cut is $"..storeInfo.StoreCut.."  \n\n Your return is $"..returnValue,
+                            icon = 'fa-solid fa-dollar',
+                            iconColor = "green",
+                            serverEvent = 'blackmarket:server:RetrieveMoney',
+                            args = {
+                                returnMoney = returnValue,
+                                storeData = data,
+                            },
+                        }
+                    end
                 else
                     headerMenu[#headerMenu + 1] = {
                         title = "Busy",
