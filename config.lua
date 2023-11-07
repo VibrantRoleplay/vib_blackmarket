@@ -187,23 +187,19 @@ Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode]
 -----------------
 
 Config.DirtyMoneyItem = "black_money"
-Config.StoreCutMargins = { -- Top end of each margin before a percentage is deducted from the players return amount
-    {input = 10000, cut = 0.1},
-    {input = 20000, cut = 0.2},
-    {input = 30000, cut = 0.3},
-}
+Config.StoreCut = 0.1
 
 Config.Laundering = {
     {
         ShopName = "Sandy 24/7", -- Unique name per shop
         PedModel = "mp_m_shopkeep_01", -- Model of ped that spawns in shop
         PedSpawn = vector3(1960.15, 3748.89, 31.34), -- Location of each ped
-        WashTime = 0.1, -- Duration in minutes
+        WashTime = 0.5, -- Duration in minutes
     },
     {
         ShopName = "Sandy 24/7 2",
         PedModel = "mp_m_shopkeep_01",
         PedSpawn = vector3(1955.91, 3747.17, 31.66),
-        WashTime = 0.1,
+        WashTime = 0.5,
     }
 }
