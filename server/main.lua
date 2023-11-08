@@ -11,7 +11,6 @@ math.randomseed(os.time())
 ----------
 
 RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
-    local Player = QBCore.Functions.GetPlayer(source)
     local amount = input
     local cost = (args.price * amount)
 
@@ -35,7 +34,6 @@ RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
 end)
 
 RegisterNetEvent("blackmarket:server:SellItems", function(args)
-    local Player = QBCore.Functions.GetPlayer(source)
     local itemCount = exports.ox_inventory:Search(source, 'count', args.item)
     local payOut = itemCount * args.price
 
@@ -75,4 +73,12 @@ lib.callback.register('blackmarket:server:CheckRareItem', function(source)
     local canSellRare = Config.ItemSelling.ItemInfo.RareItemSalesChance < math.random(1, 100)
 
     return canSellRare
+end)
+
+lib.callback.register('blackmarket:server:GetPlayerJob', function(source)
+    local player = QBCore.Functions.GetPlayer(source)
+
+    local playerJob = player.PlayerData.job.name
+
+    return playerJob
 end)

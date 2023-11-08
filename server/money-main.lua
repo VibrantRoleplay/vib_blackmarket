@@ -3,27 +3,25 @@
 --------------------
 
 RegisterNetEvent("blackmarket:server:TriggerWashTimer", function(data)
-	local newData = data.args
-    Context.WashTimes[newData.ShopName] = os.time()
+    Context.WashTimes[data.args.ShopName] = os.time()
 end)
 
 lib.callback.register("blackmarket:server:GetWashTime", function(_, data)
-	local newData = data.args
 	local washtime = 0
-	local savedTimestamp = Context.WashTimes[newData.ShopName]
+	local savedTimestamp = Context.WashTimes[data.args.ShopName]
 
 	if savedTimestamp == nil then
 		savedTimestamp = -1
 	end
 
-	local zoneWashTimeSeconds = newData.WashTime * 60
+	local zoneWashTimeSeconds = data.args.WashTime * 60
 	local timeExpires = savedTimestamp + zoneWashTimeSeconds
 	local remainingTime = timeExpires - os.time()
 
 	washtime = remainingTime > 0 and remainingTime or 0
 
 	if washtime <= 0 then
-		Context.WashTimes[newData.ShopName] = -1
+		Context.WashTimes[data.args.ShopName] = -1
 	end
 	
 	return washtime
@@ -44,10 +42,9 @@ RegisterNetEvent('blackmarket:server:UpdateStores', function(data)
 end)
 
 RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citizenId, moneyLaunderingLoss)
-	local src = source
 	local moneyAmount = input[1]
 
-	exports.ox_inventory:RemoveItem(src, "black_money", moneyAmount)
+	exports.ox_inventory:RemoveItem(source, "black_money", moneyAmount)
 	Context.StoreInfo[data.ShopName] = {
 		CurrentlyWashing = true,
 		AmountBeingWashed = moneyAmount,
@@ -57,10 +54,9 @@ RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citize
 end)
 
 RegisterNetEvent('blackmarket:server:RetrieveMoney', function(data)
-	local src = source
 	local amount = QBCore.Shared.Round(data.returnMoney)
 
-	exports.ox_inventory:AddItem(src, "money", amount)
+	exports.ox_inventory:AddItem(source, "money", amount)
 	Context.StoreInfo[data.storeData.args.ShopName] = {
 		CurrentlyWashing = false,
 		WashingComplete = false,

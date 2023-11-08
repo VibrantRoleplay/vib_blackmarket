@@ -1,5 +1,15 @@
 RegisterNetEvent('blackmarket:EntranceMenu', function()
-	local headerMenu = {}
+    local playerJob = lib.callback.await('blackmarket:server:GetPlayerJob', false)
+    if playerJob == "police" then
+        lib.notify({
+            title = 'Unable',
+            description = 'I aint talking to no bitch ass cop',
+            type = 'error',
+        })
+        return
+    end
+
+    local headerMenu = {}
 
     headerMenu[#headerMenu + 1] = {
         title = "Welcome",
