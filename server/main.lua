@@ -14,21 +14,21 @@ RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
     local amount = input
     local cost = (args.price * amount)
 
-    if exports.ox_inventory:CanCarryItem(source, args.item, amount) then
-        if exports.ox_inventory:RemoveItem(source, "black_money", cost) then
+    if exports.ox_inventory:RemoveItem(source, "black_money", cost) then
+        if exports.ox_inventory:CanCarryItem(source, args.item, amount) then
             exports.ox_inventory:AddItem(source, args.item, amount)
         else
             lib.notify(source, {
                 title = "Attention",
-                description = "You don't have enough dirty money",
-                type = 'error'
+                description = "Inventory is full!",
+                type = 'inform'
             })
         end
     else
         lib.notify(source, {
             title = "Attention",
-            description = "Inventory is full!",
-            type = 'inform'
+            description = "You don't have enough dirty money",
+            type = 'error'
         })
     end
 end)
@@ -38,20 +38,21 @@ RegisterNetEvent("blackmarket:server:SellItems", function(args)
     local payOut = itemCount * args.price
 
     if exports.ox_inventory:RemoveItem(source, args.item, itemCount) then
-        exports.ox_inventory:AddItem(source, "black_money", payOut)
-        lib.notify(source, {
-            title = "Attention",
-            description = "You've made $"..payOut,
-            type = 'success'
-        })
-    else
-        lib.notify(source, {
-            title = "Attention",
-            description = "You fucked it, uwu O_o",
-            type = 'error'
-        })
+        if exports.ox_inventory:CanCarryItem(source, "black_money", payOut) then
+            exports.ox_inventory:AddItem(source, "black_money", payOut)
+            lib.notify(source, {
+                title = "Attention",
+                description = "You've made $"..payOut,
+                type = 'success'
+            })
+        else
+            lib.notify(source, {
+                title = "Attention",
+                description = "Inventory is full!",
+                type = 'inform'
+            })
+        end
     end
-
 end)
 
 RegisterNetEvent("blackmarket:server:ClearInventory", function(plate)
@@ -77,7 +78,6 @@ end)
 
 lib.callback.register('blackmarket:server:GetPlayerJob', function(source)
     local player = QBCore.Functions.GetPlayer(source)
-
     local playerJob = player.PlayerData.job.name
 
     return playerJob
