@@ -1,4 +1,14 @@
 RegisterNetEvent('blackmarket:LaunderMenu', function(data)
+    local playerJob = lib.callback.await('blackmarket:server:GetPlayerJob', false)
+    if playerJob == "police" then
+        lib.notify({
+            title = 'Unable',
+            description = 'I aint talking to no bitch ass cop',
+            type = 'error',
+        })
+        return
+    end
+    
     lib.callback('blackmarket:server:GetStoreInfo', false, function(storeInfo)
         lib.callback('blackmarket:server:GetWashTime', false, function(cooldown)
             local headerMenu = {}
