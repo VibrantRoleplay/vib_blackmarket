@@ -27,7 +27,7 @@ CreateThread(function()
                 {
                     icon = "fa-solid fa-box-archive",
                     label = "Trade "..v.Name,
-                    event = 'blackmarket:OpenShop',
+                    event = 'blackmarket:Menu',
                     args = v,
                     debug = Config.Debug,
                     distance = 2, 
@@ -133,31 +133,33 @@ CreateThread(function()
     })
 end)
 
-CreateThread(function()
-    for _, shop in pairs(Config.Laundering) do
-        lib.requestModel(shop.PedModel)
+if Config.UseMoneyLaundering then
+    CreateThread(function()
+        for _, shop in pairs(Config.Laundering) do
+            lib.requestModel(shop.PedModel)
 
-        ShopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
-        SetEntityInvincible(ShopKeeper, true)
-        SetBlockingOfNonTemporaryEvents(ShopKeeper, true)
-        FreezeEntityPosition(ShopKeeper, true)
+            ShopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
+            SetEntityInvincible(ShopKeeper, true)
+            SetBlockingOfNonTemporaryEvents(ShopKeeper, true)
+            FreezeEntityPosition(ShopKeeper, true)
 
-        exports.ox_target:addSphereZone({
-            coords = vec3(shop.PedSpawn.x, shop.PedSpawn.y, shop.PedSpawn.z+1),
-            radius = 1,
-            debug = Config.Debug,
-            options = {
-                {
-                    icon = "fa-solid fa-basket-shopping",
-                    iconColor = "white",
-                    label = "Speak to "..shop.ShopName.." owner",
-                    event = 'blackmarket:LaunderMenu',
-                    args = shop,
-                    debug = Config.Debug,
-                    distance = 2, 
+            exports.ox_target:addSphereZone({
+                coords = vec3(shop.PedSpawn.x, shop.PedSpawn.y, shop.PedSpawn.z+1),
+                radius = 1,
+                debug = Config.Debug,
+                options = {
+                    {
+                        icon = "fa-solid fa-basket-shopping",
+                        iconColor = "white",
+                        label = "Speak to "..shop.ShopName.." owner",
+                        event = 'blackmarket:LaunderMenu',
+                        args = shop,
+                        debug = Config.Debug,
+                        distance = 2, 
+                    },
                 },
-            },
-        })
-        TriggerServerEvent('blackmarket:server:UpdateStores', shop)
-    end
-end)
+            })
+            TriggerServerEvent('blackmarket:server:UpdateStores', shop)
+        end
+    end)
+end

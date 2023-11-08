@@ -10,12 +10,6 @@ local RecentHack = 0
 --Events--
 ----------
 
-RegisterNetEvent("blackmarket:OpenShop", function(v)
-    local player = cache.ped
-
-    TriggerEvent("blackmarket:Menu", v)
-end)
-
 RegisterNetEvent("blackmarket:client:GetCode", function()
     local player = cache.ped
     local zoneOptions = Config.Hacking.ZoneOptions
@@ -33,7 +27,6 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
     if RecentHack == 0 or GetGameTimer() > RecentHack then
         lib.requestAnimDict("amb@world_human_bum_wash@male@low@idle_a")
         TaskPlayAnim(player, 'amb@world_human_bum_wash@male@low@idle_a', 'idle_a', 1.0, 1.0, -1, 01, 0, true, true, true)
-        Wait(2500)
         exports['ps-ui']:VarHack(function(success)
             if success then
                 if lib.progressCircle({
@@ -64,11 +57,12 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
                 then
                     RecentHack = GetGameTimer() + zoneOptions.Cooldown
                     ClearPedTasksImmediately(player)
-                    TriggerEvent("blackmarket:GiveCode", player)
+                    local correctCode = lib.callback.await('blackmarket:server:GenerateNumberCode', false)
                     lib.notify({
-                        title = 'Good job',
-                        description = "You got what you came for!",
-                        type = 'success',
+                        title = "Attention",
+                        description = 'The access code is: '..correctCode.. '. Make sure you write it down!',
+                        type = 'inform',
+                        duration = 6000,
                     })
                 else
                     ClearPedTasksImmediately(player)
@@ -94,18 +88,6 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
             type = 'inform',
         })
     end
-end)
-
-RegisterNetEvent("blackmarket:GiveCode", function()
-    lib.callback('blackmarket:server:GenerateNumberCode', false, function(correctCode)
-        local code = correctCode
-        lib.notify({
-            title = "Attention",
-            description = 'The access code is: '..code.. '. Make sure you write it down!',
-            type = 'inform',
-            duration = 6000,
-        })
-    end)
 end)
 
 -------------

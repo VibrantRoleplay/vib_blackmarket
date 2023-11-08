@@ -1,8 +1,8 @@
-RegisterNetEvent('blackmarket:SellingMenu', function(args)
+RegisterNetEvent('blackmarket:SellingMenu', function(data)
 	local headerMenu = {}
     
-    local standardItems = args.args.StandardItems
-    local rareItems = args.args.RareItems
+    local standardItems = data.args.StandardItems
+    local rareItems = data.args.RareItems
     local canSellRare = lib.callback.await("blackmarket:server:CheckRareItem", false)
 
     if canSellRare then
@@ -42,7 +42,7 @@ RegisterNetEvent('blackmarket:SellingMenu', function(args)
 
     lib.registerContext({
         id = 'sales_menu',
-        title = args.label,
+        title = data.label,
         options = headerMenu
     })
 

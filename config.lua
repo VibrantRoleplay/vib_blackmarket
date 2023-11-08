@@ -186,6 +186,7 @@ Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode]
 --Money Washing--
 -----------------
 
+Config.UseMoneyLaundering = true -- False if you don't want laundering system to start
 Config.DirtyMoneyItem = "black_money"
 Config.StoreCut = 0.1
 

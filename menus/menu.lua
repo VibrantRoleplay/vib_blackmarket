@@ -1,8 +1,6 @@
 RegisterNetEvent('blackmarket:Menu', function(v)
 	local headerMenu = {}
 
-    local tableData = v
-
     for _, itemData in pairs(v.args.ItemsForSale) do
 
         headerMenu[#headerMenu + 1] = {
@@ -20,7 +18,7 @@ RegisterNetEvent('blackmarket:Menu', function(v)
 
     lib.registerContext({
         id = 'sales_menu',
-        title = tableData.label,
+        title = v.label,
         options = headerMenu
     })
 

@@ -91,8 +91,6 @@ end)
 
 RegisterNetEvent("blackmarket:CodeInput", function()
     lib.callback('blackmarket:server:GenerateNumberCode', false, function(correctCode)
-        local code = correctCode
-
         local checkboxInput = lib.inputDialog('Disciple says:', {
             {
                 type = 'checkbox',

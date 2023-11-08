@@ -1,6 +1,4 @@
 RegisterNetEvent('blackmarket:client:StartWashing', function(data)
-    local player = cache.ped
-
     local input = lib.inputDialog('Laundering', {
         {
             type = "number",
@@ -28,7 +26,6 @@ RegisterNetEvent('blackmarket:client:StartWashing', function(data)
 end)
 
 RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
-    local player = cache.ped
     local citizenId = QBCore.Functions.GetPlayerData().citizenid
 
     if lib.progressCircle({
