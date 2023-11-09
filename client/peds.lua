@@ -1,20 +1,14 @@
 CreateThread(function()
     for k, v in pairs(Config.MarketPeds) do
         lib.requestModel(v.Model)
-
         MarketPeds = CreatePed(1, v.Model, v.Location, false, true)
         SetEntityInvincible(MarketPeds, true)
         SetBlockingOfNonTemporaryEvents(MarketPeds, true)
         FreezeEntityPosition(MarketPeds, true)
+
         if Config.UseAnims then
             lib.requestAnimDict(v.AnimationDict)
             TaskPlayAnim(MarketPeds, v.AnimationDict, v.AnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
-        end
-        if Config.UseProps then
-            local Model = v.PropItem
-            lib.requestModel(Model)
-            local pedProp = CreateObject(Model, 0, 0, 0, true, true, false)
-            AttachEntityToEntity(pedProp, MarketPeds, v.PropBone, v.PropX, v.PropY, v.PropZ, v.PropRotX, v.PropRotY, v.PropRotZ, true, true, false, true, 1, true)
         end
         
         local coords = v.Location
@@ -39,20 +33,22 @@ end)
 
 CreateThread(function()
     local Entrance = Config.BlackMarketAccess.EntranceInfo
-    local pedCoords = Entrance.EntrancePedLocation
+    local randomLocation = math.random(1, #Entrance.EntrancePedLocations)
+    local dropoffLocation = Entrance.EntrancePedLocations[randomLocation]
 
     lib.requestModel(Entrance.EntrancePedModel)
-    entrancePed = CreatePed(1, Entrance.EntrancePedModel, Entrance.EntrancePedLocation, false, true)
+    entrancePed = CreatePed(1, Entrance.EntrancePedModel, dropoffLocation, false, true)
     SetEntityInvincible(entrancePed, true)
     SetBlockingOfNonTemporaryEvents(entrancePed, true)
     FreezeEntityPosition(entrancePed, true)
+    
     if Config.UseAnims then
         lib.requestAnimDict(Entrance.EntrancePedAnimationDict)
         TaskPlayAnim(entrancePed, Entrance.EntrancePedAnimationDict, Entrance.EntrancePedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
     end
 
     exports.ox_target:addSphereZone({
-        coords = vec3(pedCoords.x, pedCoords.y, pedCoords.z+1),
+        coords = vec3(dropoffLocation.x, dropoffLocation.y, dropoffLocation.z+1),
         radius = 1,
         debug = Config.Debug,
         options = {
