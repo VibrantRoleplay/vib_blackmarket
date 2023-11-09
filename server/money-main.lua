@@ -43,7 +43,7 @@ end)
 RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citizenId, moneyLaunderingLoss)
 	local moneyAmount = input[1]
 
-	exports.ox_inventory:RemoveItem(source, "black_money", moneyAmount)
+	exports.ox_inventory:RemoveItem(source, Config.MoneyItem, moneyAmount)
 	Context.StoreInfo[data.ShopName] = {
 		CurrentlyWashing = true,
 		AmountBeingWashed = moneyAmount,

@@ -14,7 +14,7 @@ RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
     local amount = input
     local cost = (args.price * amount)
 
-    if exports.ox_inventory:RemoveItem(source, "black_money", cost) then
+    if exports.ox_inventory:RemoveItem(source, Config.MoneyItem, cost) then
         if exports.ox_inventory:CanCarryItem(source, args.item, amount) then
             exports.ox_inventory:AddItem(source, args.item, amount)
         else
@@ -38,8 +38,8 @@ RegisterNetEvent("blackmarket:server:SellItems", function(args)
     local payOut = itemCount * args.price
 
     if exports.ox_inventory:RemoveItem(source, args.item, itemCount) then
-        if exports.ox_inventory:CanCarryItem(source, "black_money", payOut) then
-            exports.ox_inventory:AddItem(source, "black_money", payOut)
+        if exports.ox_inventory:CanCarryItem(source, Config.MoneyItem, payOut) then
+            exports.ox_inventory:AddItem(source, Config.MoneyItem, payOut)
             lib.notify(source, {
                 title = "Attention",
                 description = "You've made $"..payOut,

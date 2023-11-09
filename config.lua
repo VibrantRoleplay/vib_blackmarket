@@ -2,6 +2,7 @@ Config = Config or {}
 
 Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
+Config.MoneyItem = "black_money" -- Item used for dirty money
 
 Config.BlackMarketAccess = {
     EntranceInfo = {
