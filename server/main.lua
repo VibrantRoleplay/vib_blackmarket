@@ -14,21 +14,22 @@ RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
     local amount = input
     local cost = (args.price * amount)
 
-    if exports.ox_inventory:RemoveItem(source, Config.MoneyItem, cost) then
-        if exports.ox_inventory:CanCarryItem(source, args.item, amount) then
+    if exports.ox_inventory:CanCarryItem(source, args.item, amount) then
+        if exports.ox_inventory:RemoveItem(source, Config.MoneyItem, cost) then
             exports.ox_inventory:AddItem(source, args.item, amount)
+
         else
             lib.notify(source, {
                 title = "Attention",
-                description = "Inventory is full!",
-                type = 'inform'
+                description = "You don't have enough dirty money",
+                type = 'error'
             })
         end
     else
         lib.notify(source, {
             title = "Attention",
-            description = "You don't have enough dirty money",
-            type = 'error'
+            description = "Inventory is full!",
+            type = 'inform'
         })
     end
 end)
