@@ -9,8 +9,29 @@ Black market resource for illegal sales and crafting
 - ox_target
 - ps-ui
 
-# General information
+# What does resource provide?
 
-- Hacking uses a client side cooldown to avoid everyone wasting time waiting
+Ability to spawn peds that can sell a configurable list of items to players for [Config.MoneyItem]
+Ability to spawn a ped that will buy a configurable list of items from players in return for [Config.MoneyItem]
+Ability for players to Launder dirty money and convert [Config.MoneyItem] into [money] item (Turning dirty money into clean money)
 
-- Riddles randomise each time you interact with the ped to avoid people sharing answers per restart
+# How do players access the blackmarket?
+
+One of two ways!
+
+They can either do a quick hack. Upon completion of said hack, they'll be given a code that they can give over to be teleported in or they can answer one of many
+configurable questions/riddles from the [Config.EntranceTypes.Riddles]
+
+# How do players exit the market?
+
+Players can simply speak to a ped inside the market to leave. Upon leaving the market, the player will be respawned in one of the locations from [ExitInfo.ExitLocations] table (We prefer to keep these locations within a fair walking distance of local traffic or a garage)
+
+# FAQ
+
+# Why can't my players take a car inside the market?
+
+SIMPLE! Not all server owners will have this location in a vehicle friendly location and we didn't want to make a config value and a bunch of code for some to do so and others not
+
+# Why aren't you using [marked_bills] for your currency of dirty money?
+
+Whilst this resource is free and we'd love to see it on every server out there, before anything else we've designed it for OUR server specifically and with it being open source, you're free and encouraged to make changes!
