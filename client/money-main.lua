@@ -29,7 +29,7 @@ RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
     local citizenId = QBCore.Functions.GetPlayerData().citizenid
 
     if lib.progressCircle({
-        duration = 1000,
+        duration = 1500,
         position = 'bottom',
         label = "Handing over cash",
         useWhileDead = false,
@@ -39,6 +39,10 @@ RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
             car = true,
             combat = true,
             mouse = false,
+        },
+        anim = {
+            dict = "mp_common",
+            clip = "givetake2_a",
         },
     })
     then
