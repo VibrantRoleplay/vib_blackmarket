@@ -2,13 +2,15 @@ Config = Config or {}
 
 Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
-Config.UseProps = false -- false = Peds don't hold any props
 
 Config.BlackMarketAccess = {
     EntranceInfo = {
         EntrancePedModel = "u_m_m_jesus_01", -- Ped model
         EntrancePedName = "Disciple", -- Must be unique for menu reasons
-        EntrancePedLocation = vector4(742.82, 4170.05, 39.53, 128.57), -- Location of the ped
+        EntrancePedLocations = { -- Random locations the entrance can spawn at per restart [Set 1 vector4() if you want a static location]
+            vector4(742.82, 4170.05, 39.53, 128.57),
+            vector4(661.11, 1282.45, 360.29, 264.06),
+        },
         EntrancePedAnimationDict = "amb@prop_human_seat_deckchair@male@base", -- Dictionary of animation
         EntrancePedAnimationClip = "base", -- Animation ped plays
         EntranceLocation = vector4(892.62, -3245.87, -98.28, 73.49), -- Where the player lands after being teleported inside
@@ -19,18 +21,15 @@ Config.BlackMarketAccess = {
         ExitPedLocation = vector4(895.4, -3242.6, -99.26, 81.78),
         ExitPedAnimationDict = "amb@world_human_hang_out_street@female_arms_crossed@idle_a",
         ExitPedAnimationClip = "idle_a",
-        ExitSpawnVehicle = "sultan", -- Vehicle the player spawns inside
         ExitLocations = { -- One of the below locations will be chosen each time a player LEAVES the black market
             vector4(479.43, -2248.61, 5.91, 329.6),
             vector4(1119.57, -2147.11, 30.83, 354.01),
             vector4(935.48, -1517.98, 31.02, 352.9),
         },
-        SeatNumber = 1, -- Seat number the player is placed in after leaving the black market (Drivers seat == -1)
     },
     KidnapPedInfo = {
         KidnapPedModel = "a_m_m_acult_01",
         KidnapPedName = "Frank",
-        KidnapPedLocation = vector3(737.43, 4162.98, 41.31),
         KidnapPedWeapon = "WEAPON_PISTOL",
     },
 }
@@ -63,14 +62,6 @@ Config.MarketPeds = {
         Location = vector4(899.86, -3206.64, -98.19, 114.26), -- Location ped spawns
         AnimationDict = "amb@prop_human_bum_shopping_cart@male@idle_a", -- Dict for animation
         AnimationClip = "idle_c", -- Animation ped plays
-        PropItem = "p_amb_coffeecup_01",
-        PropBone = 28422, -- Bone index the prop is attached to
-        PropX = 0.0, -- x coord of prop
-        PropY = 0.01, -- y coord of prop
-        PropZ = 0.05, -- z coord of prop
-        PropRotX = 0.0, -- x axis rotation of prop
-        PropRotY = 0.0, -- y axis rotation of prop
-        PropRotZ = -1.5, -- z axis rotation of prop
         ItemsForSale = { -- Item = Price
             {item = "lockpick", price = 10},
             {item = "screwdriverset", price = 10},
@@ -83,14 +74,6 @@ Config.MarketPeds = {
         Location = vector4(904.74, -3230.82, -99.27, 345.69),
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
-        PropItem = "p_amb_coffeecup_01",
-        PropBone = 28422, -- Bone index the prop is attached to
-        PropX = 0.0, -- x coord of prop
-        PropY = 0.0, -- y coord of prop
-        PropZ = 0.0, -- z coord of prop
-        PropRotX = 0.0, -- x axis rotation of prop
-        PropRotY = 0.0, -- y axis rotation of prop
-        PropRotZ = 0.0, -- z axis rotation of prop
         ItemsForSale = {
             {item = "ammo-9", price = 10},
             {item = "ammo-rifle", price = 10},
@@ -103,14 +86,6 @@ Config.MarketPeds = {
         Location = vector4(908.93, -3207.19, -98.19, 115.63),
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
-        PropItem = "p_amb_coffeecup_01",
-        PropBone = 28422, -- Bone index the prop is attached to
-        PropX = 0.0, -- x coord of prop
-        PropY = 0.0, -- y coord of prop
-        PropZ = 0.0, -- z coord of prop
-        PropRotX = 0.0, -- x axis rotation of prop
-        PropRotY = 0.0, -- y axis rotation of prop
-        PropRotZ = -1.5, -- z axis rotation of prop
         ItemsForSale = {
             {item = "at_scope_macro", price = 10},
             {item = "at_scope_small", price = 10},
@@ -168,10 +143,10 @@ Config.EntranceTypes = {
 Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode] for the entrance
     HackItem = "laptop",
     ZoneOptions = {
-        HackDuration = 10000, -- How long the hack takes in ms
+        HackDuration = 10, -- How long the hack takes in seconds
         HackProgressbarLabel = "Doing hacker stuff",
         HackLabel = "Hack in", -- Label the player see's when targeting the zone
-        Cooldown = 60000, -- Cooldown for obtaining [NumberCode] in ms
+        Cooldown = 60, -- Cooldown for obtaining [NumberCode] in seconds
     },
     Locations = { -- You can add as many locations here as you like
         vector3(43.41, -668.6, 31.74),

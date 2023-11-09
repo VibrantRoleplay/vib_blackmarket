@@ -55,11 +55,6 @@ RegisterNetEvent("blackmarket:server:SellItems", function(args)
     end
 end)
 
-RegisterNetEvent("blackmarket:server:ClearInventory", function(plate)
-    exports.ox_inventory:ClearInventory('trunk'..plate)
-    exports.ox_inventory:ClearInventory('glove'..plate)
-end)
-
 -------------
 --Callbacks--
 -------------

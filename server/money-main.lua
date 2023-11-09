@@ -34,7 +34,6 @@ end)
 RegisterNetEvent('blackmarket:server:UpdateStores', function(data)
 	Context.StoreInfo[data.ShopName] = {
 		CurrentlyWashing = false,
-		WashingComplete = false,
 		AmountBeingWashed = 0,
 		Owner = nil,
 		storeCut = nil,
@@ -59,7 +58,6 @@ RegisterNetEvent('blackmarket:server:RetrieveMoney', function(data)
 	exports.ox_inventory:AddItem(source, "money", amount)
 	Context.StoreInfo[data.storeData.args.ShopName] = {
 		CurrentlyWashing = false,
-		WashingComplete = false,
 		AmountBeingWashed = 0,
 		Owner = nil,
 		storeCut = nil,
