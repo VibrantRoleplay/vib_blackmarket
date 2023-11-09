@@ -14,6 +14,7 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
                 image = "nui://ox_inventory/web/images/"..itemData.item..".png",
                 description = "I'll buy all your "..exports.ox_inventory:Items(itemData.item).label.." for $"..itemData.price.." each",
                 icon = 'fa-solid fa-dollar',
+                iconColor = "green",
                 serverEvent = "blackmarket:server:SellItems",
                 disabled = not hasItem,
                 args = {
@@ -31,6 +32,7 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
             image = "nui://ox_inventory/web/images/"..itemData.item..".png",
             description = "I'll buy all your "..exports.ox_inventory:Items(itemData.item).label.." for $"..itemData.price.." each",
             icon = 'fa-solid fa-dollar',
+            iconColor = "green",
             serverEvent = "blackmarket:server:SellItems",
             disabled = not hasItem,
             args = {

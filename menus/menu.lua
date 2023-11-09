@@ -8,6 +8,7 @@ RegisterNetEvent('blackmarket:Menu', function(v)
             image = "nui://ox_inventory/web/images/"..itemData.item..".png",
             description = "My price today for this is $"..itemData.price,
             icon = 'fa-solid fa-dollar',
+            iconColor = "green",
             event = "blackmarket:BuyInput",
             args = {
                 item = itemData.item,
@@ -35,7 +36,8 @@ RegisterNetEvent("blackmarket:BuyInput", function(args)
             options = options,
             description = "Stock for sale",
             required = true,
-            icon = "fa-solid fa-bullet",
+            icon = "fa-solid fa-dollar",
+            iconColor = "green",
         },
     })
     if not input or #input < 1 then

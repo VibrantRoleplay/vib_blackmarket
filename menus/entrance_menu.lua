@@ -15,6 +15,7 @@ RegisterNetEvent('blackmarket:EntranceMenu', function()
         title = "Welcome",
         description = "Answer riddle",
         icon = 'fa-solid fa-question',
+        iconColor = "yellow",
         event = "blackmarket:RiddleInput",
     }
 
@@ -22,6 +23,7 @@ RegisterNetEvent('blackmarket:EntranceMenu', function()
         title = "Welcome",
         description = "Provide entrance code",
         icon = 'fa-solid fa-hashtag',
+        iconColor = "green",
         event = "blackmarket:CodeInput",
     }
 
@@ -64,7 +66,8 @@ RegisterNetEvent("blackmarket:RiddleInput", function()
             options = options,
             description = "Choose carefully",
             required = true,
-            icon = "fa-solid fa-jar",
+            icon = "fa-solid fa-question",
+            iconColor = "yellow",
         },
     })
 
@@ -116,7 +119,8 @@ RegisterNetEvent("blackmarket:CodeInput", function()
                     label = "What's todays entrance code?",
                     description = "Entrance Code:",
                     required = true,
-                    icon = "fa-solid fa-bullet",
+                    icon = "fa-solid fa-hashtag",
+                    iconColor = "green",
                 },
             })
 

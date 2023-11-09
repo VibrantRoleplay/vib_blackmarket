@@ -3,8 +3,9 @@ RegisterNetEvent('blackmarket:ExitMenu', function()
 
     headerMenu[#headerMenu + 1] = {
         title = "What ya want?",
-        description = "Oh ... You wanna leave already? :( uwu",
+        description = "Looking to leave?  \n\nNo peaking ... I'll whack you if you do!",
         icon = 'fa-solid fa-question',
+        iconColor = "yellow",
         onSelect = function()
             LeavingMarket()
         end,
