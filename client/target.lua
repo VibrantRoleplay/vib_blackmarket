@@ -1,3 +1,7 @@
+---------------------
+--Hacking Locations--
+---------------------
+
 CreateThread(function()
     local locations = Config.Hacking.Locations
     local zoneOptions = Config.Hacking.ZoneOptions
@@ -11,8 +15,8 @@ CreateThread(function()
             options = {
                 {
                     event = "blackmarket:client:GetCode",
-                    icon = "fas fa-ring",
-                    item = "goldpan",
+                    icon = "fa-solid fa-code",
+                    iconColor = "purple",
                     label = zoneOptions.HackLabel,
                     distance = 1.0,
                 },
