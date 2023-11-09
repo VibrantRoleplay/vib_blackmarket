@@ -30,7 +30,7 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
         exports['ps-ui']:VarHack(function(success)
             if success then
                 if lib.progressCircle({
-                    duration = zoneOptions.HackDuration,
+                    duration = zoneOptions.HackDuration * 1000,
                     position = 'bottom',
                     label = zoneOptions.HackProgressbarLabel,
                     useWhileDead = false,
@@ -55,7 +55,7 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
                     }
                 })
                 then
-                    RecentHack = GetGameTimer() + zoneOptions.Cooldown
+                    RecentHack = GetGameTimer() + (zoneOptions.Cooldown * 1000)
                     ClearPedTasksImmediately(player)
                     local correctCode = lib.callback.await('blackmarket:server:GenerateNumberCode', false)
                     lib.notify({
@@ -104,12 +104,12 @@ function SpawnKidnapPed()
     lib.requestModel(headbagProp)
     lib.requestAnimDict("missminuteman_1ig_2")
 
-    kidnapPed = CreatePed(1, Kidnap.KidnapPedModel, Kidnap.KidnapPedLocation, false, true)
+    kidnapPed = CreatePed(1, Kidnap.KidnapPedModel, playerCoords.x-2, playerCoords.y-2, playerCoords.z, false, true)
     TaskPlayAnim(player, 'missminuteman_1ig_2', 'handsup_base', 8.0, 8.0, -1, 49, 0, true, true, true)
     FreezeEntityPosition(player, true)
     GiveWeaponToPed(kidnapPed, Kidnap.KidnapPedWeapon, 1000, false, true)
     TaskGoStraightToCoord(kidnapPed, playerCoords, 6.5, 400, 0.0, 0)
-    Wait(3500)
+    Wait(1500)
     TaskTurnPedToFaceCoord(kidnapPed, playerCoords.x, playerCoords.y, playerCoords.z, 2000)
     TaskAimGunAtEntity(kidnapPed, player, -1)
     headbagObject = CreateObject(headbagProp, 0, 0, 0, true, true, true)
@@ -118,7 +118,7 @@ function SpawnKidnapPed()
     SendNUIMessage({
         type = "openGeneral"
     })
-    Wait(5000)
+    Wait(3500)
     TeleportPlayer()
     DeleteEntity(kidnapPed)
 end
@@ -151,23 +151,17 @@ function LeavingMarket()
     local Exit = Config.BlackMarketAccess.ExitInfo
     local randomLocation = math.random(1, #Exit.ExitLocations)
     local dropoffLocation = Exit.ExitLocations[randomLocation]
-    local vehicle = Exit.ExitSpawnVehicle
 
-    lib.requestModel(vehicle)
-
+    lib.requestAnimDict("timetable@tracy@sleep@")
     DoScreenFadeOut(500)
+
     while not IsScreenFadedOut() do
         Wait(10)
     end
 
-    QBCore.Functions.SpawnVehicle(vehicle, function(JobVehicle)
-        local plate = "byee"..tostring(math.random(1000, 9999))
-        SetVehicleNumberPlateText(JobVehicle, plate)
-        Entity(JobVehicle).state.fuel = 100.0
-        TaskWarpPedIntoVehicle(player, JobVehicle, Exit.SeatNumber)
-        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(JobVehicle))
-        SetVehicleEngineOn(JobVehicle, true, true)
-        TriggerServerEvent("blackmarket:server:ClearInventory", QBCore.Functions.GetPlate(JobVehicle))
-    end, dropoffLocation, true)
+    SetEntityCoords(player, dropoffLocation.x, dropoffLocation.y, dropoffLocation.z, false, false, false, false)
+    TaskPlayAnim(player, 'anim@amb@nightclub@lazlow@lo_sofa@', 'lowsofa_dlg_shit2strong_laz', 8.0, 8.0, -1, 01, 0, true, true, true)
     DoScreenFadeIn(1000)
+    Wait(1500)
+    ClearPedTasksImmediately(player)
 end
