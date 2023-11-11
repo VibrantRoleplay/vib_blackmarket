@@ -170,13 +170,43 @@ Config.Laundering = {
     {
         ShopName = "Sandy 24/7", -- Unique name per shop
         PedModel = "mp_m_shopkeep_01", -- Model of ped that spawns in shop
-        PedSpawn = vector3(1960.15, 3748.89, 31.34), -- Location of each ped
-        WashTime = 0.5, -- Duration in minutes
+        PedSpawn = vector4(1959.86, 3748.68, 31.34, 117.96), -- Location of each ped
+        WashTime = 0.5, -- How long the wash takes in minutes (Example: 1 = 1 minute / 0.5 = 30 seconds)
     },
     {
-        ShopName = "Sandy 24/7 2",
+        ShopName = "GrapeSeed 24/7",
         PedModel = "mp_m_shopkeep_01",
-        PedSpawn = vector3(1955.91, 3747.17, 31.66),
+        PedSpawn = vector4(1707.31, 4920.68, 41.06, 155.0),
         WashTime = 0.5,
-    }
+    },
+    {
+        ShopName = "Chiliad 24/7",
+        PedModel = "mp_m_shopkeep_01",
+        PedSpawn = vector4(1734.81, 6420.26, 34.03, 26.43),
+        WashTime = 0.5,
+    },
+    {
+        ShopName = "Senora Desert 24/7",
+        PedModel = "mp_m_shopkeep_01",
+        PedSpawn = vector4(545.92, 2663.19, 41.15, 266.01),
+        WashTime = 0.5,
+    },
+    {
+        ShopName = "Tatavium 24/7",
+        PedModel = "mp_m_shopkeep_01",
+        PedSpawn = vector4(2549.85, 385.3, 107.62, 157.79),
+        WashTime = 0.5,
+    },
+    {
+        ShopName = "Strawberry 24/7",
+        PedModel = "mp_m_shopkeep_01",
+        PedSpawn = vector4(28.83, -1339.76, 28.49, 66.97),
+        WashTime = 0.5,
+    },
+    {
+        ShopName = "Vinewood 24/7",
+        PedModel = "mp_m_shopkeep_01",
+        PedSpawn = vector4(378.49, 332.71, 102.56, 61.27),
+        WashTime = 0.5,
+    },
 }
