@@ -142,7 +142,7 @@ Config.EntranceTypes = {
 }
 
 Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode] for the entrance
-    HackItem = "laptop",
+    HackItem = "laptop", -- Item needed to begin hack
     ZoneOptions = {
         HackDuration = 10, -- How long the hack takes in seconds
         HackProgressbarLabel = "Doing hacker stuff",
@@ -165,6 +165,7 @@ Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode]
 Config.UseMoneyLaundering = true -- False if you don't want laundering system to start
 Config.DirtyMoneyItem = "black_money"
 Config.StoreCut = 0.1
+Config.RobDuration = 1 -- How long it taskes to rob a store in seconds
 
 Config.Laundering = {
     {
@@ -189,7 +190,7 @@ Config.Laundering = {
         ShopName = "Senora Desert 24/7",
         PedModel = "mp_m_shopkeep_01",
         PedSpawn = vector4(545.92, 2663.19, 41.15, 266.01),
-        WashTime = 0.5,
+        WashTime = 0.2,
     },
     {
         ShopName = "Tatavium 24/7",

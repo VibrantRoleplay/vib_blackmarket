@@ -61,3 +61,51 @@ RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
         })
     end
 end)
+
+RegisterNetEvent('blackmarket:client:RobStore', function(data)
+    local citizenId = QBCore.Functions.GetPlayerData().citizenid
+
+    if lib.progressCircle({
+        duration = Config.RobDuration * 1000,
+        position = 'bottom',
+        label = "Robbing store",
+        useWhileDead = false,
+        canCancel = true,
+        disable = {
+            move = true,
+            car = true,
+            combat = true,
+            mouse = false,
+        },
+        anim = {
+            dict = "random@shop_robbery",
+            clip = "robbery_action_b",
+            flag = 16,
+        },
+    })
+    then
+        TriggerServerEvent('blackmarket:server:RobStore', data, citizenId)
+        lib.alertDialog({
+			header = "Store owner says:",
+			content = "You're a maniac! Once these people get word of what you've done we're all dead! \n\n FUCK OFF!",
+			centered = true,
+		})
+    else
+        lib.notify({
+            title = 'Canceled',
+            description = "Canceled",
+            type = 'error',
+        })
+    end
+end)
+
+RegisterNetEvent('blackmarket:client:InvestigateRobbery', function(data)
+    lib.callback('blackmarket:server:InvestigateRobbery', false, function(robberInfo)
+        lib.alertDialog({
+            header = "Store owner says:",
+            content = "Boss ... I got robbed... but before you go balistic, I did manage to get a little bit of information for you: "
+            .."\n\n Here's his CID: "..data.robber.." and his nationality: "..robberInfo.nationality,
+            centered = true,
+        })
+    end, data)
+end)
