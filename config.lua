@@ -3,6 +3,7 @@ Config = Config or {}
 Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
 Config.MoneyItem = "black_money" -- Item used for dirty money
+Config.HeadBagProp = "prop_money_bag_01"
 
 Config.BlackMarketAccess = {
     EntranceInfo = {
@@ -10,7 +11,7 @@ Config.BlackMarketAccess = {
         EntrancePedName = "Disciple", -- Must be unique for menu reasons
         EntrancePedLocations = { -- Random locations the entrance can spawn at per restart [Set 1 vector4() if you want a static location]
             vector4(742.82, 4170.05, 39.53, 128.57),
-            vector4(661.11, 1282.45, 360.29, 264.06),
+            -- vector4(661.11, 1282.45, 360.29, 264.06),
         },
         EntrancePedAnimationDict = "amb@prop_human_seat_deckchair@male@base", -- Dictionary of animation
         EntrancePedAnimationClip = "base", -- Animation ped plays
@@ -22,16 +23,11 @@ Config.BlackMarketAccess = {
         ExitPedLocation = vector4(895.4, -3242.6, -99.26, 81.78),
         ExitPedAnimationDict = "amb@world_human_hang_out_street@female_arms_crossed@idle_a",
         ExitPedAnimationClip = "idle_a",
-        ExitLocations = { -- One of the below locations will be chosen each time a player LEAVES the black market
+        ExitLocations = { -- One of the below locations will be chosen each time a player LEAVES the black market [Set 1 vector4() if you want a static location]
             vector4(479.43, -2248.61, 5.91, 329.6),
             vector4(1119.57, -2147.11, 30.83, 354.01),
             vector4(935.48, -1517.98, 31.02, 352.9),
         },
-    },
-    KidnapPedInfo = {
-        KidnapPedModel = "a_m_m_acult_01",
-        KidnapPedName = "Frank",
-        KidnapPedWeapon = "WEAPON_PISTOL",
     },
 }
 

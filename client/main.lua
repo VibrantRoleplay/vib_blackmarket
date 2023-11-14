@@ -96,29 +96,28 @@ end)
 
 function SpawnKidnapPed()
     local player = cache.ped
-    local Kidnap = Config.BlackMarketAccess.KidnapPedInfo
     local playerCoords = GetEntityCoords(player)
-    local headbagProp = "prop_money_bag_01"
 
-    lib.requestModel(Kidnap.KidnapPedModel)
-    lib.requestModel(headbagProp)
-    lib.requestAnimDict("missminuteman_1ig_2")
+    lib.requestModel("a_m_m_acult_01")
+    lib.requestModel(Config.HeadBagProp)
+    lib.requestAnimDict("melee@unarmed@streamed_variations")
 
-    kidnapPed = CreatePed(1, Kidnap.KidnapPedModel, playerCoords.x-2, playerCoords.y-2, playerCoords.z, false, true)
-    TaskPlayAnim(player, 'missminuteman_1ig_2', 'handsup_base', 8.0, 8.0, -1, 49, 0, true, true, true)
-    FreezeEntityPosition(player, true)
-    GiveWeaponToPed(kidnapPed, Kidnap.KidnapPedWeapon, 1000, false, true)
-    TaskGoStraightToCoord(kidnapPed, playerCoords, 6.5, 400, 0.0, 0)
-    Wait(1500)
-    TaskTurnPedToFaceCoord(kidnapPed, playerCoords.x, playerCoords.y, playerCoords.z, 2000)
-    TaskAimGunAtEntity(kidnapPed, player, -1)
-    headbagObject = CreateObject(headbagProp, 0, 0, 0, true, true, true)
+    kidnapPed = CreatePed(1, "a_m_m_acult_01", playerCoords.x-1.0, playerCoords.y-1.0, playerCoords.z, false, true)
+    local kidnapPedCoords = GetEntityCoords(kidnapPed)
+    SetEntityHeading(kidnapPed, playerCoords)
+    TaskTurnPedToFaceCoord(kidnapPed, playerCoords.x, playerCoords.y, playerCoords.z, 1000)
+    Wait(3000)
+    TaskPlayAnim(kidnapPed, 'melee@unarmed@streamed_variations', 'plyr_takedown_rear_lefthook', 8.0, 8.0, -1, 10, 0, true, true, true)
+    Wait(1000)
+    SetPedToRagdollWithFall(player, 7500, 9000, 1, GetEntityForwardVector(player), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    Wait(2000)
+    headbagObject = CreateObject(Config.HeadBagProp, 0, 0, 0, true, true, true)
     AttachEntityToEntity(headbagObject, player, GetPedBoneIndex(player, 12844), 0.2, 0.04, 0, 0, 270.0, 60.0, true, true, false, true, 1, true)
     SetEntityCompletelyDisableCollision(headbagObject, false, true)
     SendNUIMessage({
         type = "openGeneral"
     })
-    Wait(3500)
+    Wait(3000)
     TeleportPlayer()
     DeleteEntity(kidnapPed)
 end
