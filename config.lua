@@ -207,3 +207,18 @@ Config.Laundering = {
         WashTime = 0.5,
     },
 }
+
+Config.AmbientPeds = {
+    PatrolPeds  = {
+        {
+            PedModel = "Ped Model Here",
+            PatrolPointOne = Vector3(),
+            PatrolPointTwo = vector3(),
+        },
+    StaticPeds = {
+        {
+            PedModel = "Ped Model Here",
+            Scenario = "Scenario Here",
+        },
+    },
+}
