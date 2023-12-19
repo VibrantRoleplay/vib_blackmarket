@@ -228,6 +228,7 @@ Config.AmbientPeds = {
         {
             PedModel = "a_m_m_prolhost_01",
             Scenario = "WORLD_HUMAN_WELDING",
+            SpawnLocation = vector3(),
         },
     },
 }
