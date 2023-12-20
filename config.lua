@@ -224,11 +224,11 @@ Config.AmbientPeds = {
             WhereGuardLooksWhileIdle3 = vector3(888.29, -3203.73, -96.94),
         },
     },
-    StaticPeds = {
-        {
-            PedModel = "a_m_m_prolhost_01",
-            Scenario = "WORLD_HUMAN_WELDING",
-            SpawnLocation = vector3(),
-        },
-    },
+    -- StaticPeds = {
+    --     {
+    --         PedModel = "a_m_m_prolhost_01",
+    --         Scenario = "WORLD_HUMAN_WELDING",
+    --         SpawnLocation = vector3(),
+    --     },
+    -- },
 }
