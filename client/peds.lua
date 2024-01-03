@@ -153,7 +153,7 @@ CreateThread(function()
                 label = "Speak to "..Attachment.AttachmentPedName,
                 args = Attachment.AttachmentPedName,
                 icon = "fa-solid fa-box-archive",
-                ioconColor = "yellow",
+                iconColor = "yellow",
                 distance = 2, 
                 debug = Config.Debug,
             },
