@@ -59,6 +59,12 @@ Config.ItemSelling = {
     }
 }
 
+Config.WeaponRepair = {
+    RepairBenchLocation = vector3(887.86, -3209.89, -98.2),
+    RepairDuration = 3000,
+    RepairAmount = 10, -- % of durability to add to a weapon when repairing
+}
+
 Config.MarketPeds = {
     SuppliesPed = { -- Must be unique
         Name = "Supplies", -- Must be Unique

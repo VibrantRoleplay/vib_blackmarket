@@ -14,13 +14,13 @@ CreateThread(function()
                 debug = Config.Debug,
                 options = {
                     {
+                        event = 'blackmarket:LaunderMenu',
+                        label = "Speak to "..shop.ShopName.." owner",
+                        args = shop,
                         icon = "fa-solid fa-basket-shopping",
                         iconColor = "white",
-                        label = "Speak to "..shop.ShopName.." owner",
-                        event = 'blackmarket:LaunderMenu',
-                        args = shop,
-                        debug = Config.Debug,
-                        distance = 2, 
+                        distance = 2,
+                        debug = Config.Debug, 
                     },
                 },
             })
@@ -48,12 +48,13 @@ CreateThread(function()
             debug = Config.Debug,
             options = {
                 {
-                    icon = "fa-solid fa-box-archive",
-                    label = "Trade "..v.Name,
                     event = 'blackmarket:Menu',
+                    label = "Trade "..v.Name,
                     args = v,
-                    debug = Config.Debug,
+                    icon = "fa-solid fa-box-archive",
+                    iconColor = "yellow",
                     distance = 2, 
+                    debug = Config.Debug,
                 },
             },
         })
@@ -82,12 +83,13 @@ CreateThread(function()
         debug = Config.Debug,
         options = {
             {
-                icon = "fa-solid fa-box-archive",
-                label = "Speak to "..Entrance.EntrancePedName,
                 event = 'blackmarket:EntranceMenu',
+                label = "Speak to "..Entrance.EntrancePedName,
                 args = Entrance.EntrancePedName,
-                debug = Config.Debug,
+                icon = "fa-solid fa-box-archive",
+                iconColor = "yellow",
                 distance = 2, 
+                debug = Config.Debug,
             },
         },
     })
@@ -114,12 +116,13 @@ CreateThread(function()
         debug = Config.Debug,
         options = {
             {
-                icon = "fa-solid fa-box-archive",
-                label = "Speak to "..Exit.ExitPedName,
                 event = 'blackmarket:ExitMenu',
+                label = "Speak to "..Exit.ExitPedName,
                 args = Exit.ExitPedName,
-                debug = Config.Debug,
+                icon = "fa-solid fa-box-archive",
+                iconColor = "yellow",
                 distance = 2, 
+                debug = Config.Debug,
             },
         },
     })
@@ -146,12 +149,13 @@ CreateThread(function()
         debug = Config.Debug,
         options = {
             {
-                icon = "fa-solid fa-box-archive",
-                label = "Speak to "..Attachment.AttachmentPedName,
                 event = 'blackmarket:client:getcomponentinformation',
+                label = "Speak to "..Attachment.AttachmentPedName,
                 args = Attachment.AttachmentPedName,
-                debug = Config.Debug,
+                icon = "fa-solid fa-box-archive",
+                ioconColor = "yellow",
                 distance = 2, 
+                debug = Config.Debug,
             },
         },
     })
@@ -179,12 +183,13 @@ CreateThread(function()
         debug = Config.Debug,
         options = {
             {
-                icon = "fa-solid fa-box-archive",
-                label = "Speak to "..Sales.SalesPedName,
                 event = 'blackmarket:SellingMenu',
+                label = "Speak to "..Sales.SalesPedName,
                 args = SellingData,
-                debug = Config.Debug,
+                icon = "fa-solid fa-box-archive",
+                iconColor = "yellow",
                 distance = 2, 
+                debug = Config.Debug,
             },
         },
     })
