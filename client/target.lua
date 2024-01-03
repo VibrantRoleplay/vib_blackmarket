@@ -31,8 +31,9 @@ CreateThread(function()
         debug = Config.Debug,
         options = {
             {
-                event = "blackmarket:client:GetCode",
+                event = "blackmarket:RepairMenu",
                 label = "Repair weapon",
+                args = Config.WeaponRepair,
                 icon = "fa-solid fa-hammer",
                 iconColor = "yellow",
                 distance = 1.0,

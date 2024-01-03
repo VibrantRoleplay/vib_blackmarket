@@ -63,6 +63,11 @@ Config.WeaponRepair = {
     RepairBenchLocation = vector3(887.86, -3209.89, -98.2),
     RepairDuration = 3000,
     RepairAmount = 10, -- % of durability to add to a weapon when repairing
+    RepairItems = {
+        {item = "iron", amount = 1},
+        {item = "plastic", amount = 1},
+        {item = "metalscrap", amount = 1},
+    },
 }
 
 Config.MarketPeds = {

@@ -56,6 +56,11 @@ RegisterNetEvent("blackmarket:server:SellItems", function(args)
     end
 end)
 
+RegisterNetEvent('blackmartket:server:RepairWeapon', function(data)
+    local player = QBCore.Functions.GetPlayer(source)
+    local currentWeapon = exports.ox_inventory:GetCurrentWeapon(source)
+end)
+
 -------------
 --Callbacks--
 -------------
