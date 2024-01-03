@@ -3,7 +3,7 @@ CreateThread(function()
         for _, shop in pairs(Config.Laundering) do
             lib.requestModel(shop.PedModel)
     
-            ShopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
+            local ShopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
             SetEntityInvincible(ShopKeeper, true)
             SetBlockingOfNonTemporaryEvents(ShopKeeper, true)
             FreezeEntityPosition(ShopKeeper, true)
@@ -30,7 +30,7 @@ CreateThread(function()
 
     for k, v in pairs(Config.MarketPeds) do
         lib.requestModel(v.Model)
-        MarketPeds = CreatePed(1, v.Model, v.Location, false, true)
+        local MarketPeds = CreatePed(1, v.Model, v.Location, false, true)
         SetEntityInvincible(MarketPeds, true)
         SetBlockingOfNonTemporaryEvents(MarketPeds, true)
         FreezeEntityPosition(MarketPeds, true)
@@ -67,7 +67,7 @@ CreateThread(function()
     local dropoffLocation = Entrance.EntrancePedLocations[randomLocation]
 
     lib.requestModel(Entrance.EntrancePedModel)
-    entrancePed = CreatePed(1, Entrance.EntrancePedModel, dropoffLocation, false, true)
+    local entrancePed = CreatePed(1, Entrance.EntrancePedModel, dropoffLocation, false, true)
     SetEntityInvincible(entrancePed, true)
     SetBlockingOfNonTemporaryEvents(entrancePed, true)
     FreezeEntityPosition(entrancePed, true)
@@ -100,7 +100,7 @@ CreateThread(function()
     local pedCoords = Exit.ExitPedLocation
 
     lib.requestModel(Exit.ExitPedModel)
-    exitPed = CreatePed(1, Exit.ExitPedModel, Exit.ExitPedLocation, false, true)
+    local exitPed = CreatePed(1, Exit.ExitPedModel, Exit.ExitPedLocation, false, true)
     SetEntityInvincible(exitPed, true)
     SetBlockingOfNonTemporaryEvents(exitPed, true)
     FreezeEntityPosition(exitPed, true)
@@ -133,7 +133,7 @@ CreateThread(function()
     local pedCoords = Attachment.AttachmentPedLocation
 
     lib.requestModel(Attachment.AttachmentPedModel)
-    attachmentPed = CreatePed(1, Attachment.AttachmentPedModel, Attachment.AttachmentPedLocation, false, true)
+    local attachmentPed = CreatePed(1, Attachment.AttachmentPedModel, Attachment.AttachmentPedLocation, false, true)
     SetEntityInvincible(attachmentPed, true)
     SetBlockingOfNonTemporaryEvents(attachmentPed, true)
     FreezeEntityPosition(attachmentPed, true)
@@ -167,7 +167,7 @@ CreateThread(function()
     local SellingData = Config.ItemSelling.ItemInfo
 
     lib.requestModel(Sales.SalesPedModel)
-    salesPed = CreatePed(1, Sales.SalesPedModel, Sales.SalesPedLocation, false, true)
+    local salesPed = CreatePed(1, Sales.SalesPedModel, Sales.SalesPedLocation, false, true)
     SetEntityInvincible(salesPed, true)
     SetBlockingOfNonTemporaryEvents(salesPed, true)
     FreezeEntityPosition(salesPed, true)
