@@ -29,6 +29,13 @@ Config.BlackMarketAccess = {
             vector4(935.48, -1517.98, 31.02, 352.9),
         },
     },
+    AttachmentInfo = {
+        AttachmentPedModel = "a_m_m_acult_01",
+        AttachmentPedName = "Mac",
+        AttachmentPedLocation = vector4(907.85, -3211.16, -99.23, 23.39),
+        AttachmentPedAnimationDict = "missfbi5ig_15",
+        AttachmentPedAnimationClip = "look_into_microscope_a_scientista",
+    },
 }
 
 Config.ItemSelling = {

@@ -126,6 +126,38 @@ CreateThread(function()
 end)
 
 CreateThread(function()
+    local Attachment = Config.BlackMarketAccess.AttachmentInfo
+    local pedCoords = Attachment.AttachmentPedLocation
+
+    lib.requestModel(Attachment.AttachmentPedModel)
+    attachmentPed = CreatePed(1, Attachment.AttachmentPedModel, Attachment.AttachmentPedLocation, false, true)
+    SetEntityInvincible(attachmentPed, true)
+    SetBlockingOfNonTemporaryEvents(attachmentPed, true)
+    FreezeEntityPosition(attachmentPed, true)
+
+    if Config.UseAnims then
+        lib.requestAnimDict(Attachment.AttachmentPedAnimationDict)
+        TaskPlayAnim(attachmentPed, Attachment.AttachmentPedAnimationDict, Attachment.AttachmentPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+    end
+
+    exports.ox_target:addSphereZone({
+        coords = vec3(pedCoords.x, pedCoords.y, pedCoords.z+1),
+        radius = 1,
+        debug = Config.Debug,
+        options = {
+            {
+                icon = "fa-solid fa-box-archive",
+                label = "Speak to "..Attachment.AttachmentPedName,
+                event = 'blackmarket:client:getcomponentinformation',
+                args = Attachment.AttachmentPedName,
+                debug = Config.Debug,
+                distance = 2, 
+            },
+        },
+    })
+end)
+
+CreateThread(function()
     local Sales = Config.ItemSelling.SalesPed
     local pedCoords = Config.ItemSelling.SalesPed.SalesPedLocation
     local SellingData = Config.ItemSelling.ItemInfo
