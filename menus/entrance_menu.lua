@@ -1,5 +1,6 @@
 RegisterNetEvent('blackmarket:EntranceMenu', function()
     local playerJob = lib.callback.await('blackmarket:server:GetPlayerJob', false)
+    
     if playerJob == "police" then
         lib.notify({
             title = 'Unable',

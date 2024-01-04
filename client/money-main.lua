@@ -47,6 +47,7 @@ RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
     })
     then
         local moneyLaunderingLoss = input[1] * Config.StoreCut
+        
         TriggerServerEvent('blackmarket:server:StartWashing', input, data, citizenId, moneyLaunderingLoss)
         lib.alertDialog({
 			header = "Store owner says:",

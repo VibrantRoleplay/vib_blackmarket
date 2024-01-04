@@ -29,12 +29,15 @@ Config.BlackMarketAccess = {
             vector4(935.48, -1517.98, 31.02, 352.9),
         },
     },
-    AttachmentInfo = {
-        AttachmentPedModel = "a_m_m_acult_01",
-        AttachmentPedName = "Mac",
-        AttachmentPedLocation = vector4(907.85, -3211.16, -99.23, 23.39),
-        AttachmentPedAnimationDict = "missfbi5ig_15",
-        AttachmentPedAnimationClip = "look_into_microscope_a_scientista",
+    RepairsInfo = {
+        RepairsPedModel = "a_m_m_acult_01",
+        RepairsPedName = "Mac",
+        RepairsPedLocation = vector4(907.85, -3211.16, -99.23, 23.39),
+        RepairsPedAnimationDict = "missfbi5ig_15",
+        RepairsPedAnimationClip = "look_into_microscope_a_scientista",
+        RepairDuration = 3000, -- How long it takes to repair a weapon in ms
+        RepairAmount = 10, -- % of durability to add to a weapon when repairing
+        RepairCost = 1000, -- [Config.MoneyItem] is the currency for this
     },
 }
 
@@ -57,17 +60,6 @@ Config.ItemSelling = {
             {item = "goldbar", price = 10},
         },
     }
-}
-
-Config.WeaponRepair = {
-    RepairBenchLocation = vector3(887.86, -3209.89, -98.2),
-    RepairDuration = 3000,
-    RepairAmount = 10, -- % of durability to add to a weapon when repairing
-    RepairItems = {
-        {item = "iron", amount = 1},
-        {item = "plastic", amount = 1},
-        {item = "metalscrap", amount = 1},
-    },
 }
 
 Config.MarketPeds = {

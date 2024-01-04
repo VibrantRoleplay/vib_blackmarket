@@ -23,21 +23,4 @@ CreateThread(function()
             },
         })
     end
-
-    exports.ox_target:addSphereZone({
-        name = "Weapon repairs",
-        coords = Config.WeaponRepair.RepairBenchLocation,
-        radius = 1.0,
-        debug = Config.Debug,
-        options = {
-            {
-                event = "blackmarket:RepairMenu",
-                label = "Repair weapon",
-                args = Config.WeaponRepair,
-                icon = "fa-solid fa-hammer",
-                iconColor = "yellow",
-                distance = 1.0,
-            },
-        },
-    })
 end)

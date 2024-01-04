@@ -129,18 +129,18 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local Attachment = Config.BlackMarketAccess.AttachmentInfo
-    local pedCoords = Attachment.AttachmentPedLocation
+    local Repair = Config.BlackMarketAccess.RepairsInfo
+    local pedCoords = Repair.RepairsPedLocation
 
-    lib.requestModel(Attachment.AttachmentPedModel)
-    local attachmentPed = CreatePed(1, Attachment.AttachmentPedModel, Attachment.AttachmentPedLocation, false, true)
-    SetEntityInvincible(attachmentPed, true)
-    SetBlockingOfNonTemporaryEvents(attachmentPed, true)
-    FreezeEntityPosition(attachmentPed, true)
+    lib.requestModel(Repair.RepairsPedModel)
+    local repairPed = CreatePed(1, Repair.RepairsPedModel, Repair.RepairsPedLocation, false, true)
+    SetEntityInvincible(repairPed, true)
+    SetBlockingOfNonTemporaryEvents(repairPed, true)
+    FreezeEntityPosition(repairPed, true)
 
     if Config.UseAnims then
-        lib.requestAnimDict(Attachment.AttachmentPedAnimationDict)
-        TaskPlayAnim(attachmentPed, Attachment.AttachmentPedAnimationDict, Attachment.AttachmentPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+        lib.requestAnimDict(Repair.RepairsPedAnimationDict)
+        TaskPlayAnim(repairPed, Repair.RepairsPedAnimationDict, Repair.RepairsPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
     end
 
     exports.ox_target:addSphereZone({
@@ -149,9 +149,9 @@ CreateThread(function()
         debug = Config.Debug,
         options = {
             {
-                event = 'blackmarket:client:getcomponentinformation',
-                label = "Speak to "..Attachment.AttachmentPedName,
-                args = Attachment.AttachmentPedName,
+                event = 'blackmarket:RepairMenu',
+                label = "Speak to "..Repair.RepairsPedName,
+                args = Repair,
                 icon = "fa-solid fa-box-archive",
                 iconColor = "yellow",
                 distance = 2, 
