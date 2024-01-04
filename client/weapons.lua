@@ -54,15 +54,6 @@ end)
 RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
     local weaponDura = lib.callback.await('blackmarket:server:CheckWeaponData', false)
 
-    if weaponDura == nil then
-        lib.notify({
-            title = 'Attention',
-            description = "You don't have a weapon in hand",
-            type = 'inform'
-        })
-        return
-    end
-
     if weaponDura.durability == 100 then
         lib.notify({
             title = 'Attention',

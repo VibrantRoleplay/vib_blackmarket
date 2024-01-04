@@ -34,5 +34,14 @@ lib.callback.register('blackmarket:server:CheckWeaponData', function()
     local player = QBCore.Functions.GetPlayer(source)
     local currentWeapon = exports.ox_inventory:GetCurrentWeapon(source)
 
+    if currentWeapon == nil or currentWeapon.name == 'WEAPON_UNARMED' then
+        lib.notify(source, {
+            title = 'Unable',
+            description = "You're not holding a weapon",
+            type = 'inform'
+        })
+        return
+    end
+
     return currentWeapon.metadata
 end)
