@@ -8,7 +8,6 @@ RegisterNetEvent('blackmarket:client:getcomponentinformation', function()
    local labels = {}
 
     for k, v in pairs(exports.ox_inventory:Items()) do
-        local search = k
         local stringSearch = string.sub(k, 1, 3)
 
         if stringSearch == "at_" then -- (All attachments in OX weapons.lua start with at_ by default, so that's what we search for)
