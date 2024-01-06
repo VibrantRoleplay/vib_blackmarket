@@ -218,7 +218,7 @@ Config.Laundering = {
 }
 
 Config.AmbientPeds = {
-    PatrolPeds = {
+    Patrol = {
         {
             PedModel = "a_m_m_og_boss_01", -- Ped model
             DurationBetweenWalks = 3000, -- In ms
@@ -233,11 +233,31 @@ Config.AmbientPeds = {
             WhereGuardLooksWhileIdle3 = vector3(888.29, -3203.73, -96.94),
         },
     },
-    -- StaticPeds = {
-    --     {
-    --         PedModel = "a_m_m_prolhost_01",
-    --         Scenario = "WORLD_HUMAN_WELDING",
-    --         SpawnLocation = vector3(),
-    --     },
-    -- },
+    Static = {
+        {
+            PedModel = "a_m_m_prolhost_01",
+            SpawnLocation = vector4(888.58, -3206.81, -98.2, 21.69),
+            IsPedArmed = false,
+            WeaponIfArmed = nil, -- Leave as nil if [IsPedArmed = false] otherwise make sure the weapon HASH is used (https://gtahash.ru/weapons/?page=1)
+        },
+        {
+            PedModel = "a_m_m_prolhost_01",
+            SpawnLocation = vector4(891.88, -3211.63, -98.21, 206.14),
+            IsPedArmed = false,
+            WeaponIfArmed = nil,
+        },
+        {
+            PedModel = "s_m_m_chemsec_01",
+            SpawnLocation = vector4(896.07, -3170.7, -98.13, 347.87),
+            IsPedArmed = true,
+            WeaponIfArmed = 453432689,
+            
+        },
+        {
+            PedModel = "s_m_m_chemsec_01",
+            SpawnLocation = vector4(892.59, -3170.18, -98.13, 345.9),
+            IsPedArmed = true,
+            WeaponIfArmed = 736523883,
+        },
+    },
 }

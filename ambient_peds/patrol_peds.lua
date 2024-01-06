@@ -1,5 +1,5 @@
 CreateThread(function()
-    for k, v in pairs(Config.AmbientPeds.PatrolPeds) do
+    for k, v in pairs(Config.AmbientPeds.Patrol) do
         lib.requestModel(v.PedModel)
         local guardPed = CreatePed(0, v.PedModel, v.SpawnLocation, 0.0, true, true)
 
