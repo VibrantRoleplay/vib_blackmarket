@@ -49,13 +49,13 @@ Config.ItemSelling = {
         SalesPedAnimationClip = "idle_a",
     },
     ItemInfo = {
-        RareItemSalesChance = 50, -- Chance for a rare item to be sellable per restart (It will only choose 1 random rare item per restart)
+        RareItemSalesChance = 50, -- Chance for rare items to be sellable per restart
         StandardItems = {
-            {item = "copperbar", price = 10},
             {item = "silverbar", price = 10},
             {item = "advancedlockpick", price = 10},
         },
         RareItems = {
+            {item = "goldore", price = 10},
             {item = "goldbar", price = 10},
         },
     }

@@ -3,10 +3,10 @@ CreateThread(function()
         for _, shop in pairs(Config.Laundering) do
             lib.requestModel(shop.PedModel)
     
-            local ShopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
-            SetEntityInvincible(ShopKeeper, true)
-            SetBlockingOfNonTemporaryEvents(ShopKeeper, true)
-            FreezeEntityPosition(ShopKeeper, true)
+            local shopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
+            SetEntityInvincible(shopKeeper, true)
+            SetBlockingOfNonTemporaryEvents(shopKeeper, true)
+            FreezeEntityPosition(shopKeeper, true)
     
             exports.ox_target:addSphereZone({
                 coords = vec3(shop.PedSpawn.x, shop.PedSpawn.y, shop.PedSpawn.z+1),
@@ -30,14 +30,14 @@ CreateThread(function()
 
     for k, v in pairs(Config.MarketPeds) do
         lib.requestModel(v.Model)
-        local MarketPeds = CreatePed(1, v.Model, v.Location, false, true)
-        SetEntityInvincible(MarketPeds, true)
-        SetBlockingOfNonTemporaryEvents(MarketPeds, true)
-        FreezeEntityPosition(MarketPeds, true)
+        local marketPeds = CreatePed(1, v.Model, v.Location, false, true)
+        SetEntityInvincible(marketPeds, true)
+        SetBlockingOfNonTemporaryEvents(marketPeds, true)
+        FreezeEntityPosition(marketPeds, true)
 
         if Config.UseAnims then
             lib.requestAnimDict(v.AnimationDict)
-            TaskPlayAnim(MarketPeds, v.AnimationDict, v.AnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+            TaskPlayAnim(marketPeds, v.AnimationDict, v.AnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
         end
         
         local coords = v.Location
@@ -62,19 +62,19 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local Entrance = Config.BlackMarketAccess.EntranceInfo
-    local randomLocation = math.random(1, #Entrance.EntrancePedLocations)
-    local dropoffLocation = Entrance.EntrancePedLocations[randomLocation]
+    local entrance = Config.BlackMarketAccess.EntranceInfo
+    local randomLocation = math.random(1, #entrance.EntrancePedLocations)
+    local dropoffLocation = entrance.EntrancePedLocations[randomLocation]
 
-    lib.requestModel(Entrance.EntrancePedModel)
-    local entrancePed = CreatePed(1, Entrance.EntrancePedModel, dropoffLocation, false, true)
+    lib.requestModel(entrance.EntrancePedModel)
+    local entrancePed = CreatePed(1, entrance.EntrancePedModel, dropoffLocation, false, true)
     SetEntityInvincible(entrancePed, true)
     SetBlockingOfNonTemporaryEvents(entrancePed, true)
     FreezeEntityPosition(entrancePed, true)
     
     if Config.UseAnims then
-        lib.requestAnimDict(Entrance.EntrancePedAnimationDict)
-        TaskPlayAnim(entrancePed, Entrance.EntrancePedAnimationDict, Entrance.EntrancePedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+        lib.requestAnimDict(entrance.EntrancePedAnimationDict)
+        TaskPlayAnim(entrancePed, entrance.EntrancePedAnimationDict, entrance.EntrancePedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
     end
 
     exports.ox_target:addSphereZone({
@@ -84,8 +84,8 @@ CreateThread(function()
         options = {
             {
                 event = 'blackmarket:EntranceMenu',
-                label = "Speak to "..Entrance.EntrancePedName,
-                args = Entrance.EntrancePedName,
+                label = "Speak to "..entrance.EntrancePedName,
+                args = entrance.EntrancePedName,
                 icon = "fa-solid fa-box-archive",
                 iconColor = "yellow",
                 distance = 2, 
@@ -96,18 +96,18 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local Exit = Config.BlackMarketAccess.ExitInfo
-    local pedCoords = Exit.ExitPedLocation
+    local exit = Config.BlackMarketAccess.ExitInfo
+    local pedCoords = exit.ExitPedLocation
 
-    lib.requestModel(Exit.ExitPedModel)
-    local exitPed = CreatePed(1, Exit.ExitPedModel, Exit.ExitPedLocation, false, true)
+    lib.requestModel(exit.ExitPedModel)
+    local exitPed = CreatePed(1, exit.ExitPedModel, exit.ExitPedLocation, false, true)
     SetEntityInvincible(exitPed, true)
     SetBlockingOfNonTemporaryEvents(exitPed, true)
     FreezeEntityPosition(exitPed, true)
 
     if Config.UseAnims then
-        lib.requestAnimDict(Exit.ExitPedAnimationDict)
-        TaskPlayAnim(exitPed, Exit.ExitPedAnimationDict, Exit.ExitPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+        lib.requestAnimDict(exit.ExitPedAnimationDict)
+        TaskPlayAnim(exitPed, exit.ExitPedAnimationDict, exit.ExitPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
     end
 
     exports.ox_target:addSphereZone({
@@ -117,8 +117,8 @@ CreateThread(function()
         options = {
             {
                 event = 'blackmarket:ExitMenu',
-                label = "Speak to "..Exit.ExitPedName,
-                args = Exit.ExitPedName,
+                label = "Speak to "..exit.ExitPedName,
+                args = exit.ExitPedName,
                 icon = "fa-solid fa-box-archive",
                 iconColor = "yellow",
                 distance = 2, 
@@ -129,28 +129,28 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local Repair = Config.BlackMarketAccess.RepairsInfo
+    local repair = Config.BlackMarketAccess.RepairsInfo
 
-    lib.requestModel(Repair.RepairsPedModel)
-    local repairPed = CreatePed(1, Repair.RepairsPedModel, Repair.RepairsPedLocation, false, true)
+    lib.requestModel(repair.RepairsPedModel)
+    local repairPed = CreatePed(1, repair.RepairsPedModel, repair.RepairsPedLocation, false, true)
     SetEntityInvincible(repairPed, true)
     SetBlockingOfNonTemporaryEvents(repairPed, true)
     FreezeEntityPosition(repairPed, true)
 
     if Config.UseAnims then
-        lib.requestAnimDict(Repair.RepairsPedAnimationDict)
-        TaskPlayAnim(repairPed, Repair.RepairsPedAnimationDict, Repair.RepairsPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+        lib.requestAnimDict(repair.RepairsPedAnimationDict)
+        TaskPlayAnim(repairPed, repair.RepairsPedAnimationDict, repair.RepairsPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
     end
 
     exports.ox_target:addSphereZone({
-        coords = vec3(Repair.RepairsPedLocation.x, Repair.RepairsPedLocation.y, Repair.RepairsPedLocation.z+1),
+        coords = vec3(repair.RepairsPedLocation.x, repair.RepairsPedLocation.y, repair.RepairsPedLocation.z+1),
         radius = 1,
         debug = Config.Debug,
         options = {
             {
                 event = 'blackmarket:RepairMenu',
-                label = "Speak to "..Repair.RepairsPedName,
-                args = Repair,
+                label = "Speak to "..repair.RepairsPedName,
+                args = repair,
                 icon = "fa-solid fa-box-archive",
                 iconColor = "yellow",
                 distance = 2, 
@@ -161,19 +161,19 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local Sales = Config.ItemSelling.SalesPed
-    local pedCoords = Config.ItemSelling.SalesPed.SalesPedLocation
-    local SellingData = Config.ItemSelling.ItemInfo
+    local sales = Config.ItemSelling.SalesPed
+    local pedCoords = sales.SalesPedLocation
+    local sellingData = Config.ItemSelling.ItemInfo
 
-    lib.requestModel(Sales.SalesPedModel)
-    local salesPed = CreatePed(1, Sales.SalesPedModel, Sales.SalesPedLocation, false, true)
+    lib.requestModel(sales.SalesPedModel)
+    local salesPed = CreatePed(1, sales.SalesPedModel, sales.SalesPedLocation, false, true)
     SetEntityInvincible(salesPed, true)
     SetBlockingOfNonTemporaryEvents(salesPed, true)
     FreezeEntityPosition(salesPed, true)
 
     if Config.UseAnims then
-        lib.requestAnimDict(Sales.SalesPedAnimationDict)
-        TaskPlayAnim(salesPed, Sales.SalesPedAnimationDict, Sales.SalesPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+        lib.requestAnimDict(sales.SalesPedAnimationDict)
+        TaskPlayAnim(salesPed, sales.SalesPedAnimationDict, sales.SalesPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
     end
 
     exports.ox_target:addSphereZone({
@@ -183,8 +183,8 @@ CreateThread(function()
         options = {
             {
                 event = 'blackmarket:SellingMenu',
-                label = "Speak to "..Sales.SalesPedName,
-                args = SellingData,
+                label = "Speak to "..sales.SalesPedName,
+                args = sellingData,
                 icon = "fa-solid fa-box-archive",
                 iconColor = "yellow",
                 distance = 2, 

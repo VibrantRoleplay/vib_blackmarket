@@ -2,7 +2,7 @@
 --Variables--
 -------------
 
-local RecentHack = 0
+local recentHack = 0
 
 ----------
 --Events--
@@ -22,7 +22,7 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
         return
     end
 
-    if RecentHack == 0 or GetGameTimer() > RecentHack then
+    if recentHack == 0 or GetGameTimer() > recentHack then
         lib.requestAnimDict("amb@world_human_bum_wash@male@low@idle_a")
         TaskPlayAnim(player, 'amb@world_human_bum_wash@male@low@idle_a', 'idle_a', 1.0, 1.0, -1, 01, 0, true, true, true)
         exports['ps-ui']:VarHack(function(success)
@@ -53,7 +53,7 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
                     }
                 })
                 then
-                    RecentHack = GetGameTimer() + (zoneOptions.Cooldown * 1000)
+                    recentHack = GetGameTimer() + (zoneOptions.Cooldown * 1000)
                     ClearPedTasksImmediately(player)
                     local correctCode = lib.callback.await('blackmarket:server:GenerateNumberCode', false)
                     lib.notify({
