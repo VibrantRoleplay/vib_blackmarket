@@ -8,9 +8,11 @@ RegisterNetEvent('blackmarket:client:StartWashing', function(data)
             icon = "fa-solid fa-bullet",
         },
     })
+
     if not input or #input < 1 then
         return
     end
+    
     local moneyAmount = exports.ox_inventory:Search('count', Config.DirtyMoneyItem)
 
     if moneyAmount >= input[1] then

@@ -129,8 +129,8 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local Repair = Config.BlackMarketAccess.RepairsInfo
     local pedCoords = Repair.RepairsPedLocation
+    local Repair = Config.BlackMarketAccess.RepairsInfo
 
     lib.requestModel(Repair.RepairsPedModel)
     local repairPed = CreatePed(1, Repair.RepairsPedModel, Repair.RepairsPedLocation, false, true)

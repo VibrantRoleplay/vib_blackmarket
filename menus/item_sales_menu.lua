@@ -24,6 +24,7 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
             }
         end
     end
+    
     for _, itemData in pairs(standardItems) do
         local hasItem = exports.ox_inventory:Search("count", itemData.item) > 0
 
