@@ -66,6 +66,8 @@ RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
     SetPtfxAssetNextCall('scr_sm_trans')
     local smokeEffect = StartParticleFxLoopedAtCoord('scr_sm_trans_smoke', 907.42, -3210.36, -98.44, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0)
 
+    RemoveAllPedWeapons(cache.ped, true)
+
     if lib.progressCircle({
         duration = data.args.RepairDuration,
         position = 'bottom',

@@ -36,7 +36,6 @@ Config.BlackMarketAccess = {
         RepairsPedAnimationDict = "missfbi5ig_15",
         RepairsPedAnimationClip = "look_into_microscope_a_scientista",
         RepairDuration = 3000, -- How long it takes to repair a weapon in ms
-        RepairAmount = 10, -- % of durability to add to a weapon when repairing
         RepairCost = 1000, -- [Config.MoneyItem] is the currency for this
     },
 }
