@@ -42,10 +42,8 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
 
         headerMenu[#headerMenu + 1] = {
             title = "Sell "..exports.ox_inventory:Items(itemData.item).label,
-            image = "nui://ox_inventory/web/images/"..itemData.item..".png",
             description = sellableItemDescription,
-            icon = 'fa-solid fa-dollar',
-            iconColor = "green",
+            icon = "nui://ox_inventory/web/images/"..itemData.item..".png",
             serverEvent = "blackmarket:server:SellItems",
             readOnly = not hasItem,
             args = {

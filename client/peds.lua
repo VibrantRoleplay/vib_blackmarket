@@ -48,7 +48,7 @@ CreateThread(function()
             debug = Config.Debug,
             options = {
                 {
-                    event = 'blackmarket:Menu',
+                    event = 'blackmarket:BuyMenu',
                     label = "Trade "..v.Name,
                     args = v,
                     icon = "fa-solid fa-box-archive",

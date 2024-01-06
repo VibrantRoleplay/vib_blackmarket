@@ -38,21 +38,21 @@ RegisterNetEvent("blackmarket:server:SellItems", function(args)
     local itemCount = exports.ox_inventory:Search(source, 'count', args.item)
     local payOut = itemCount * args.price
 
-    if exports.ox_inventory:RemoveItem(source, args.item, itemCount) then
-        if exports.ox_inventory:CanCarryItem(source, Config.MoneyItem, payOut) then
+    if exports.ox_inventory:CanCarryItem(source, Config.MoneyItem, payOut) then
+        if exports.ox_inventory:RemoveItem(source, args.item, itemCount) then
             exports.ox_inventory:AddItem(source, Config.MoneyItem, payOut)
             lib.notify(source, {
                 title = "Attention",
                 description = "You've made $"..payOut,
                 type = 'success'
             })
-        else
-            lib.notify(source, {
-                title = "Attention",
-                description = "Inventory is full!",
-                type = 'inform'
-            })
         end
+    else
+        lib.notify(source, {
+            title = "Attention",
+            description = "Inventory is full!",
+            type = 'inform'
+        })
     end
 end)
 

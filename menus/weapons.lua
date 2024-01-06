@@ -6,18 +6,24 @@ RegisterNetEvent('blackmarket:RepairMenu', function(data)
         title = "Attachments",
         description = "Check weapon attachments for held weapon",
         event = 'blackmarket:client:getcomponentinformation',
-        icon = 'fa-solid fa-hammer',
-        iconColor = "yellow",
+        icon = 'fa-solid fa-gun',
+        iconColor = "orange",
     }
+
+    if moneyAmount > data.args.RepairCost then
+        repairWeaponDescription = "I'll charge ya $"..data.args.RepairCost.." to repair any weapon"
+    else
+        repairWeaponDescription = "It don't seem like you have enough cash"
+    end
 
     headerMenu[#headerMenu + 1] = {
         title = "Weapon Repairs",
-        description = "Repair current weapon in hand",
+        description = repairWeaponDescription,
         event = 'blackmarket:client:RepairWeapon',
         args = data,
         icon = 'fa-solid fa-hammer',
         iconColor = "yellow",
-        disabled = data.args.RepairCost > moneyAmount
+        readOnly = data.args.RepairCost > moneyAmount
     }
 
     lib.registerContext({
