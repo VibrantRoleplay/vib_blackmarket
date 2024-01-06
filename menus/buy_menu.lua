@@ -15,6 +15,7 @@ RegisterNetEvent('blackmarket:BuyMenu', function(v)
             description = buyItemDescription,
             icon = "nui://ox_inventory/web/images/"..itemData.item..".png",
             event = "blackmarket:BuyInput",
+            readOnly = itemData.price > moneyAmount,
             args = {
                 item = itemData.item,
                 price = itemData.price
