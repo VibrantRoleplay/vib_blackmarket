@@ -129,7 +129,6 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    local pedCoords = Repair.RepairsPedLocation
     local Repair = Config.BlackMarketAccess.RepairsInfo
 
     lib.requestModel(Repair.RepairsPedModel)
@@ -144,7 +143,7 @@ CreateThread(function()
     end
 
     exports.ox_target:addSphereZone({
-        coords = vec3(pedCoords.x, pedCoords.y, pedCoords.z+1),
+        coords = vec3(Repair.RepairsPedLocation.x, Repair.RepairsPedLocation.y, Repair.RepairsPedLocation.z+1),
         radius = 1,
         debug = Config.Debug,
         options = {
