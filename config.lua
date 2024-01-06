@@ -63,7 +63,7 @@ Config.ItemSelling = {
 
 Config.MarketPeds = {
     SuppliesPed = { -- Must be unique
-        Name = "Supplies", -- Must be Unique
+        Name = "Supplies",
         Model = "s_m_m_ciasec_01", -- Ped model
         Location = vector4(899.86, -3206.64, -98.19, 114.26), -- Location ped spawns
         AnimationDict = "amb@prop_human_bum_shopping_cart@male@idle_a", -- Dict for animation
@@ -110,7 +110,7 @@ Config.EntranceTypes = {
                 "A Sponge",
                 "A Towel",
             },
-            Correct_Answer = "A Towel",
+            Correct_Answer = "A Towel", -- Must match one of the [Answers] above
         },
         {
             Question = "What has to be broken before you can use it?",
@@ -195,7 +195,7 @@ Config.Laundering = {
         ShopName = "Senora Desert 24/7",
         PedModel = "mp_m_shopkeep_01",
         PedSpawn = vector4(545.92, 2663.19, 41.15, 266.01),
-        WashTime = 0.2,
+        WashTime = 0.5,
     },
     {
         ShopName = "Tatavium 24/7",

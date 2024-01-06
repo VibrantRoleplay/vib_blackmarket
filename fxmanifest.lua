@@ -16,7 +16,8 @@ server_scripts  {
 
 client_scripts {
 	'client/*.lua',
-	'menus/*lua',
+	'menus/*.lua',
+	'ambient_peds/*.lua'
 }
 
 ui_page "index.html"
