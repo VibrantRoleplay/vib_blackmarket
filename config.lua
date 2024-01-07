@@ -236,13 +236,13 @@ Config.AmbientPeds = {
     Static = {
         {
             PedModel = "a_m_m_prolhost_01",
-            SpawnLocation = vector4(888.58, -3206.81, -98.2, 21.69),
+            SpawnLocation = vector4(888.58, -3206.81, -99.2, 21.69),
             IsPedArmed = false,
             WeaponIfArmed = nil, -- Leave as nil if [IsPedArmed = false] otherwise make sure the weapon HASH is used (https://gtahash.ru/weapons/?page=1)
         },
         {
             PedModel = "a_m_m_prolhost_01",
-            SpawnLocation = vector4(891.88, -3211.63, -98.21, 206.14),
+            SpawnLocation = vector4(891.88, -3211.63, -99.21, 206.14),
             IsPedArmed = false,
             WeaponIfArmed = nil,
         },
