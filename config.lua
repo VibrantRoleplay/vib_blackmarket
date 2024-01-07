@@ -218,21 +218,6 @@ Config.Laundering = {
 }
 
 Config.AmbientPeds = {
-    Patrol = {
-        {
-            PedModel = "a_m_m_og_boss_01", -- Ped model
-            DurationBetweenWalks = 3000, -- In ms
-            SpawnLocation = vector3(897.81, -3209.72, -98.22), -- Where the guard initially spawns
-            Destination0 = vector3(897.44, -3209.54, -98.22), -- Where the guard will first walk to after spawning/The guard will loop back HERE after [Destination3]
-            WhereGuardLooksWhileIdle0 = vector3(888.29, -3203.73, -96.94), -- Where the guard looks whilst idel, after walking
-            Destination1 = vector3(895.98, -3198.69, -98.2), -- Where the guard walks to AFTER [Destination0]
-            WhereGuardLooksWhileIdle1 = vector3(888.29, -3203.73, -96.94), -- Where the guard looks whilst idel, after walking
-            Destination2 = vector3(887.71, -3196.77, -98.2), -- Where the guard walks to AFTER [Destination1]
-            WhereGuardLooksWhileIdle2 = vector3(888.29, -3203.73, -96.94),
-            Destination3 = vector3(880.48, -3204.46, -98.2),-- Where the guard walks to AFTER [Destination2]
-            WhereGuardLooksWhileIdle3 = vector3(888.29, -3203.73, -96.94),
-        },
-    },
     Static = {
         {
             PedModel = "a_m_m_prolhost_01",
