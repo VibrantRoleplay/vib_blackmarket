@@ -9,7 +9,7 @@ Black market resource for illegal sales and crafting
 - ox_target
 - ps-ui
 
-# What does resource provide?
+# What does this resource provide?
 
 - Peds where players can buy configurable stock from using [Config.MoneyItem]
 - Ped where players can sell configurable items to, receiving [Config.MoneyItem]
