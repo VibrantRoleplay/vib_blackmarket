@@ -1,4 +1,5 @@
 RegisterNetEvent('blackmarket:ExitMenu', function()
+    PlayPedAmbientSpeechNative(v.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
 	local headerMenu = {}
 
     headerMenu[#headerMenu + 1] = {

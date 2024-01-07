@@ -1,4 +1,6 @@
 RegisterNetEvent('blackmarket:RepairMenu', function(data)
+    PlayPedAmbientSpeechNative(v.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
+    
 	local headerMenu = {}
     local moneyAmount = exports.ox_inventory:Search('count', Config.MoneyItem)
 

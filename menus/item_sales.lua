@@ -1,4 +1,5 @@
 RegisterNetEvent('blackmarket:SellingMenu', function(data)
+    PlayPedAmbientSpeechNative(v.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
 	local headerMenu = {}
     
     local standardItems = data.args.StandardItems
