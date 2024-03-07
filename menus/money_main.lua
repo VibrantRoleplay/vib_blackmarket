@@ -44,9 +44,9 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
                     title = "Launder",
                     description = "So ... you're looking to clean some money...",
                     event = 'blackmarket:client:StartWashing',
+                    args = data,
                     icon = 'fa-solid fa-dollar',
                     iconColor = "green",
-                    args = data,
                 }
             elseif storeInfo.CurrentlyWashing then
                 if citizenId == storeInfo.Owner then
@@ -66,13 +66,13 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
                                 headerMenu[#headerMenu + 1] = {
                                     title = "Investigate",
                                     description = "We got robbed ... I've done some diggin and I've come up with some stuff that might help you",
-                                    icon = 'fa-solid fa-question',
-                                    iconColor = "yellow",
                                     event = 'blackmarket:client:InvestigateRobbery',
                                     args = {
                                         storeData = data,
                                         robber = storeInfo.Robber,
                                     },
+                                    icon = 'fa-solid fa-question',
+                                    iconColor = "yellow",
                                 }
                             else
                                 headerMenu[#headerMenu + 1] = {
@@ -89,13 +89,13 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
                             headerMenu[#headerMenu + 1] = {
                                 title = "Finished",
                                 description = "I've washed your money ... my cut is $"..storeInfo.StoreCut.."  \n\n Your return is $"..returnValue,
-                                icon = 'fa-solid fa-dollar',
-                                iconColor = "green",
                                 serverEvent = 'blackmarket:server:RetrieveMoney',
                                 args = {
                                     returnMoney = returnValue,
                                     storeData = data,
                                 },
+                                icon = 'fa-solid fa-dollar',
+                                iconColor = "green",
                             }
                         end
                     end
@@ -104,13 +104,13 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
                         headerMenu[#headerMenu + 1] = {
                             title = "Rob Store",
                             description = "You sure you wanna do this? The guy who gave me this money seems unhinged ..." 
-                                .."\n\n I'm sure he's watching the cameras, man... He'll know what you're doing",
-                            icon = 'fa-solid fa-gun',
-                            iconColor = "red",
+                            .."\n\n I'm sure he's watching the cameras, man... He'll know what you're doing",
                             event = 'blackmarket:client:RobStore',
                             args = {
                                 storeData = data,
                             },
+                            icon = 'fa-solid fa-gun',
+                            iconColor = "red",
                         }
                     end
                 end

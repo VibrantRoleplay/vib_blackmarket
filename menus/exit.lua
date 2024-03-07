@@ -4,12 +4,12 @@ RegisterNetEvent('blackmarket:ExitMenu', function()
 
     headerMenu[#headerMenu + 1] = {
         title = "What ya want?",
-        description = "Looking to leave?  \n\nNo peaking ... I'll whack you if you do!",
-        icon = 'fa-solid fa-question',
-        iconColor = "yellow",
+        description = "Looking to leave?  \n\nNo peeking ... I'll whack you if you do!",
         onSelect = function()
             LeavingMarket()
         end,
+        icon = 'fa-solid fa-question',
+        iconColor = "yellow",
     }
 
     lib.registerContext({

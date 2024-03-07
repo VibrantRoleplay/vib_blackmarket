@@ -18,16 +18,16 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
 
             headerMenu[#headerMenu + 1] = {
                 title = "Sell "..exports.ox_inventory:Items(itemData.item).label,
-                image = "nui://ox_inventory/web/images/"..itemData.item..".png",
                 description = sellableItemDescription,
-                icon = 'fa-solid fa-dollar',
-                iconColor = "green",
                 serverEvent = "blackmarket:server:SellItems",
-                readOnly = not hasItem,
                 args = {
                     item = itemData.item,
                     price = itemData.price,
                 },
+                image = "nui://ox_inventory/web/images/"..itemData.item..".png",
+                icon = 'fa-solid fa-dollar',
+                iconColor = "green",
+                readOnly = not hasItem,
             }
         end
     end
@@ -44,13 +44,13 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
         headerMenu[#headerMenu + 1] = {
             title = "Sell "..exports.ox_inventory:Items(itemData.item).label,
             description = sellableItemDescription,
-            icon = "nui://ox_inventory/web/images/"..itemData.item..".png",
             serverEvent = "blackmarket:server:SellItems",
-            readOnly = not hasItem,
             args = {
                 item = itemData.item,
                 price = itemData.price,
             },
+            icon = "nui://ox_inventory/web/images/"..itemData.item..".png",
+            readOnly = not hasItem,
         }
     end
 

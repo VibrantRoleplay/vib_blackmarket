@@ -14,13 +14,13 @@ RegisterNetEvent('blackmarket:BuyMenu', function(v)
         headerMenu[#headerMenu + 1] = {
             title = "Purchase "..exports.ox_inventory:Items(itemData.item).label,
             description = buyItemDescription,
-            icon = "nui://ox_inventory/web/images/"..itemData.item..".png",
             event = "blackmarket:BuyInput",
-            readOnly = itemData.price > moneyAmount,
             args = {
                 item = itemData.item,
                 price = itemData.price
             },
+            icon = "nui://ox_inventory/web/images/"..itemData.item..".png",
+            readOnly = itemData.price > moneyAmount,
         }
     end
 
