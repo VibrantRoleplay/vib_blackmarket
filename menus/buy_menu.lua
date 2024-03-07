@@ -43,7 +43,7 @@ RegisterNetEvent("blackmarket:BuyInput", function(args)
             options = options,
             description = "Stock for sale",
             required = true,
-            icon = "fa-solid fa-dollar",
+            icon = "fa-solid fa-arrow-up-wide-short",
             iconColor = "green",
         },
     })

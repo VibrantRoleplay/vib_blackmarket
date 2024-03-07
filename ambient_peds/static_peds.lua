@@ -2,6 +2,7 @@ CreateThread(function()
     for k, pedInfo in pairs(Config.AmbientPeds.Static) do
         lib.requestModel(pedInfo.PedModel)
         Wait(500)
+        
         local ambientPed = CreatePed(0, pedInfo.PedModel, pedInfo.SpawnLocation.xyz, pedInfo.SpawnLocation.w, true, true)
         SetBlockingOfNonTemporaryEvents(ambientPed, true)
         FreezeEntityPosition(ambientPed, true)

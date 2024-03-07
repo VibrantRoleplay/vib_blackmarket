@@ -11,12 +11,11 @@ math.randomseed(os.time())
 ----------
 
 RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
-    local amount = input
-    local cost = (args.price * amount)
+    local cost = (args.price * input)
 
-    if exports.ox_inventory:CanCarryItem(source, args.item, amount) then
+    if exports.ox_inventory:CanCarryItem(source, args.item, input) then
         if exports.ox_inventory:RemoveItem(source, Config.MoneyItem, cost) then
-            exports.ox_inventory:AddItem(source, args.item, amount)
+            exports.ox_inventory:AddItem(source, args.item, input)
 
         else
             lib.notify(source, {
