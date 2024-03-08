@@ -222,18 +222,33 @@ Config.AmbientPeds = {
         {
             PedModel = "a_m_m_prolhost_01",
             SpawnLocation = vector4(888.58, -3206.81, -99.2, 21.69),
-            IsPedArmed = false,
+            PlayAnim = false, -- Leave as fase if you don't want the ped to play an animation or if [IsPedArmed = true]
+            AnimationDict = "amb@world_human_welding@male@base", -- Dictionary of animation
+            AnimationClip = "base", -- Animation
+            PlayScenario = true,
+            Scenario = 'WORLD_HUMAN_WELDING',
+            IsPedArmed = false, -- Leave as false if playing animation
             WeaponIfArmed = nil, -- Leave as nil if [IsPedArmed = false] otherwise make sure the weapon HASH is used (https://gtahash.ru/weapons/?page=1)
         },
         {
-            PedModel = "a_m_m_prolhost_01",
-            SpawnLocation = vector4(891.88, -3211.63, -99.21, 206.14),
+            PedModel = "s_m_m_chemsec_01",
+            SpawnLocation = vector4(888.95, -3194.64, -99.2, 165.48),
+            PlayAnim = false,
+            AnimationDict = "amb@world_human_welding@male@base",
+            AnimationClip = "base",
+            PlayScenario = true,
+            Scenario = 'WORLD_HUMAN_GUARD_PATROL',
             IsPedArmed = false,
             WeaponIfArmed = nil,
         },
         {
             PedModel = "s_m_m_chemsec_01",
             SpawnLocation = vector4(896.07, -3170.7, -98.13, 347.87),
+            PlayAnim = false,
+            AnimationDict = "amb@world_human_welding@male@base",
+            AnimationClip = "base",
+            PlayScenario = false,
+            Scenario = 'WORLD_HUMAN_WELDING',
             IsPedArmed = true,
             WeaponIfArmed = 453432689,
             
@@ -241,6 +256,11 @@ Config.AmbientPeds = {
         {
             PedModel = "s_m_m_chemsec_01",
             SpawnLocation = vector4(892.59, -3170.18, -98.13, 345.9),
+            PlayAnim = false,
+            AnimationDict = "amb@world_human_welding@male@base",
+            AnimationClip = "base",
+            PlayScenario = false,
+            Scenario = 'WORLD_HUMAN_WELDING',
             IsPedArmed = true,
             WeaponIfArmed = 736523883,
         },
