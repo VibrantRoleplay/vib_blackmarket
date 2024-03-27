@@ -104,8 +104,8 @@ CreateThread(function()
             debug = Config.Debug,
             options = {
                 {
-                    event = "blackmarket:client:GetCode",
                     label = zoneOptions.HackLabel,
+                    event = "blackmarket:client:GetCode",
                     icon = "fa-solid fa-code",
                     iconColor = "purple",
                     distance = 1.0,
