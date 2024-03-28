@@ -1,4 +1,8 @@
 CreateThread(function()
+    -----------------
+    --Money Washing--
+    -----------------
+    
     if Config.UseMoneyLaundering then
         for _, shop in pairs(Config.Laundering) do
             lib.requestModel(shop.PedModel)
@@ -26,6 +30,10 @@ CreateThread(function()
             TriggerServerEvent('blackmarket:server:UpdateStores', shop)
         end
     end
+
+    ---------------
+    --Market Peds--
+    ---------------
 
     for k, v in pairs(Config.MarketPeds) do
         lib.requestModel(v.Model)
@@ -57,9 +65,46 @@ CreateThread(function()
             },
         })
     end
-end)
 
-CreateThread(function()
+    ---------------
+    --Selling Ped--
+    ---------------
+
+    local sales = Config.ItemSelling.SalesPed
+    local pedCoords = sales.SalesPedLocation
+    local sellingData = Config.ItemSelling.ItemInfo
+
+    lib.requestModel(sales.SalesPedModel)
+    local salesPed = CreatePed(1, sales.SalesPedModel, sales.SalesPedLocation, false, true)
+    SetEntityInvincible(salesPed, true)
+    SetBlockingOfNonTemporaryEvents(salesPed, true)
+    FreezeEntityPosition(salesPed, true)
+
+    if Config.UseAnims then
+        lib.requestAnimDict(sales.SalesPedAnimationDict)
+        TaskPlayAnim(salesPed, sales.SalesPedAnimationDict, sales.SalesPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+    end
+
+    exports.ox_target:addSphereZone({
+        coords = vec3(pedCoords.x, pedCoords.y, pedCoords.z+1),
+        radius = 1,
+        debug = Config.Debug,
+        options = {
+            {
+                label = "Speak to "..sales.SalesPedName,
+                event = 'blackmarket:SellingMenu',
+                args = sellingData,
+                icon = "fa-solid fa-box-archive",
+                iconColor = "yellow",
+                distance = 2,
+            },
+        },
+    })
+
+    -------------------
+    --Entering Market--
+    -------------------
+
     local entrance = Config.BlackMarketAccess.EntranceInfo
     local randomLocation = math.random(1, #entrance.EntrancePedLocations)
     local dropoffLocation = entrance.EntrancePedLocations[randomLocation]
@@ -90,9 +135,11 @@ CreateThread(function()
             },
         },
     })
-end)
 
-CreateThread(function()
+    ------------------
+    --Exiting Market--
+    ------------------
+
     local exit = Config.BlackMarketAccess.ExitInfo
     local pedCoords = exit.ExitPedLocation
 
@@ -122,9 +169,11 @@ CreateThread(function()
             },
         },
     })
-end)
 
-CreateThread(function()
+    ------------------
+    --Weapon Repairs--
+    ------------------
+
     local repair = Config.BlackMarketAccess.RepairsInfo
 
     lib.requestModel(repair.RepairsPedModel)
@@ -150,39 +199,6 @@ CreateThread(function()
                 icon = "fa-solid fa-box-archive",
                 iconColor = "yellow",
                 distance = 2, 
-            },
-        },
-    })
-end)
-
-CreateThread(function()
-    local sales = Config.ItemSelling.SalesPed
-    local pedCoords = sales.SalesPedLocation
-    local sellingData = Config.ItemSelling.ItemInfo
-
-    lib.requestModel(sales.SalesPedModel)
-    local salesPed = CreatePed(1, sales.SalesPedModel, sales.SalesPedLocation, false, true)
-    SetEntityInvincible(salesPed, true)
-    SetBlockingOfNonTemporaryEvents(salesPed, true)
-    FreezeEntityPosition(salesPed, true)
-
-    if Config.UseAnims then
-        lib.requestAnimDict(sales.SalesPedAnimationDict)
-        TaskPlayAnim(salesPed, sales.SalesPedAnimationDict, sales.SalesPedAnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
-    end
-
-    exports.ox_target:addSphereZone({
-        coords = vec3(pedCoords.x, pedCoords.y, pedCoords.z+1),
-        radius = 1,
-        debug = Config.Debug,
-        options = {
-            {
-                label = "Speak to "..sales.SalesPedName,
-                event = 'blackmarket:SellingMenu',
-                args = sellingData,
-                icon = "fa-solid fa-box-archive",
-                iconColor = "yellow",
-                distance = 2,
             },
         },
     })
