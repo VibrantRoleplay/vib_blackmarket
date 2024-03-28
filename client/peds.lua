@@ -1,7 +1,7 @@
 CreateThread(function()
     if Config.UseMoneyLaundering then
         for _, shop in pairs(Config.Laundering) do
-            lib.requestModel(shop.PedModel, 1000)
+            lib.requestModel(shop.PedModel)
     
             local shopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
             SetEntityInvincible(shopKeeper, true)
@@ -28,7 +28,7 @@ CreateThread(function()
     end
 
     for k, v in pairs(Config.MarketPeds) do
-        lib.requestModel(v.Model, 1000)
+        lib.requestModel(v.Model)
         local marketPeds = CreatePed(1, v.Model, v.Location, false, true)
         SetEntityInvincible(marketPeds, true)
         SetBlockingOfNonTemporaryEvents(marketPeds, true)
@@ -64,7 +64,7 @@ CreateThread(function()
     local randomLocation = math.random(1, #entrance.EntrancePedLocations)
     local dropoffLocation = entrance.EntrancePedLocations[randomLocation]
 
-    lib.requestModel(entrance.EntrancePedModel, 1000)
+    lib.requestModel(entrance.EntrancePedModel)
     local entrancePed = CreatePed(1, entrance.EntrancePedModel, dropoffLocation, false, true)
     SetEntityInvincible(entrancePed, true)
     SetBlockingOfNonTemporaryEvents(entrancePed, true)
@@ -96,7 +96,7 @@ CreateThread(function()
     local exit = Config.BlackMarketAccess.ExitInfo
     local pedCoords = exit.ExitPedLocation
 
-    lib.requestModel(exit.ExitPedModel, 1000)
+    lib.requestModel(exit.ExitPedModel)
     local exitPed = CreatePed(1, exit.ExitPedModel, exit.ExitPedLocation, false, true)
     SetEntityInvincible(exitPed, true)
     SetBlockingOfNonTemporaryEvents(exitPed, true)
@@ -127,7 +127,7 @@ end)
 CreateThread(function()
     local repair = Config.BlackMarketAccess.RepairsInfo
 
-    lib.requestModel(repair.RepairsPedModel, 1000)
+    lib.requestModel(repair.RepairsPedModel)
     local repairPed = CreatePed(1, repair.RepairsPedModel, repair.RepairsPedLocation, false, true)
     SetEntityInvincible(repairPed, true)
     SetBlockingOfNonTemporaryEvents(repairPed, true)
@@ -160,7 +160,7 @@ CreateThread(function()
     local pedCoords = sales.SalesPedLocation
     local sellingData = Config.ItemSelling.ItemInfo
 
-    lib.requestModel(sales.SalesPedModel, 1000)
+    lib.requestModel(sales.SalesPedModel)
     local salesPed = CreatePed(1, sales.SalesPedModel, sales.SalesPedLocation, false, true)
     SetEntityInvincible(salesPed, true)
     SetBlockingOfNonTemporaryEvents(salesPed, true)
