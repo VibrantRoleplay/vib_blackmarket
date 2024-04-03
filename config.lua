@@ -51,12 +51,12 @@ Config.ItemSelling = {
     ItemInfo = {
         RareItemSalesChance = 50, -- Chance for rare items to be sellable per restart
         StandardItems = {
-            {item = "silverbar", price = 10},
-            {item = "advancedlockpick", price = 10},
+            {item = "refined_silver", price = 10},
+            {item = "silver_ore", price = 10},
         },
         RareItems = {
-            {item = "goldore", price = 10},
-            {item = "goldbar", price = 10},
+            {item = "gold_ore", price = 10},
+            {item = "refined_gold", price = 10},
         },
     }
 }
@@ -81,7 +81,7 @@ Config.MarketPeds = {
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
         ItemsForSale = {
-            {item = "ammo-9", price = 10},
+            {item = "ammo-9", price = 1},
             {item = "ammo-rifle", price = 10},
             {item = "ammo-shotgun", price = 10},
         },
