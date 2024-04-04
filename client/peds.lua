@@ -144,7 +144,7 @@ CreateThread(function()
     local pedCoords = exit.ExitPedLocation
 
     lib.requestModel(exit.ExitPedModel, 5000)
-    local exitPed = CreatePed(1, exit.ExitPedModel, exit.ExitPedLocation, false, true)
+    local exitPed = CreatePed(1, exit.ExitPedModel, exit.ExitPedLocation, false, false, true)
     SetEntityInvincible(exitPed, true)
     SetBlockingOfNonTemporaryEvents(exitPed, true)
     FreezeEntityPosition(exitPed, true)
@@ -177,7 +177,7 @@ CreateThread(function()
     local repair = Config.BlackMarketAccess.RepairsInfo
 
     lib.requestModel(repair.RepairsPedModel, 5000)
-    local repairPed = CreatePed(1, repair.RepairsPedModel, repair.RepairsPedLocation, false, true)
+    local repairPed = CreatePed(1, repair.RepairsPedModel, repair.RepairsPedLocation, false, false, true)
     SetEntityInvincible(repairPed, true)
     SetBlockingOfNonTemporaryEvents(repairPed, true)
     FreezeEntityPosition(repairPed, true)
