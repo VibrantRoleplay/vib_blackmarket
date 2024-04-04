@@ -2,9 +2,6 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
     PlayPedAmbientSpeechNative(data.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
 	local headerMenu = {}
 
-    local rareItems = data.args.RareItems
-    local canSellRare = lib.callback.await("blackmarket:server:CheckRareItem", false)
-
     headerMenu[#headerMenu + 1] = {
         title = "Artwork",
         description = "Sell your valuable Artwork",
@@ -39,7 +36,6 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
 end)
 
 RegisterNetEvent('blackmarket:client:SellItemsMenu', function(data)
-    PlayPedAmbientSpeechNative(data.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
 	local headerMenu = {}
 
     for k, v in pairs(data) do

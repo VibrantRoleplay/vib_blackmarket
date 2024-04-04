@@ -51,13 +51,13 @@ Config.ItemSelling = {
     ItemInfo = {
         RareItemSalesChance = 15, -- Chance for rare items to be sellable per restart
         Artwork = {
-            {item = "art1", price = math.random(125, 275)},
-            {item = "art2", price = math.random(125, 275)},
-            {item = "art3", price = math.random(125, 275)},
-            {item = "art4", price = math.random(125, 275)},
-            {item = "art5", price = math.random(125, 275)},
-            {item = "art6", price = math.random(125, 275)},
-            {item = "art7", price = math.random(125, 275)},
+            {item = "art1", price = math.random(50, 100)},
+            {item = "art2", price = math.random(50, 100)},
+            {item = "art3", price = math.random(50, 100)},
+            {item = "art4", price = math.random(50, 100)},
+            {item = "art5", price = math.random(50, 100)},
+            {item = "art6", price = math.random(50, 100)},
+            {item = "art7", price = math.random(50, 100)},
         },
         Minerals = {
             {item = "refined_gold", price = math.random(125, 275)},
@@ -65,10 +65,15 @@ Config.ItemSelling = {
         },
         Electricals = {
             {item = "boombox", price = math.random(125, 275)},
-        },
-        RareItems = {
-            {item = "refined_gold", price = 10},
-            {item = "refined_silver", price = 10},
+            {item = "md_speakers", price = math.random(125, 275)},
+            {item = "md_tablet", price = math.random(125, 275)},
+            {item = "md_desktop", price = math.random(125, 275)},
+            {item = "md_monitor", price = math.random(125, 275)},
+            {item = "laptop", price = math.random(125, 275)},
+            {item = "phone", price = math.random(125, 275)},
+            {item = "tablet", price = math.random(125, 275)},
+            {item = "house_laptop", price = math.random(250, 450)},
+            {item = "mansion_laptop", price = math.random(375, 550)},
         },
     }
 }

@@ -65,12 +65,6 @@ lib.callback.register('blackmarket:server:GenerateNumberCode', function(source)
     return correctCode
 end)
 
-lib.callback.register('blackmarket:server:CheckRareItem', function(source)
-    local canSellRare = Config.ItemSelling.ItemInfo.RareItemSalesChance < math.random(1, 100)
-
-    return canSellRare
-end)
-
 lib.callback.register('blackmarket:server:GetPlayerJob', function(source)
     local player = QBCore.Functions.GetPlayer(source)
     local playerJob = player.PlayerData.job.name
