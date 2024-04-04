@@ -36,7 +36,7 @@ Config.BlackMarketAccess = {
         RepairsPedAnimationDict = "missfbi5ig_15",
         RepairsPedAnimationClip = "look_into_microscope_a_scientista",
         RepairDuration = 3000, -- How long it takes to repair a weapon in ms
-        RepairCost = 1000, -- [Config.MoneyItem] is the currency for this
+        RepairCost = 175, -- [Config.MoneyItem] is the currency for this
     },
 }
 
@@ -49,14 +49,26 @@ Config.ItemSelling = {
         SalesPedAnimationClip = "idle_a",
     },
     ItemInfo = {
-        RareItemSalesChance = 50, -- Chance for rare items to be sellable per restart
-        StandardItems = {
-            {item = "refined_silver", price = 10},
-            {item = "silver_ore", price = 10},
+        RareItemSalesChance = 15, -- Chance for rare items to be sellable per restart
+        Artwork = {
+            {item = "art1", price = math.random(125, 275)},
+            {item = "art2", price = math.random(125, 275)},
+            {item = "art3", price = math.random(125, 275)},
+            {item = "art4", price = math.random(125, 275)},
+            {item = "art5", price = math.random(125, 275)},
+            {item = "art6", price = math.random(125, 275)},
+            {item = "art7", price = math.random(125, 275)},
+        },
+        Minerals = {
+            {item = "refined_gold", price = math.random(125, 275)},
+            {item = "refined_silver", price = math.random(125, 275)},
+        },
+        Electricals = {
+            {item = "boombox", price = math.random(125, 275)},
         },
         RareItems = {
-            {item = "gold_ore", price = 10},
             {item = "refined_gold", price = 10},
+            {item = "refined_silver", price = 10},
         },
     }
 }
@@ -81,7 +93,7 @@ Config.MarketPeds = {
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
         ItemsForSale = {
-            {item = "ammo-9", price = 1},
+            {item = "ammo-9", price = 10},
             {item = "ammo-rifle", price = 10},
             {item = "ammo-shotgun", price = 10},
         },

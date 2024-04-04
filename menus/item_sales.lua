@@ -1,64 +1,84 @@
 RegisterNetEvent('blackmarket:SellingMenu', function(data)
-    PlayPedAmbientSpeechNative(v.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
+    PlayPedAmbientSpeechNative(data.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
 	local headerMenu = {}
-    
-    local standardItems = data.args.StandardItems
+
     local rareItems = data.args.RareItems
     local canSellRare = lib.callback.await("blackmarket:server:CheckRareItem", false)
 
-    if canSellRare then
-        for _, itemData in pairs(rareItems) do
-            local hasItem = exports.ox_inventory:Search("count", itemData.item) > 0
+    headerMenu[#headerMenu + 1] = {
+        title = "Artwork",
+        description = "Sell your valuable Artwork",
+        event = "blackmarket:client:SellItemsMenu",
+        args = data.args.Artwork,
+        icon = "nui://ox_inventory/web/images/art1.png",
+    }
 
-            if hasItem then
-                sellableItemDescription = "I'll buy all your "..exports.ox_inventory:Items(itemData.item).label.." for $"..itemData.price.." each"
-            else
-                sellableItemDescription = "If you had any "..exports.ox_inventory:Items(itemData.item).label.." I'd buy them for $"..itemData.price.." each"
-            end
+    headerMenu[#headerMenu + 1] = {
+        title = "Minerals",
+        description = "Sell your valuable Minerals",
+        event = "blackmarket:client:SellItemsMenu",
+        args = data.args.Minerals,
+        icon = "nui://ox_inventory/web/images/refined_gold.png",
+    }
 
-            headerMenu[#headerMenu + 1] = {
-                title = "Sell "..exports.ox_inventory:Items(itemData.item).label,
-                description = sellableItemDescription,
-                serverEvent = "blackmarket:server:SellItems",
-                args = {
-                    item = itemData.item,
-                    price = itemData.price,
-                },
-                image = "nui://ox_inventory/web/images/"..itemData.item..".png",
-                icon = 'fa-solid fa-dollar',
-                iconColor = "green",
-                readOnly = not hasItem,
-            }
-        end
-    end
-    
-    for _, itemData in pairs(standardItems) do
-        local hasItem = exports.ox_inventory:Search("count", itemData.item) > 0
-
-        if hasItem then
-            sellableItemDescription = "I'll buy all your "..exports.ox_inventory:Items(itemData.item).label.." for $"..itemData.price.." each"
-        else
-            sellableItemDescription = "If you had any "..exports.ox_inventory:Items(itemData.item).label.." I'd buy them for $"..itemData.price.." each"
-        end
-
-        headerMenu[#headerMenu + 1] = {
-            title = "Sell "..exports.ox_inventory:Items(itemData.item).label,
-            description = sellableItemDescription,
-            serverEvent = "blackmarket:server:SellItems",
-            args = {
-                item = itemData.item,
-                price = itemData.price,
-            },
-            icon = "nui://ox_inventory/web/images/"..itemData.item..".png",
-            readOnly = not hasItem,
-        }
-    end
+    headerMenu[#headerMenu + 1] = {
+        title = "Electricals",
+        description = "Sell your valuable Electricals here",
+        event = "blackmarket:client:SellItemsMenu",
+        args = data.args.Electricals,
+        icon = "nui://ox_inventory/web/images/boombox.png",
+    }
 
     lib.registerContext({
-        id = 'sales_menu',
+        id = 'main_sales_menu',
         title = data.label,
         options = headerMenu
     })
 
-    lib.showContext('sales_menu')
+    lib.showContext('main_sales_menu')
+end)
+
+RegisterNetEvent('blackmarket:client:SellItemsMenu', function(data)
+    PlayPedAmbientSpeechNative(data.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
+	local headerMenu = {}
+
+    for k, v in pairs(data) do
+        local itemAmount = exports.ox_inventory:Search('count', v.item)
+
+        if itemAmount <= 0 then
+            goto continue
+        end
+        headerMenu[#headerMenu + 1] = {
+            title = exports.ox_inventory:Items(v.item).label,
+            description = "I can pay $"..v.price.." for each of these",
+            serverEvent = "blackmarket:server:SellItems",
+            args = {
+                item = v.item,
+                price = v.price,
+            },
+            icon = "nui://ox_inventory/web/images/"..v.item..".png",
+        }
+
+        ::continue::
+    end
+
+    if next(headerMenu) == nil then
+        headerMenu[#headerMenu + 1] = {
+            title = "Empty Pockets",
+            description = "You don't have anything to sell",
+            icon = 'fa-solid fa-x',
+            iconColor = 'red',
+            readOnly = true,
+        }
+    end
+
+
+    lib.registerContext({
+        id = 'item_sales_menu',
+        title = "Shit",
+        options = headerMenu,
+        menu = 'main_sales_menu',
+    })
+
+    lib.showContext('item_sales_menu')
 end)
