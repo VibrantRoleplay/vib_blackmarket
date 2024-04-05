@@ -2,7 +2,7 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
     local playerJob = lib.callback.await('blackmarket:server:GetPlayerJob', false)
 
     if playerJob == "police" then
-        PlayPedAmbientSpeechNative(data.entity, 'Generic_Fuck_You', 'Speech_Params_Force')
+        PlayPedAmbientSpeechNative(data.entity, 'GENERIC_INSULT_HIGH', 'SPEECH_PARAMS_FORCE_SHOUTED')
         lib.notify({
             title = 'Unable',
             description = 'I aint talking to no bitch ass cop',

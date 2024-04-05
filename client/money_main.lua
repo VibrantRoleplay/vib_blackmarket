@@ -48,12 +48,12 @@ RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)
         },
     })
     then
-        local moneyLaunderingLoss = input[1] * Config.StoreCut
+        local moneyLaunderingLoss = input[1] * data.PercentageTakenFromPlayer
         
         TriggerServerEvent('blackmarket:server:StartWashing', input, data, citizenId, moneyLaunderingLoss)
         lib.alertDialog({
 			header = "Store owner says:",
-			content = "You've started washing $"..input[1].." at: "..data.ShopName.." \n\n I'll be taking a "..(Config.StoreCut * 100).." % cut",
+			content = "You've started washing $"..input[1].." at: "..data.ShopName.." \n\n I'll be taking a "..(data.PercentageTakenFromPlayer * 100).." % cut",
 			centered = true,
 		})
     else
