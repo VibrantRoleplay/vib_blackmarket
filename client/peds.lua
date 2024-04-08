@@ -7,7 +7,7 @@ CreateThread(function()
         for _, shop in pairs(Config.Laundering) do
             lib.requestModel(shop.PedModel, 5000)
     
-            local shopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true)
+            local shopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true, false)
             SetEntityInvincible(shopKeeper, true)
             SetBlockingOfNonTemporaryEvents(shopKeeper, true)
             FreezeEntityPosition(shopKeeper, true)
@@ -35,22 +35,21 @@ CreateThread(function()
     --Market Peds--
     ---------------
 
-    for k, v in pairs(Config.MarketPeds) do
+    for _, v in pairs(Config.MarketPeds) do
         lib.requestModel(v.Model, 5000)
-        local marketPeds = CreatePed(1, v.Model, v.Location, false, true)
-        SetEntityInvincible(marketPeds, true)
-        SetBlockingOfNonTemporaryEvents(marketPeds, true)
-        FreezeEntityPosition(marketPeds, true)
+        local marketPed = CreatePed(1, v.Model, v.Location, false, true, false)
+
+        SetEntityInvincible(marketPed, true)
+        SetBlockingOfNonTemporaryEvents(marketPed, true)
+        FreezeEntityPosition(marketPed, true)
 
         if Config.UseAnims then
             lib.requestAnimDict(v.AnimationDict)
-            TaskPlayAnim(marketPeds, v.AnimationDict, v.AnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
+            TaskPlayAnim(marketPed, v.AnimationDict, v.AnimationClip, 1.0, 1.0, -1, 1, 1, false, false, false)
         end
-        
-        local coords = v.Location
 
         exports.ox_target:addSphereZone({
-            coords = vec3(coords.x, coords.y, coords.z+1),
+            coords = vec3(v.Location.x, v.Location.y, v.Location.z+1),
             radius = 1,
             debug = Config.Debug,
             options = {
@@ -75,7 +74,7 @@ CreateThread(function()
     local sellingData = Config.ItemSelling.ItemInfo
 
     lib.requestModel(sales.SalesPedModel, 5000)
-    local salesPed = CreatePed(1, sales.SalesPedModel, sales.SalesPedLocation, false, true)
+    local salesPed = CreatePed(1, sales.SalesPedModel, sales.SalesPedLocation, false, true, false)
     SetEntityInvincible(salesPed, true)
     SetBlockingOfNonTemporaryEvents(salesPed, true)
     FreezeEntityPosition(salesPed, true)
@@ -91,7 +90,7 @@ CreateThread(function()
         debug = Config.Debug,
         options = {
             {
-                label = "Speak to "..sales.SalesPedName,
+                label = sales.SalesPedName,
                 event = 'blackmarket:SellingMenu',
                 args = sellingData,
                 icon = "fa-solid fa-box-archive",
@@ -110,7 +109,7 @@ CreateThread(function()
     local dropoffLocation = entrance.EntrancePedLocations[randomLocation]
 
     lib.requestModel(entrance.EntrancePedModel, 5000)
-    local entrancePed = CreatePed(1, entrance.EntrancePedModel, dropoffLocation, false, true)
+    local entrancePed = CreatePed(1, entrance.EntrancePedModel, dropoffLocation, false, true, false)
     SetEntityInvincible(entrancePed, true)
     SetBlockingOfNonTemporaryEvents(entrancePed, true)
     FreezeEntityPosition(entrancePed, true)
@@ -144,7 +143,7 @@ CreateThread(function()
     local pedCoords = exit.ExitPedLocation
 
     lib.requestModel(exit.ExitPedModel, 5000)
-    local exitPed = CreatePed(1, exit.ExitPedModel, exit.ExitPedLocation, false, false, true)
+    local exitPed = CreatePed(1, exit.ExitPedModel, exit.ExitPedLocation, false, true, true)
     SetEntityInvincible(exitPed, true)
     SetBlockingOfNonTemporaryEvents(exitPed, true)
     FreezeEntityPosition(exitPed, true)
@@ -177,7 +176,7 @@ CreateThread(function()
     local repair = Config.BlackMarketAccess.RepairsInfo
 
     lib.requestModel(repair.RepairsPedModel, 5000)
-    local repairPed = CreatePed(1, repair.RepairsPedModel, repair.RepairsPedLocation, false, false, true)
+    local repairPed = CreatePed(1, repair.RepairsPedModel, repair.RepairsPedLocation, false, true, true)
     SetEntityInvincible(repairPed, true)
     SetBlockingOfNonTemporaryEvents(repairPed, true)
     FreezeEntityPosition(repairPed, true)

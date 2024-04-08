@@ -1,30 +1,25 @@
 RegisterNetEvent('blackmarket:client:StartWashing', function(data)
+    local moneyAmount = exports.ox_inventory:Search('count', Config.DirtyMoneyItem)
+
     local input = lib.inputDialog('Laundering', {
         {
-            type = "number",
-            label = "Money Value",
+            type = "slider",
+            label = "Amount",
             description = "How much you looking to clean?",
             required = true,
-            icon = "fa-solid fa-bullet",
+            min = 1,
+            max = moneyAmount,
+            icon = "fa-solid fa-dollar",
+            iconColor = 'green',
         },
     })
 
-    if not input or #input < 1 then
+    if input == nil then
         return
     end
-    
-    local moneyAmount = exports.ox_inventory:Search('count', Config.DirtyMoneyItem)
 
-    if moneyAmount >= input[1] then
-        TriggerEvent('blackmarket:client:LaunderMoney', input, data.args)
-        TriggerServerEvent('blackmarket:server:TriggerWashTimer', data)
-    else
-        lib.notify({
-            title = 'Attention',
-            description = "You don't have that much dirty money with you!",
-            type = 'error',
-        })
-    end
+    TriggerEvent('blackmarket:client:LaunderMoney', input, data.args)
+    TriggerServerEvent('blackmarket:server:TriggerWashTimer', data)
 end)
 
 RegisterNetEvent('blackmarket:client:LaunderMoney', function(input, data)

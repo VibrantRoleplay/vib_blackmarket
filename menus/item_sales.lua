@@ -28,7 +28,7 @@ RegisterNetEvent('blackmarket:SellingMenu', function(data)
 
     lib.registerContext({
         id = 'main_sales_menu',
-        title = data.label,
+        title = 'Sellable Loot',
         options = headerMenu
     })
 
@@ -71,7 +71,7 @@ RegisterNetEvent('blackmarket:client:SellItemsMenu', function(data)
 
     lib.registerContext({
         id = 'item_sales_menu',
-        title = "Shit",
+        title = 'Buying',
         options = headerMenu,
         menu = 'main_sales_menu',
     })

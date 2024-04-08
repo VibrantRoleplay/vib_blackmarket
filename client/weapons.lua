@@ -51,9 +51,15 @@ end)
 ------------------
 
 RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
-    local weaponDura = lib.callback.await('blackmarket:server:CheckWeaponData', false)
+    local repairingWeapon = false
+    local weaponData = lib.callback.await('blackmarket:server:CheckWeaponData', false)
+    local effectCoords = data.args.RepairsPedLocation
 
-    if weaponDura.durability == 100 then
+    if weaponData == nil then
+        return
+    end
+
+    if weaponData.metadata.durability == 100 then
         lib.notify({
             title = 'Attention',
             description = "Your weapon is already in good repair",
@@ -62,9 +68,25 @@ RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
         return
     end
 
-    lib.requestNamedPtfxAsset('scr_sm_trans')
-    SetPtfxAssetNextCall('scr_sm_trans')
-    local smokeEffect = StartParticleFxLoopedAtCoord('scr_sm_trans_smoke', 907.42, -3210.36, -98.44, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0)
+    local weaponHash = GetHashKey(weaponData.name)
+    local weaponModel = GetWeapontypeModel(weaponHash)
+    local gunModel = lib.requestModel(weaponModel)
+    local weaponObject = CreateObject(gunModel, effectCoords.x-0.5, effectCoords.y+0.5, effectCoords.z+0.74, true, true, false)
+    local weaponCoords = GetEntityCoords(weaponObject)
+    SetEntityHeading(weaponObject, 25.0)
+    SetEntityRotation(weaponObject, -85.0, 0.0, 25.0, 1)
+
+    repairingWeapon = true
+    lib.requestNamedPtfxAsset('core')
+    UseParticleFxAssetNextCall('core')
+
+    CreateThread(function()
+        while repairingWeapon do
+            UseParticleFxAssetNextCall('core')
+            local sparkEffect = StartNetworkedParticleFxNonLoopedAtCoord('ent_brk_sparking_wires_sp', weaponCoords, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0)
+            Wait(500)
+        end
+    end)
 
     RemoveAllPedWeapons(cache.ped, true)
 
@@ -80,12 +102,20 @@ RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
             combat = true,
             mouse = false,
         },
+        anim = {
+            dict = "timetable@amanda@ig_2",
+            clip = "ig_2_base_amanda",
+        },
     })
     then   
-        StopParticleFxLooped(smokeEffect, 0)
-        TriggerServerEvent('blackmarket:server:RepairWeapon', data)
+        DeleteObject(weaponObject)
+        repairingWeapon = false
+        RemovePtfxAsset('core')
+        TriggerServerEvent('blackmarket:server:RepairWeapon', data, weaponData)
     else
-        StopParticleFxLooped(smokeEffect, 0)
+        DeleteObject(weaponObject)
+        repairingWeapon = false
+        RemovePtfxAsset('core')
         lib.notify({
             title = 'Canceled',
             description = "Canceled",

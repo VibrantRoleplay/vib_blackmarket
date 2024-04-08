@@ -2,8 +2,8 @@ Config = Config or {}
 
 Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
-Config.MoneyItem = "black_money" -- Item used for dirty money
-Config.HeadBagProp = "prop_money_bag_01"
+Config.MoneyItem = "black_money" -- Item used for money
+Config.HeadBagProp = "prop_money_bag_01" -- Prop placed on players head when entering black market
 
 Config.BlackMarketAccess = {
     EntranceInfo = {
@@ -35,7 +35,7 @@ Config.BlackMarketAccess = {
         RepairsPedLocation = vector4(907.85, -3211.16, -99.23, 23.39),
         RepairsPedAnimationDict = "missfbi5ig_15",
         RepairsPedAnimationClip = "look_into_microscope_a_scientista",
-        RepairDuration = 3000, -- How long it takes to repair a weapon in ms
+        RepairDuration = 5000, -- How long it takes to repair a weapon in ms
         RepairCost = 175, -- [Config.MoneyItem] is the currency for this
     },
 }
@@ -43,15 +43,14 @@ Config.BlackMarketAccess = {
 Config.ItemSelling = {
     SalesPed = { -- Must be unique
         SalesPedModel = "a_m_m_malibu_01",
-        SalesPedName = "Sales Ped",
+        SalesPedName = "Sell Items",
         SalesPedLocation = vector4(-381.39, -2682.38, 5.0, 329.84),
         SalesPedAnimationDict = "amb@world_human_leaning@female@wall@back@hand_up@idle_a",
         SalesPedAnimationClip = "idle_a",
     },
     ItemInfo = {
-        RareItemSalesChance = 15, -- Chance for rare items to be sellable per restart
         Artwork = {
-            {item = "art1", price = math.random(50, 100)},
+            {item = "art1", price = math.random(50, 100)}, -- Price is chosen per restart
             {item = "art2", price = math.random(50, 100)},
             {item = "art3", price = math.random(50, 100)},
             {item = "art4", price = math.random(50, 100)},
@@ -79,40 +78,40 @@ Config.ItemSelling = {
 }
 
 Config.MarketPeds = {
-    SuppliesPed = { -- Must be unique
+    {
         Name = "Supplies",
         Model = "s_m_m_ciasec_01", -- Ped model
-        Location = vector4(899.86, -3206.64, -98.19, 114.26), -- Location ped spawns
+        Location = vector4(899.86, -3206.64, -98.19, 114.26), -- Ped location
         AnimationDict = "amb@prop_human_bum_shopping_cart@male@idle_a", -- Dict for animation
         AnimationClip = "idle_c", -- Animation ped plays
-        ItemsForSale = { -- Item = Price
-            {item = "lockpick", price = 10},
-            {item = "screwdriverset", price = 10},
-            {item = "advancedlockpick", price = 10},
+        ItemsForSale = { -- Item / Item Price / Stock amount per restart
+            {Item = "lockpick", Price = 10, AvailableStock = 10},
+            {Item = "screwdriverset", Price = 10, AvailableStock = 10},
+            {Item = "advancedlockpick", Price = 10, AvailableStock = 10},
         },
     },
-    AmmoPed = {
+    {
         Name = "Ammo",
         Model = "s_m_m_fibsec_01",
         Location = vector4(904.74, -3230.82, -99.27, 345.69),
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
         ItemsForSale = {
-            {item = "ammo-9", price = 10},
-            {item = "ammo-rifle", price = 10},
-            {item = "ammo-shotgun", price = 10},
+            {Item = "ammo-9", Price = 10, AvailableStock = 10},
+            {Item = "ammo-rifle", Price = 10, AvailableStock = 10},
+            {Item = "ammo-shotgun", Price = 10, AvailableStock = 10},
         },
     },
-    AttachmentsPed = {
+    {
         Name = "Attachments",
         Model = "s_m_m_highsec_01",
         Location = vector4(908.93, -3207.19, -98.19, 115.63),
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
         ItemsForSale = {
-            {item = "at_scope_macro", price = 10},
-            {item = "at_scope_small", price = 10},
-            {item = "at_scope_medium", price = 10},
+            {Item = "at_scope_macro", Price = 10, AvailableStock = 10},
+            {Item = "at_scope_small", Price = 10, AvailableStock = 10},
+            {Item = "at_scope_medium", Price = 10, AvailableStock = 10},
         },
     },
 }

@@ -1,8 +1,6 @@
-RegisterNetEvent('blackmarket:server:RepairWeapon', function(data)
-    local currentWeapon = exports.ox_inventory:GetCurrentWeapon(source)
-
+RegisterNetEvent('blackmarket:server:RepairWeapon', function(data, weaponData)
     if exports.ox_inventory:RemoveItem(source, Config.MoneyItem, data.args.RepairCost) then
-        exports.ox_inventory:SetDurability(source, currentWeapon.slot, 100)
+        exports.ox_inventory:SetDurability(source, weaponData.slot, 100)
         lib.notify(source, {
             title = 'Attention',
             description = "Your weapon has been fully repaired!",
@@ -27,5 +25,5 @@ lib.callback.register('blackmarket:server:CheckWeaponData', function()
         return
     end
 
-    return currentWeapon.metadata
+    return currentWeapon
 end)
