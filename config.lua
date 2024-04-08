@@ -11,7 +11,6 @@ Config.BlackMarketAccess = {
         EntrancePedName = "Disciple", -- Must be unique for menu reasons
         EntrancePedLocations = { -- Random locations the entrance can spawn at per restart [Set 1 vector4() if you want a static location]
             vector4(742.82, 4170.05, 39.53, 128.57),
-            -- vector4(661.11, 1282.45, 360.29, 264.06),
         },
         EntrancePedAnimationDict = "amb@prop_human_seat_deckchair@male@base", -- Dictionary of animation
         EntrancePedAnimationClip = "base", -- Animation ped plays
@@ -162,8 +161,8 @@ Config.EntranceTypes = {
     NumberCode = math.random(1111, 9999), -- This can be as many numbers as you want or a static number
 }
 
-Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode] for the entrance
-    HackItem = "laptop", -- Item needed to begin hack
+Config.Hacking = {
+    HackItem = "laptop", -- Item required to begin hack
     ZoneOptions = {
         HackDuration = 10, -- How long the hack takes in seconds
         HackProgressbarLabel = "Doing hacker stuff",
@@ -183,17 +182,17 @@ Config.Hacking = { -- Locations where players can "Hack" to get the [NumberCode]
 --Money Washing--
 -----------------
 
-Config.UseMoneyLaundering = true -- False if you don't want laundering system to start
+Config.UseMoneyWashing = true -- [false] = money washing peds will NOT spawn
 Config.DirtyMoneyItem = "black_money"
 Config.RobDuration = 1 -- How long it taskes to rob a store in seconds
 
-Config.Laundering = {
+Config.Washing = {
     {
-        ShopName = "Sandy 24/7", -- Unique name per shop
-        PedModel = "mp_m_shopkeep_01", -- Model of ped that spawns in shop
-        PedSpawn = vector4(1959.86, 3748.68, 31.34, 117.96), -- Location of each ped
-        WashTime = 25, -- How long the wash takes in minutes (Example: 1 = 1 minute / 0.5 = 30 seconds)
-        PercentageTakenFromPlayer = 0.1, -- % of money taken by NPC after washing money for player
+        ShopName = "Sandy 24/7", -- Unique name per shop (Used for cooldowwn  & target name purposes)
+        PedModel = "mp_m_shopkeep_01", -- Ped model
+        PedSpawn = vector4(1959.86, 3748.68, 31.34, 117.96), -- Ped Location
+        WashTime = 25, -- Duration of wash in minutes (I.e 0.5 = 30 seconds)
+        PercentageTakenFromPlayer = 0.1, -- % of money taken by NPC after washing money
     },
     {
         ShopName = "GrapeSeed 24/7",
@@ -221,14 +220,14 @@ Config.Laundering = {
 Config.AmbientPeds = {
     Static = {
         {
-            PedModel = "a_m_m_prolhost_01",
-            SpawnLocation = vector4(888.58, -3206.81, -99.2, 21.69),
-            PlayAnim = false, -- Leave as fase if you don't want the ped to play an animation or if [IsPedArmed = true]
-            AnimationDict = "amb@world_human_welding@male@base", -- Dictionary of animation
-            AnimationClip = "base", -- Animation
-            PlayScenario = true,
+            PedModel = "a_m_m_prolhost_01", -- Ped model
+            SpawnLocation = vector4(888.58, -3206.81, -99.2, 21.69), -- Ped location
+            PlayAnim = false, -- Set to false if [PlayScenario] or [IsPedArmed] = true
+            AnimationDict = "amb@world_human_welding@male@base",
+            AnimationClip = "base",
+            PlayScenario = true, -- set to false if [PlayAnim] = true
             Scenario = 'WORLD_HUMAN_WELDING',
-            IsPedArmed = false, -- Leave as false if playing animation
+            IsPedArmed = false, -- Set to false if [PlayAnim] or [PlayScenario] = true
             WeaponIfArmed = nil, -- Leave as nil if [IsPedArmed = false] otherwise make sure the weapon HASH is used (https://gtahash.ru/weapons/?page=1)
         },
         {
