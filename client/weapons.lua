@@ -73,8 +73,8 @@ RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
     local gunModel = lib.requestModel(weaponModel)
     local weaponObject = CreateObject(gunModel, effectCoords.x-0.5, effectCoords.y+0.5, effectCoords.z+0.74, true, true, false)
     local weaponCoords = GetEntityCoords(weaponObject)
-    SetEntityHeading(weaponObject, 25.0)
-    SetEntityRotation(weaponObject, -85.0, 0.0, 25.0, 1)
+    SetEntityHeading(weaponObject, 25.0) -- This is the heading of the spawned weapon model
+    SetEntityRotation(weaponObject, -85.0, 0.0, 25.0, 1) -- This is the rotation of the spawned weapon model
 
     repairingWeapon = true
     lib.requestNamedPtfxAsset('core')
