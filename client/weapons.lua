@@ -84,7 +84,7 @@ RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
         while repairingWeapon do
             UseParticleFxAssetNextCall('core')
             local sparkEffect = StartNetworkedParticleFxNonLoopedAtCoord('ent_brk_sparking_wires_sp', weaponCoords, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0)
-            Wait(500)
+            Wait(300)
         end
     end)
 
