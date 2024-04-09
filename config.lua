@@ -2,7 +2,7 @@ Config = Config or {}
 
 Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
-Config.MoneyItem = "black_money" -- Item used for money
+Config.MoneyItem = "black_money" -- Currency item used to make purchases with market peds
 Config.HeadBagProp = "prop_money_bag_01" -- Prop placed on players head when entering black market
 
 Config.BlackMarketAccess = {
@@ -78,7 +78,7 @@ Config.ItemSelling = {
 
 Config.MarketPeds = {
     {
-        Name = "Supplies",
+        Name = "Supplies", -- Used for label when targeting ped
         Model = "s_m_m_ciasec_01", -- Ped model
         Location = vector4(899.86, -3206.64, -98.19, 114.26), -- Ped location
         AnimationDict = "amb@prop_human_bum_shopping_cart@male@idle_a", -- Dict for animation
@@ -182,8 +182,8 @@ Config.Hacking = {
 --Money Washing--
 -----------------
 
-Config.UseMoneyWashing = true -- [false] = money washing peds will NOT spawn
-Config.DirtyMoneyItem = "black_money"
+Config.UseMoneyWashing = true -- Set to false to turn money washing system off
+Config.DirtyMoneyItem = "black_money" -- Dirty money item
 Config.RobDuration = 8 -- How long it taskes to rob a store in seconds
 Config.UseableWeapons = { -- List of weapons that are required in a players hand to rob a store
     'weapon_pistol',
@@ -236,7 +236,7 @@ Config.AmbientPeds = {
             PlayAnim = false, -- Set to false if [PlayScenario] or [IsPedArmed] = true
             AnimationDict = "amb@world_human_welding@male@base",
             AnimationClip = "base",
-            PlayScenario = true, -- set to false if [PlayAnim] = true
+            PlayScenario = true, -- Set to false if [PlayAnim] = true
             Scenario = 'WORLD_HUMAN_WELDING',
             IsPedArmed = false, -- Set to false if [PlayAnim] or [PlayScenario] = true
             WeaponIfArmed = nil, -- Leave as nil if [IsPedArmed = false] otherwise make sure the weapon HASH is used (https://gtahash.ru/weapons/?page=1)
