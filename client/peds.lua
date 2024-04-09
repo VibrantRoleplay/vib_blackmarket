@@ -3,9 +3,9 @@ CreateThread(function()
     --Money Washing--
     -----------------
     
-    if Config.UseMoneyLaundering then
-        for _, shop in pairs(Config.Laundering) do
-            lib.requestModel(shop.PedModel, 5000)
+    if Config.UseMoneyWashing then
+        for _, shop in pairs(Config.Washing) do
+            lib.requestModel(shop.PedModel, 10000)
     
             local shopKeeper = CreatePed(1, shop.PedModel, shop.PedSpawn, false, true, false)
             SetEntityInvincible(shopKeeper, true)
@@ -19,7 +19,7 @@ CreateThread(function()
                 options = {
                     {
                         label = "Speak to "..shop.ShopName.." owner",
-                        event = 'blackmarket:LaunderMenu',
+                        event = 'blackmarket:WashMenu',
                         args = shop,
                         icon = "fa-solid fa-basket-shopping",
                         iconColor = "white",
@@ -36,7 +36,7 @@ CreateThread(function()
     ---------------
 
     for _, v in pairs(Config.MarketPeds) do
-        lib.requestModel(v.Model, 5000)
+        lib.requestModel(v.Model, 10000)
         local marketPed = CreatePed(1, v.Model, v.Location, false, true, false)
 
         SetEntityInvincible(marketPed, true)
@@ -73,7 +73,7 @@ CreateThread(function()
     local pedCoords = sales.SalesPedLocation
     local sellingData = Config.ItemSelling.ItemInfo
 
-    lib.requestModel(sales.SalesPedModel, 5000)
+    lib.requestModel(sales.SalesPedModel, 10000)
     local salesPed = CreatePed(1, sales.SalesPedModel, sales.SalesPedLocation, false, true, false)
     SetEntityInvincible(salesPed, true)
     SetBlockingOfNonTemporaryEvents(salesPed, true)
@@ -108,7 +108,7 @@ CreateThread(function()
     local randomLocation = math.random(1, #entrance.EntrancePedLocations)
     local dropoffLocation = entrance.EntrancePedLocations[randomLocation]
 
-    lib.requestModel(entrance.EntrancePedModel, 5000)
+    lib.requestModel(entrance.EntrancePedModel, 10000)
     local entrancePed = CreatePed(1, entrance.EntrancePedModel, dropoffLocation, false, true, false)
     SetEntityInvincible(entrancePed, true)
     SetBlockingOfNonTemporaryEvents(entrancePed, true)
@@ -142,7 +142,7 @@ CreateThread(function()
     local exit = Config.BlackMarketAccess.ExitInfo
     local pedCoords = exit.ExitPedLocation
 
-    lib.requestModel(exit.ExitPedModel, 5000)
+    lib.requestModel(exit.ExitPedModel, 10000)
     local exitPed = CreatePed(1, exit.ExitPedModel, exit.ExitPedLocation, false, true, true)
     SetEntityInvincible(exitPed, true)
     SetBlockingOfNonTemporaryEvents(exitPed, true)
@@ -175,7 +175,7 @@ CreateThread(function()
 
     local repair = Config.BlackMarketAccess.RepairsInfo
 
-    lib.requestModel(repair.RepairsPedModel, 5000)
+    lib.requestModel(repair.RepairsPedModel, 10000)
     local repairPed = CreatePed(1, repair.RepairsPedModel, repair.RepairsPedLocation, false, true, true)
     SetEntityInvincible(repairPed, true)
     SetBlockingOfNonTemporaryEvents(repairPed, true)
