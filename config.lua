@@ -35,7 +35,7 @@ Config.BlackMarketAccess = {
         RepairsPedAnimationDict = "missfbi5ig_15",
         RepairsPedAnimationClip = "look_into_microscope_a_scientista",
         RepairDuration = 5000, -- How long it takes to repair a weapon in ms
-        RepairCost = 175, -- [Config.MoneyItem] is the currency for this
+        RepairCost = 175, -- Cost of repairs using [Config.MoneyItem]
     },
 }
 
@@ -184,7 +184,14 @@ Config.Hacking = {
 
 Config.UseMoneyWashing = true -- [false] = money washing peds will NOT spawn
 Config.DirtyMoneyItem = "black_money"
-Config.RobDuration = 1 -- How long it taskes to rob a store in seconds
+Config.RobDuration = 8 -- How long it taskes to rob a store in seconds
+Config.UseableWeapons = { -- List of weapons that are required in a players hand to rob a store
+    'weapon_pistol',
+    'weapon_smg',
+    'weapon_assaultrifle',
+    'weapon_combatpistol',
+    'weapon_crowbar',
+}
 
 Config.Washing = {
     {
@@ -216,6 +223,10 @@ Config.Washing = {
         PercentageTakenFromPlayer = 0.6,
     },
 }
+
+----------------
+--Ambient Peds--
+----------------
 
 Config.AmbientPeds = {
     Static = {

@@ -14,7 +14,7 @@ RegisterNetEvent('blackmarket:server:UpdateStores', function(data)
 	}
 end)
 
-RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citizenId, moneyLaunderingLoss)
+RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citizenId, moneyWashingingLoss)
 	local moneyAmount = input[1]
 
 	exports.ox_inventory:RemoveItem(source, Config.MoneyItem, moneyAmount)
@@ -22,7 +22,7 @@ RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citize
 		CurrentlyWashing = true,
 		AmountBeingWashed = moneyAmount,
 		Owner = citizenId,
-		StoreCut = moneyLaunderingLoss,
+		StoreCut = moneyWashingingLoss,
 	}
 end)
 
@@ -49,6 +49,9 @@ RegisterNetEvent('blackmarket:server:RobStore', function(data, citizenId)
 	Context.StoreInfo[data.storeData.args.ShopName].AmountBeingWashed = 0
 	Context.StoreInfo[data.storeData.args.ShopName].Robber = citizenId
 	Context.StoreInfo[data.storeData.args.ShopName].HasStoreBeenRobbed = true
+end)
+RegisterNetEvent('blackmarket:server:SyncPedStuff', function(entity)
+	TriggerClientEvent('blackmarket:client:SyncPedStuff', -1, entity)
 end)
 
 -------------

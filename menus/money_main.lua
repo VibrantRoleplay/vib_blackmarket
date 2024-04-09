@@ -1,4 +1,4 @@
-RegisterNetEvent('blackmarket:LaunderMenu', function(data)
+RegisterNetEvent('blackmarket:WashMenu', function(data)
     local playerJob = lib.callback.await('blackmarket:server:GetPlayerJob', false)
 
     if playerJob == "police" then
@@ -41,23 +41,23 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
 
             if not storeInfo.CurrentlyWashing then
                 headerMenu[#headerMenu + 1] = {
-                    title = "Launder",
-                    description = "So ... you're looking to clean some money...",
+                    title = "Washing service",
+                    description = "Wash your money here for a price",
                     event = 'blackmarket:client:StartWashing',
                     args = data,
-                    icon = 'fa-solid fa-dollar',
-                    iconColor = "green",
+                    icon = 'fa-solid fa-hands-bubbles',
+                    iconColor = "white",
                 }
             elseif storeInfo.CurrentlyWashing then
                 if citizenId == storeInfo.Owner then
                     if cooldown > 0 and not storeInfo.HasStoreBeenRobbed then
                         headerMenu[#headerMenu + 1] = {
                             title = "Busy",
-                            description = "I'm currently washing your $"..storeInfo.AmountBeingWashed,
+                            description = "Don't worry boss! Your $"..storeInfo.AmountBeingWashed.." will be washed in no time!",
                             progress = cooldown,
-                            colorScheme = "green",
-                            icon = 'fa-solid fa-xmark',
-                            iconColor = "red",
+                            colorScheme = 'violet',
+                            icon = 'fa-solid fa-hourglass-start',
+                            iconColor = "yellow",
                             readOnly = true,
                         }
                     else
@@ -71,8 +71,8 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
                                         storeData = data,
                                         robber = storeInfo.Robber,
                                     },
-                                    icon = 'fa-solid fa-question',
-                                    iconColor = "yellow",
+                                    icon = 'fa-solid fa-sack-dollar',
+                                    iconColor = "red",
                                 }
                             else
                                 headerMenu[#headerMenu + 1] = {
@@ -102,12 +102,12 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
                 else
                     if not storeInfo.HasStoreBeenRobbed then
                         headerMenu[#headerMenu + 1] = {
-                            title = "Rob Store",
-                            description = "You sure you wanna do this? The guy who gave me this money seems unhinged ..." 
-                            .."\n\n I'm sure he's watching the cameras, man... He'll know what you're doing",
+                            title = "Rob",
+                            description = "Rob money from store",
                             event = 'blackmarket:client:RobStore',
                             args = {
                                 storeData = data,
+                                washAmount = storeInfo.AmountBeingWashed,
                             },
                             icon = 'fa-solid fa-gun',
                             iconColor = "red",
@@ -117,12 +117,12 @@ RegisterNetEvent('blackmarket:LaunderMenu', function(data)
             end
 
             lib.registerContext({
-                id = 'launder_menu',
-                title = "Shop interaction things",
+                id = 'wash_menu',
+                title = "Washing service",
                 options = headerMenu
             })
 
-            lib.showContext('launder_menu')
+            lib.showContext('wash_menu')
         end, data)
     end, data.args.ShopName)
 end)
