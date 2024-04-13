@@ -16,6 +16,7 @@ Black market resource for illegal sales and crafting
 - Configurable, unique money washing locations across the city, with the ability to be robbed and interrogated (Converts[Config.MoneyItem] to ["money"])
 - Ped where players can interact with and see what attachments can be applied to their currently held weapon
 - Ped where players can fully repair their currently held weapon
+- Configurable shop stock values to limit player accessibility to certain items
 
 # How do players access the blackmarket?
 
