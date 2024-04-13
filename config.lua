@@ -84,9 +84,9 @@ Config.MarketPeds = {
         AnimationDict = "amb@prop_human_bum_shopping_cart@male@idle_a", -- Dict for animation
         AnimationClip = "idle_c", -- Animation ped plays
         ItemsForSale = { -- Item / Item Price / Stock amount per restart
-            {Item = "lockpick", Price = 10, AvailableStock = 10},
-            {Item = "screwdriverset", Price = 10, AvailableStock = 10},
-            {Item = "advancedlockpick", Price = 10, AvailableStock = 10},
+            {Item = "lockpick", Price = 10, AvailableStock = 1},
+            {Item = "screwdriverset", Price = 10, AvailableStock = 2},
+            {Item = "advancedlockpick", Price = 10, AvailableStock = 3},
         },
     },
     {

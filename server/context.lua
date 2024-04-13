@@ -1,6 +1,7 @@
 Context = {
     StoreInfo = {},
     WashTimes = {},
+	MarketInfo = {},
 }
 
 RegisterNetEvent("blackmarket:server:TriggerWashTimer", function(data)

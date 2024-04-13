@@ -35,7 +35,7 @@ CreateThread(function()
     --Market Peds--
     ---------------
 
-    for _, v in pairs(Config.MarketPeds) do
+    for k, v in pairs(Config.MarketPeds) do
         lib.requestModel(v.Model, 10000)
         local marketPed = CreatePed(1, v.Model, v.Location, false, true, false)
 
@@ -63,6 +63,7 @@ CreateThread(function()
                 },
             },
         })
+        TriggerServerEvent('blackmarket:server:UpdateMarkets', k, v)
     end
 
     ---------------

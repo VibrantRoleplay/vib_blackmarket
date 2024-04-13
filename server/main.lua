@@ -10,12 +10,30 @@ math.randomseed(os.time())
 --Events--
 ----------
 
+RegisterNetEvent('blackmarket:server:UpdateMarkets', function(index, data)
+    for k, v in pairs(data.ItemsForSale) do
+        Context.MarketInfo[v.Item] = {
+            item = v.Item,
+            price = v.Price,
+            stock = v.AvailableStock,
+        }
+    end
+end)
+
+lib.callback.register('blackmarket:server:GetStockInfo', function(source, stock)
+    return Context.MarketInfo[stock]
+end)
+
 RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
     local cost = (args.price * input)
 
     if exports.ox_inventory:CanCarryItem(source, args.item, input) then
         if exports.ox_inventory:RemoveItem(source, Config.MoneyItem, cost) then
             exports.ox_inventory:AddItem(source, args.item, input)
+
+            Context.MarketInfo[args.item].stock = (Context.MarketInfo[args.item].stock - input)
+
+            print(json.encode(Context.MarketInfo[args.item], {indent = true}))
 
         else
             lib.notify(source, {
