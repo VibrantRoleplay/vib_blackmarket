@@ -88,7 +88,7 @@ RegisterNetEvent('blackmarket:WashMenu', function(data)
 
                             headerMenu[#headerMenu + 1] = {
                                 title = "Finished",
-                                description = "I've washed your money ... my cut is $"..storeInfo.StoreCut.."  \n\n Your return is $"..returnValue,
+                                description = "I've washed your money ... my cut is $"..math.floor(storeInfo.StoreCut).."  \n\n Your return is $"..math.floor(returnValue),
                                 serverEvent = 'blackmarket:server:RetrieveMoney',
                                 args = {
                                     returnMoney = returnValue,

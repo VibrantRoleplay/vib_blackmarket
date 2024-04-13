@@ -27,7 +27,7 @@ RegisterNetEvent('blackmarket:server:StartWashing', function(input, data, citize
 end)
 
 RegisterNetEvent('blackmarket:server:RetrieveMoney', function(data)
-	local amount = QBCore.Shared.Round(data.returnMoney)
+	local amount = math.floor(data.returnMoney)
 
 	exports.ox_inventory:AddItem(source, "money", amount)
 	Context.StoreInfo[data.storeData.args.ShopName] = {
