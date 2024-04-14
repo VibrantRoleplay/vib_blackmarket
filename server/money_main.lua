@@ -50,6 +50,7 @@ RegisterNetEvent('blackmarket:server:RobStore', function(data, citizenId)
 	Context.StoreInfo[data.storeData.args.ShopName].Robber = citizenId
 	Context.StoreInfo[data.storeData.args.ShopName].HasStoreBeenRobbed = true
 end)
+
 RegisterNetEvent('blackmarket:server:SyncPedStuff', function(entity)
 	TriggerClientEvent('blackmarket:client:SyncPedStuff', -1, entity)
 end)
