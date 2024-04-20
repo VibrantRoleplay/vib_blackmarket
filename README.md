@@ -42,3 +42,5 @@ SIMPLE! Not all server owners will have this location in a vehicle friendly loca
 # Why aren't you using ["marked_bills"] for your currency of dirty money?
 
 Whilst this resource is free and we'd love to see it on every server out there, before anything else we've designed it for OUR server specifically and with it being open source, you're free and encouraged to make changes!
+
+# Thanks to Bauables for the suggestions
