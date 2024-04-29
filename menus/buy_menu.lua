@@ -6,22 +6,24 @@ RegisterNetEvent('blackmarket:BuyMenu', function(v)
     local stockAmountDescription = nil
 
     for _, itemData in pairs(v.args.ItemsForSale) do
+        local playerMoneyToItemCostDif = (itemData.Price - moneyAmount)
+        print(json.encode(playerMoneyToItemCostDif, {indent = true}))
         local stockInfo = lib.callback.await('blackmarket:server:GetStockInfo', false, itemData.Item)
 
         if moneyAmount > itemData.Price then
-            buyItemDescription = "Our "..exports.ox_inventory:Items(itemData.Item).label.." cost $"..itemData.Price.. " today"
+            buyItemDescription = "These are $"..itemData.Price
         else
-            buyItemDescription = "You don't have enough money to buy any "..exports.ox_inventory:Items(itemData.Item).label
+            buyItemDescription = "You'll need $"..playerMoneyToItemCostDif.." more for this"
         end
 
         if stockInfo.stock <= 0 then
             stockAmountDescription = "We don't have any left in stock"
         else
-            stockAmountDescription = "We have "..stockInfo.stock.." available"
+            stockAmountDescription = "Stock: "..stockInfo.stock
         end
 
         headerMenu[#headerMenu + 1] = {
-            title = "Purchase "..exports.ox_inventory:Items(itemData.Item).label,
+            title = exports.ox_inventory:Items(itemData.Item).label,
             description = buyItemDescription..'\n\n'..stockAmountDescription,
             event = "blackmarket:BuyInput",
             args = {
@@ -48,7 +50,7 @@ RegisterNetEvent("blackmarket:BuyInput", function(args)
     local moneyAmount = exports.ox_inventory:Search('count', Config.MoneyItem)
     local CanBuyWithMoney = math.floor((moneyAmount / args.price))
 
-	local input = lib.inputDialog('Item Sales', {
+	local input = lib.inputDialog('Quantity', {
         {
             type = "slider",
             label = "How many do you want?",
