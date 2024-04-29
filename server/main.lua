@@ -32,9 +32,6 @@ RegisterNetEvent("blackmarket:server:BuyStock", function(input, args)
             exports.ox_inventory:AddItem(source, args.item, input)
 
             Context.MarketInfo[args.item].stock = (Context.MarketInfo[args.item].stock - input)
-
-            print(json.encode(Context.MarketInfo[args.item], {indent = true}))
-
         else
             lib.notify(source, {
                 title = "Attention",
