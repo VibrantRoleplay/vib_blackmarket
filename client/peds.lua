@@ -28,6 +28,7 @@ CreateThread(function()
                 },
             })
             TriggerServerEvent('blackmarket:server:UpdateStores', shop)
+            SetModelAsNoLongerNeeded(shop.pedModel)
         end
     end
 

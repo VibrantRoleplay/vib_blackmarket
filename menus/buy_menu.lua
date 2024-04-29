@@ -7,7 +7,6 @@ RegisterNetEvent('blackmarket:BuyMenu', function(v)
 
     for _, itemData in pairs(v.args.ItemsForSale) do
         local playerMoneyToItemCostDif = (itemData.Price - moneyAmount)
-        print(json.encode(playerMoneyToItemCostDif, {indent = true}))
         local stockInfo = lib.callback.await('blackmarket:server:GetStockInfo', false, itemData.Item)
 
         if moneyAmount > itemData.Price then
