@@ -18,7 +18,7 @@ RegisterNetEvent('blackmarket:client:StartWashing', function(data)
         return
     end
 
-    TriggerEvent('blackmarket:client:WashMoney', input, data.args)
+    TriggerEvent('blackmarket:client:WashMoney', input, data.args.shop)
     TriggerServerEvent('blackmarket:server:TriggerWashTimer', data)
 end)
 
@@ -84,9 +84,7 @@ RegisterNetEvent('blackmarket:client:RobStore', function(data)
     end
 
     local citizenId = QBCore.Functions.GetPlayerData().citizenid
-    TaskAimGunAtCoord(cache.ped, data.storeData.args.PedSpawn.x,data.storeData.args.PedSpawn.y, data.storeData.args.PedSpawn.z+1, (Config.RobDuration * 1000), true, true)
-
-    TriggerServerEvent('blackmarket:server:SyncPedStuff', data.storeData.entity)
+    TaskAimGunAtCoord(cache.ped, data.storeData.args.shop.PedSpawn.x, data.storeData.args.shop.PedSpawn.y, data.storeData.args.shop.PedSpawn.z+1, (Config.RobDuration * 1000), true, true)
 
     if lib.progressCircle({
         duration = (Config.RobDuration * 1000),
@@ -132,10 +130,4 @@ RegisterNetEvent('blackmarket:client:InvestigateRobbery', function(data)
             centered = true,
         })
     end, data)
-end)
-
-RegisterNetEvent('blackmarket:client:SyncPedStuff', function(entity)
-    lib.requestAnimDict('mp_bank_heist_1', 5000)
-    TaskPlayAnim(entity, 'mp_bank_heist_1', 'm_cower_01', 4.0, -4.0, -1, 01, 0, false, false, false)
-    PlayPedAmbientSpeechNative(entity, 'GENERIC_FRIGHTENED_MED', 'SPEECH_PARAMS_FORCE_SHOUTED')
 end)

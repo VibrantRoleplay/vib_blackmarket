@@ -40,19 +40,15 @@ end)
 
 RegisterNetEvent('blackmarket:server:RobStore', function(data, citizenId)
 	local src = source
-	local moneyAmount = Context.StoreInfo[data.storeData.args.ShopName].AmountBeingWashed
+	local moneyAmount = Context.StoreInfo[data.storeData.args.shop.ShopName].AmountBeingWashed
 
 	if exports.ox_inventory:CanCarryItem(source, Config.MoneyItem, moneyAmount) then
 		exports.ox_inventory:AddItem(source, Config.MoneyItem, moneyAmount)
 	end
 
-	Context.StoreInfo[data.storeData.args.ShopName].AmountBeingWashed = 0
-	Context.StoreInfo[data.storeData.args.ShopName].Robber = citizenId
-	Context.StoreInfo[data.storeData.args.ShopName].HasStoreBeenRobbed = true
-end)
-
-RegisterNetEvent('blackmarket:server:SyncPedStuff', function(entity)
-	TriggerClientEvent('blackmarket:client:SyncPedStuff', -1, entity)
+	Context.StoreInfo[data.storeData.args.shop.ShopName].AmountBeingWashed = 0
+	Context.StoreInfo[data.storeData.args.shop.ShopName].Robber = citizenId
+	Context.StoreInfo[data.storeData.args.shop.ShopName].HasStoreBeenRobbed = true
 end)
 
 -------------

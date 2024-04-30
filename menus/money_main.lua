@@ -25,6 +25,7 @@ RegisterNetEvent('blackmarket:WashMenu', function(data)
                         description = "Get fucked ... You know how much trouble you caused me? \n\n I aint dealing with you for a good while, cunt...",
                         icon = 'fa-solid fa-xmark',
                         iconColor = "red",
+                        readOnly = true,
                     }
                 else
                     if citizenId ~= storeInfo.Owner then
@@ -92,7 +93,7 @@ RegisterNetEvent('blackmarket:WashMenu', function(data)
                                 serverEvent = 'blackmarket:server:RetrieveMoney',
                                 args = {
                                     returnMoney = returnValue,
-                                    storeData = data,
+                                    storeData = data.shop,
                                 },
                                 icon = 'fa-solid fa-dollar',
                                 iconColor = "green",
@@ -123,6 +124,6 @@ RegisterNetEvent('blackmarket:WashMenu', function(data)
             })
 
             lib.showContext('wash_menu')
-        end, data)
-    end, data.args.ShopName)
+        end, data.args.shop)
+    end, data.args.shop.ShopName)
 end)

@@ -20,7 +20,10 @@ CreateThread(function()
                     {
                         label = "Speak to "..shop.ShopName.." owner",
                         event = 'blackmarket:WashMenu',
-                        args = shop,
+                        args = {
+                            shop = shop,
+                            shopPed = shopKeeper,
+                        },
                         icon = "fa-solid fa-basket-shopping",
                         iconColor = "white",
                         distance = 2,
@@ -65,6 +68,7 @@ CreateThread(function()
             },
         })
         TriggerServerEvent('blackmarket:server:UpdateMarkets', k, v)
+        SetModelAsNoLongerNeeded(v.Model)
     end
 
     ---------------
@@ -101,6 +105,7 @@ CreateThread(function()
             },
         },
     })
+    SetModelAsNoLongerNeeded(sales.SalesPedModel)
 
     -------------------
     --Entering Market--
@@ -136,6 +141,7 @@ CreateThread(function()
             },
         },
     })
+    SetModelAsNoLongerNeeded(entrance.EntrancePedModel)
 
     ------------------
     --Exiting Market--
@@ -170,6 +176,7 @@ CreateThread(function()
             },
         },
     })
+    SetModelAsNoLongerNeeded(exit.ExitPedModel)
 
     ------------------
     --Weapon Repairs--
@@ -203,4 +210,5 @@ CreateThread(function()
             },
         },
     })
+    SetModelAsNoLongerNeeded(repair.RepairsPedModel)
 end)

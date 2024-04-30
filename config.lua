@@ -200,7 +200,7 @@ Config.Hacking = {
 
 Config.UseMoneyWashing = true -- Set to false to turn money washing system off
 Config.DirtyMoneyItem = "black_money" -- Dirty money item
-Config.RobDuration = 8 -- How long it taskes to rob a store in seconds
+Config.RobDuration = 8 -- How long it takes to rob a store in seconds
 Config.UseableWeapons = { -- List of weapons that are required in a players hand to rob a store
     'weapon_pistol',
     'weapon_smg',
