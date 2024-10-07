@@ -30,11 +30,15 @@ RegisterNetEvent('blackmarket:server:RetrieveMoney', function(data)
 	local amount = math.floor(data.returnMoney)
 
 	exports.ox_inventory:AddItem(source, "money", amount)
-	Context.StoreInfo[data.storeData.args.ShopName] = {
+
+	Context.StoreInfo[data.storeData.args.shop.ShopName] = {
 		CurrentlyWashing = false,
 		AmountBeingWashed = 0,
 		Owner = nil,
 		storeCut = nil,
+		Robber = nil,
+		HasStoreBeenRobbed = false,
+		Investigated = false,
 	}
 end)
 
