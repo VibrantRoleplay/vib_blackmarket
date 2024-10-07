@@ -11,6 +11,10 @@ Config.BlackMarketAccess = {
         EntrancePedName = "Disciple", -- Must be unique for menu reasons
         EntrancePedLocations = { -- Random locations the entrance can spawn at per restart [Set 1 vector4() if you want a static location]
             vector4(742.82, 4170.05, 39.53, 128.57),
+            vector4(-2080.64, 2609.72, 2.08, 105.21),
+            vector4(-279.77, 2200.63, 128.85, 112.53),
+            vector4(929.9, 2868.75, 59.91, 2.24),
+            vector4(-3013.02, 22.48, 9.11, 205.42),
         },
         EntrancePedAnimationDict = "amb@prop_human_seat_deckchair@male@base", -- Dictionary of animation
         EntrancePedAnimationClip = "base", -- Animation ped plays
@@ -18,7 +22,7 @@ Config.BlackMarketAccess = {
     },
     ExitInfo = {
         ExitPedModel = "a_m_m_acult_01",
-        ExitPedName = "Gimp",
+        ExitPedName = "Guard",
         ExitPedLocation = vector4(895.4, -3242.6, -99.26, 81.78),
         ExitPedAnimationDict = "amb@world_human_hang_out_street@female_arms_crossed@idle_a",
         ExitPedAnimationClip = "idle_a",
@@ -26,54 +30,36 @@ Config.BlackMarketAccess = {
             vector4(479.43, -2248.61, 5.91, 329.6),
             vector4(1119.57, -2147.11, 30.83, 354.01),
             vector4(935.48, -1517.98, 31.02, 352.9),
+            vector4(523.22, -1941.31, 24.98, 292.41),
+            vector4(1516.95, 3793.44, 33.5, 134.38),
         },
     },
     RepairsInfo = {
-        RepairsPedModel = "a_m_m_acult_01",
-        RepairsPedName = "Mac",
-        RepairsPedLocation = vector4(907.85, -3211.16, -99.23, 23.39),
-        RepairsPedAnimationDict = "missfbi5ig_15",
-        RepairsPedAnimationClip = "look_into_microscope_a_scientista",
-        RepairDuration = 5000, -- How long it takes to repair a weapon in ms
-        RepairCost = 175, -- Cost of repairs using [Config.MoneyItem]
+        {
+            RepairsPedModel = "a_m_m_acult_01",
+            RepairsPedName = "Christian",
+            RepairsPedLocation = vector4(907.85, -3211.16, -99.23, 23.39),
+            SpawnedWeaponRepairModel = vector3(907.65, -3210.50, -98.30),
+            SpawnedRepairModelRotation = vector3(-85.0, 0.0, 25.0),
+            RepairsPedAnimationDict = "missfbi5ig_15",
+            RepairsPedAnimationClip = "look_into_microscope_a_scientista",
+            RepairDuration = 5000, -- How long it takes to repair a weapon in ms
+            RepairCost = 175, -- Cost of repairs using [Config.MoneyItem]
+            requiredMoneyType = 'black_money', -- Dirty money item name
+        },
+        {
+            RepairsPedModel = "s_f_y_cop_01",
+            RepairsPedName = "Armorer",
+            RepairsPedLocation = vector4(487.15, -997.0, 29.68, 267.62),
+            SpawnedWeaponRepairModel = vector3(487.95, -996.85, 30.52),
+            SpawnedRepairModelRotation = vector3(0.0, 90.0, 90.0),
+            RepairsPedAnimationDict = "missfbi5ig_15",
+            RepairsPedAnimationClip = "look_into_microscope_a_scientista",
+            RepairDuration = 7500, -- How long it takes to repair a weapon in ms
+            RepairCost = 35, -- Cost of repairs using [Config.MoneyItem]
+            requiredMoneyType = 'money', -- Clean money item name
+        },
     },
-}
-
-Config.ItemSelling = {
-    SalesPed = { -- Must be unique
-        SalesPedModel = "a_m_m_malibu_01",
-        SalesPedName = "Sell Items",
-        SalesPedLocation = vector4(-381.39, -2682.38, 5.0, 329.84),
-        SalesPedAnimationDict = "amb@world_human_leaning@female@wall@back@hand_up@idle_a",
-        SalesPedAnimationClip = "idle_a",
-    },
-    ItemInfo = {
-        Artwork = {
-            {item = "art1", price = math.random(50, 100)}, -- Price is chosen per restart
-            {item = "art2", price = math.random(50, 100)},
-            {item = "art3", price = math.random(50, 100)},
-            {item = "art4", price = math.random(50, 100)},
-            {item = "art5", price = math.random(50, 100)},
-            {item = "art6", price = math.random(50, 100)},
-            {item = "art7", price = math.random(50, 100)},
-        },
-        Minerals = {
-            {item = "refined_gold", price = math.random(125, 275)},
-            {item = "refined_silver", price = math.random(125, 275)},
-        },
-        Electricals = {
-            {item = "boombox", price = math.random(125, 275)},
-            {item = "md_speakers", price = math.random(125, 275)},
-            {item = "md_tablet", price = math.random(125, 275)},
-            {item = "md_desktop", price = math.random(125, 275)},
-            {item = "md_monitor", price = math.random(125, 275)},
-            {item = "laptop", price = math.random(75, 150)},
-            {item = "phone", price = math.random(50, 125)},
-            {item = "tablet", price = math.random(65, 125)},
-            {item = "house_laptop", price = math.random(250, 450)},
-            {item = "mansion_laptop", price = math.random(375, 550)},
-        },
-    }
 }
 
 Config.MarketPeds = {
@@ -84,9 +70,10 @@ Config.MarketPeds = {
         AnimationDict = "amb@prop_human_bum_shopping_cart@male@idle_a", -- Dict for animation
         AnimationClip = "idle_c", -- Animation ped plays
         ItemsForSale = { -- Item / Item Price / Stock amount per restart
-            {Item = "lockpick", Price = 10, AvailableStock = 1},
-            {Item = "screwdriverset", Price = 10, AvailableStock = 2},
-            {Item = "advancedlockpick", Price = 10, AvailableStock = 3},
+            {name = "lockpick", price = 65, count = 50, currency = "black_money"},
+            {name = "screwdriverset", price = 30, count = 15, currency = "black_money"},
+            {name = "advancedlockpick", price = 115, count = 25, currency = "black_money"},
+            {name = "diamond_drill", price = 12500, count = 3, currency = "black_money"},
         },
     },
     {
@@ -96,12 +83,11 @@ Config.MarketPeds = {
         AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
         AnimationClip = "idle_c",
         ItemsForSale = {
-            {Item = "ammo-9", Price = 1, AvailableStock = 250},
-            {Item = "ammo-rifle", Price = 4, AvailableStock = 150},
-            {Item = "ammo-rifle2", Price = 5, AvailableStock = 150},
-            {Item = "ammo-45", Price = 2, AvailableStock = 120},
-            {Item = "ammo-shotgun", Price = 3, AvailableStock = 50},
-
+            {name = "ammo-9", price = 1, count = 250, currency = "black_money"},
+            {name = "ammo-rifle", price = 4, count = 150, currency = "black_money"},
+            {name = "ammo-rifle2", price = 5, count = 150, currency = "black_money"},
+            {name = "ammo-45", price = 2, count = 120, currency = "black_money"},
+            {name = "ammo-shotgun", price = 3, count = 50, currency = "black_money"},
         },
     },
     -- {
@@ -111,22 +97,22 @@ Config.MarketPeds = {
     --     AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
     --     AnimationClip = "idle_c",
     --     ItemsForSale = {
-    --         {Item = "at_flashlight", Price = 10, AvailableStock = 10},
-    --         {Item = "at_suppressor_light", Price = 10, AvailableStock = 10},
-    --         {Item = "at_suppressor_heavy", Price = 10, AvailableStock = 10},
-    --         {Item = "at_grip", Price = 10, AvailableStock = 10},
-    --         {Item = "at_barrel", Price = 10, AvailableStock = 10},
-    --         {Item = "at_clip_extended_pistol", Price = 10, AvailableStock = 10},
-    --         {Item = "at_clip_extended_smg", Price = 10, AvailableStock = 10},
-    --         {Item = "at_clip_extended_shotgun", Price = 10, AvailableStock = 10},
-    --         {Item = "at_clip_extended_rifle", Price = 10, AvailableStock = 10},
-    --         {Item = "at_clip_drum_smg", Price = 10, AvailableStock = 10},
-    --         {Item = "at_clip_drum_rifle", Price = 10, AvailableStock = 10},
-    --         {Item = "at_scope_macro", Price = 10, AvailableStock = 10},
-    --         {Item = "at_scope_small", Price = 10, AvailableStock = 10},
-    --         {Item = "at_scope_medium", Price = 10, AvailableStock = 10},
-    --         {Item = "at_scope_large", Price = 10, AvailableStock = 10},
-    --         {Item = "at_scope_holo", Price = 10, AvailableStock = 10},
+    --         {name = "at_flashlight", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_suppressor_light", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_suppressor_heavy", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_grip", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_barrel", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_clip_extended_pistol", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_clip_extended_smg", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_clip_extended_shotgun", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_clip_extended_rifle", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_clip_drum_smg", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_clip_drum_rifle", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_scope_macro", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_scope_small", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_scope_medium", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_scope_large", price = 10, count = 10, currency = "black_money"},
+    --         {name = "at_scope_holo", price = 10, count = 10, currency = "black_money"},
     --     },
     -- },
 }
@@ -134,44 +120,77 @@ Config.MarketPeds = {
 Config.EntranceTypes = {
     Riddles = {
         {
-            Question = "What gets more wet as it dries?",
+            Question = "What is the guard rotation at BolingBroke?",
             Answers = {
-                "A Human",
-                "A Spud",
-                "A Sponge",
-                "A Towel",
+                "4-4-5-3",
+                "3-4-5-2",
+                "4-4-4-4",
+                "4-6-5-3",
             },
-            Correct_Answer = "A Towel", -- Must match one of the [Answers] above
+            Correct_Answer = "4-4-5-3", -- Must match one of the [Answers] above
         },
         {
-            Question = "What has to be broken before you can use it?",
+            Question = "How many vehicles are currently on LSPD's watch list?",
             Answers = {
-                "A Phone",
-                "A Mirror",
-                "A Chair",
-                "An Egg",
+                "75",
+                "60",
+                "115",
+                "22",
             },
-            Correct_Answer = "An Egg",
+            Correct_Answer = "60",
         },
         {
-            Question = "What creature walks on four legs in the morning, two legs in the afternoon, and three legs in the evening?",
+            Question = "How many families are within this city?",
             Answers = {
-                "A Centipede",
-                "A Dog",
-                "A Paraplegic",
-                "A Man",
+                "Three",
+                "Four",
+                "Seven",
+                "Fifteen",
             },
-            Correct_Answer = "A Man",
+            Correct_Answer = "Three",
         },
         {
-            Question = "What is always in front of you but you can't see it?",
+            Question = "What time does the security on the power grid clock off?",
             Answers = {
-                "A Car",
-                "A Phone",
-                "Your Nose",
-                "The Future",
+                "00:00am",
+                "12:00pm",
+                "08:00am",
+                "17:00pm",
             },
-            Correct_Answer = "The Future",
+            Correct_Answer = "12:00pm",
+        },
+        {
+            Question = "Mind telling me where you'd get a boost contract from?",
+            Answers = {
+                "Sandy Shores race track",
+                "Casino",
+                "Franks Emoprium",
+                "Southside",
+                "Paleto bay garage"
+            },
+            Correct_Answer = "Sandy Shores race track",
+        },
+        {
+            Question = "Do you know where to get some good stuff?",
+            Answers = {
+                "The Nudist colony",
+                "The back of that southside restaurant",
+                "Paleto bay docks",
+                "The oil refinery",
+                "You could always grow your own in the hills"
+            },
+            Correct_Answer = "The Nudist colony",
+        },
+        {
+            Question = "What would I need to make a device that could hack a vault panel?",
+            Answers = {
+                "A trojan USB",
+                "A screwdriver set",
+                "Some copper wire",
+                "An old phone",
+                "Some gold"
+            },
+            Correct_Answer = "Some copper wire",
         },
     },
     NumberCode = math.random(1111, 9999), -- This can be as many numbers as you want or a static number
@@ -211,32 +230,52 @@ Config.UseableWeapons = { -- List of weapons that are required in a players hand
 
 Config.Washing = {
     {
-        ShopName = "Sandy 24/7", -- Unique name per shop (Used for cooldowwn  & target name purposes)
-        PedModel = "mp_m_shopkeep_01", -- Ped model
-        PedSpawn = vector4(1959.86, 3748.68, 31.34, 117.96), -- Ped Location
+        ShopName = "Grapseed", -- Unique name per shop (Used for cooldowwn  & target name purposes)
+        PedModel = "s_m_m_linecook", -- Ped model
+        PedSpawn = vector4(2439.8, 4977.93, 45.81, 47.18), -- Ped Location
         WashTime = 25, -- Duration of wash in minutes (I.e 0.5 = 30 seconds)
-        PercentageTakenFromPlayer = 0.1, -- % of money taken by NPC after washing money
+        PercentageTakenFromPlayer = 0.285, -- % of money taken by NPC after washing money (1.0 = 100%)
+        PlayAnim = true, -- Set to false if [PlayScenario] = true
+        AnimationDict = "missheist_agency3aig_23",
+        AnimationClip = "urinal_sink_loop",
+        PlayScenario = false, -- Set to false if [PlayAnim] = true
+        Scenario = 'WORLD_HUMAN_WELDING',
     },
     {
-        ShopName = "GrapeSeed 24/7",
-        PedModel = "mp_m_shopkeep_01",
-        PedSpawn = vector4(1707.31, 4920.68, 41.06, 155.0),
-        WashTime = 25,
-        PercentageTakenFromPlayer = 0.1,
+        ShopName = "Altruist",
+        PedModel = "a_m_y_acult_02",
+        PedSpawn = vector4(-1109.74, 4951.28, 217.35, 247.95),
+        WashTime = 17.5,
+        PercentageTakenFromPlayer = 0.224,
+        PlayAnim = true, -- Set to false if [PlayScenario] or [IsPedArmed] = true
+        AnimationDict = "timetable@ron@ig_5_p3",
+        AnimationClip = "ig_5_p3_base",
+        PlayScenario = false, -- Set to false if [PlayAnim] = true
+        Scenario = 'WORLD_HUMAN_WELDING',
     },
     {
-        ShopName = "Strawberry 24/7",
-        PedModel = "mp_m_shopkeep_01",
-        PedSpawn = vector4(28.83, -1339.76, 28.49, 66.97),
-        WashTime = 20,
-        PercentageTakenFromPlayer = 0.1,
+        ShopName = "Sandy",
+        PedModel = "a_f_m_tramp_01",
+        PedSpawn = vector4(1515.51, 3570.16, 37.73, 72.83),
+        WashTime = 10,
+        PercentageTakenFromPlayer = 0.395,
+        PlayAnim = true, -- Set to false if [PlayScenario] or [IsPedArmed] = true
+        AnimationDict = "anim@amb@business@bgen@bgen_no_work@",
+        AnimationClip = "sit_phone_phoneputdown_idle_nowork",
+        PlayScenario = false, -- Set to false if [PlayAnim] = true
+        Scenario = 'WORLD_HUMAN_WELDING',
     },
     {
-        ShopName = "Casino Laundry",
+        ShopName = "City Hall",
         PedModel = "a_m_m_business_01",
-        PedSpawn = vector4(811.53, -107.79, 79.61, 220.8),
-        WashTime = 15,
-        PercentageTakenFromPlayer = 0.6,
+        PedSpawn = vector4(-565.17, -108.91, 38.65, 156.03),
+        WashTime = 20,
+        PercentageTakenFromPlayer = 0.256,
+        PlayAnim = true, -- Set to false if [PlayScenario] or [IsPedArmed] = true
+        AnimationDict = "timetable@reunited@ig_10",
+        AnimationClip = "base_amanda",
+        PlayScenario = false, -- Set to false if [PlayAnim] = true
+        Scenario = 'WORLD_HUMAN_WELDING',
     },
 }
 
