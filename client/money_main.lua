@@ -1,11 +1,22 @@
 RegisterNetEvent('blackmarket:client:StartWashing', function(data)
     local moneyAmount = exports.ox_inventory:Search('count', Config.DirtyMoneyItem)
+    local percentCut = data.args.shop.PercentageTakenFromPlayer
+
+    if moneyAmount <= 0 then
+        lib.notify({
+            title = 'Missing',
+            description = "Come back when you have some money to wash",
+            type = 'error'
+        })
+        PlayPedAmbientSpeechNative(data.entity, 'GENERIC_BYE', 'Speech_Params_Force')
+        return
+    end
 
     local input = lib.inputDialog('Washing', {
         {
-            type = "slider",
-            label = "Amount",
-            description = "How much you looking to clean?",
+            type = "number",
+            label = "Seems like you have about $"..moneyAmount,
+            description = "I can clean as much of that as you like but I want a "..(percentCut * 100).."% cut and it'll take me about "..data.args.shop.WashTime.." minute[s]",
             required = true,
             min = 1,
             max = moneyAmount,
@@ -15,6 +26,15 @@ RegisterNetEvent('blackmarket:client:StartWashing', function(data)
     })
 
     if input == nil then
+        return
+    end
+
+    if moneyAmount < input[1] then
+        lib.notify({
+            title = 'Unable',
+            description = "You don't have that much to wash",
+            type = 'error'
+        })
         return
     end
 
@@ -46,11 +66,6 @@ RegisterNetEvent('blackmarket:client:WashMoney', function(input, data)
         local moneyWashingLoss = input[1] * data.PercentageTakenFromPlayer
         
         TriggerServerEvent('blackmarket:server:StartWashing', input, data, citizenId, moneyWashingLoss)
-        lib.notify({
-            title = 'Started',
-            description = 'Handed over $'..input[1].."! I'll take my cut at the end",
-            type = 'success'
-        })
     else
         lib.notify({
             title = 'Canceled',
