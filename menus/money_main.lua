@@ -4,13 +4,12 @@ RegisterNetEvent('blackmarket:WashMenu', function(data)
     if playerJob == "police" then
         PlayPedAmbientSpeechNative(data.entity, 'GENERIC_INSULT_HIGH', 'SPEECH_PARAMS_FORCE_SHOUTED')
         lib.notify({
-            title = 'Unable',
-            description = 'I aint talking to no bitch ass cop',
+            title = 'Staying Quiet',
+            description = "I don't talk to cops",
             type = 'error',
         })
         return
     end
-    
     PlayPedAmbientSpeechNative(data.entity, 'GENERIC_HI', 'Speech_Params_Force')
 
     lib.callback('blackmarket:server:GetStoreInfo', false, function(storeInfo)
@@ -86,14 +85,13 @@ RegisterNetEvent('blackmarket:WashMenu', function(data)
                             end
                         else
                             local returnValue = (storeInfo.AmountBeingWashed - storeInfo.StoreCut)
-
                             headerMenu[#headerMenu + 1] = {
                                 title = "Finished",
                                 description = "I've washed your money ... my cut is $"..math.floor(storeInfo.StoreCut).."  \n\n Your return is $"..math.floor(returnValue),
                                 serverEvent = 'blackmarket:server:RetrieveMoney',
                                 args = {
                                     returnMoney = returnValue,
-                                    storeData = data.shop,
+                                    storeData = data,
                                 },
                                 icon = 'fa-solid fa-dollar',
                                 iconColor = "green",
