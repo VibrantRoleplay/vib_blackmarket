@@ -3,6 +3,7 @@
 -------------
 
 local recentHack = 0
+local bl_ui = exports.bl_ui
 
 ----------
 --Events--
@@ -25,60 +26,60 @@ RegisterNetEvent("blackmarket:client:GetCode", function()
     if recentHack == 0 or GetGameTimer() > recentHack then
         lib.requestAnimDict("amb@world_human_bum_wash@male@low@idle_a")
         TaskPlayAnim(player, 'amb@world_human_bum_wash@male@low@idle_a', 'idle_a', 1.0, 1.0, -1, 01, 0, true, true, true)
-        exports['ps-ui']:VarHack(function(success)
-            if success then
-                if lib.progressCircle({
-                    duration = zoneOptions.HackDuration * 1000,
-                    position = 'bottom',
-                    label = zoneOptions.HackProgressbarLabel,
-                    useWhileDead = false,
-                    canCancel = true,
-                    disable = {
-                        move = true,
-                        car = true,
-                        combat = true,
-                        mouse = false,
+        local success = bl_ui:CircleShake(2, math.random(25, 50), 3)
+
+        if success then
+            if lib.progressCircle({
+                duration = zoneOptions.HackDuration * 1000,
+                position = 'bottom',
+                label = zoneOptions.HackProgressbarLabel,
+                useWhileDead = false,
+                canCancel = true,
+                disable = {
+                    move = true,
+                    car = true,
+                    combat = true,
+                    mouse = false,
+                },
+                anim = {
+                    dict = "amb@code_human_in_bus_passenger_idles@female@tablet@idle_a",
+                    clip = "idle_a",
+                },
+                prop = {
+                    {
+                        model = `prop_cs_tablet_02`,
+                        bone = 60309,
+                        pos = vec3(0.03, 0.002, -0.0),
+                        rot = vec3(10.0, 160.0, 0.0)
                     },
-                    anim = {
-                        dict = "amb@code_human_in_bus_passenger_idles@female@tablet@idle_a",
-                        clip = "idle_a",
-                    },
-                    prop = {
-                        {
-                            model = `prop_cs_tablet_02`,
-                            bone = 60309,
-                            pos = vec3(0.03, 0.002, -0.0),
-                            rot = vec3(10.0, 160.0, 0.0)
-                        },
-                    }
+                }
+            })
+            then
+                recentHack = GetGameTimer() + (zoneOptions.Cooldown * 1000)
+                ClearPedTasksImmediately(player)
+                local correctCode = lib.callback.await('blackmarket:server:GenerateNumberCode', false)
+                lib.notify({
+                    title = "Attention",
+                    description = 'The access code is: '..correctCode.. '. Make sure you write it down!',
+                    type = 'inform',
+                    duration = 6000,
                 })
-                then
-                    recentHack = GetGameTimer() + (zoneOptions.Cooldown * 1000)
-                    ClearPedTasksImmediately(player)
-                    local correctCode = lib.callback.await('blackmarket:server:GenerateNumberCode', false)
-                    lib.notify({
-                        title = "Attention",
-                        description = 'The access code is: '..correctCode.. '. Make sure you write it down!',
-                        type = 'inform',
-                        duration = 6000,
-                    })
-                else
-                    ClearPedTasksImmediately(player)
-                    lib.notify({
-                        title = 'Canceled',
-                        description = "Canceled",
-                        type = 'error',
-                    })
-                end
             else
                 ClearPedTasksImmediately(player)
                 lib.notify({
-                    title = 'Failed',
-                    description = "You failed, best get moving!",
+                    title = 'Canceled',
+                    description = "Canceled",
                     type = 'error',
                 })
             end
-        end, 4, 6)
+        else
+            ClearPedTasksImmediately(player)
+            lib.notify({
+                title = 'Failed',
+                description = "You failed, best get moving!",
+                type = 'error',
+            })
+        end
     else
         lib.notify({
             title = 'Attention',
