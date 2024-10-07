@@ -2,7 +2,7 @@ RegisterNetEvent('blackmarket:RepairMenu', function(data)
     PlayPedAmbientSpeechNative(data.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
     
 	local headerMenu = {}
-    local moneyAmount = exports.ox_inventory:Search('count', Config.MoneyItem)
+    local moneyAmount = exports.ox_inventory:Search('count', data.args.requiredMoneyType)
 
     headerMenu[#headerMenu + 1] = {
         title = "Attachments",
@@ -13,9 +13,9 @@ RegisterNetEvent('blackmarket:RepairMenu', function(data)
     }
 
     if moneyAmount > data.args.RepairCost then
-        repairWeaponDescription = "I'll charge ya $"..data.args.RepairCost.." to repair any weapon"
+        repairWeaponDescription = "I'll charge you $"..data.args.RepairCost.." to repair any weapon"
     else
-        repairWeaponDescription = "It don't seem like you have enough cash"
+        repairWeaponDescription = "You don't have enough cash"
     end
 
     headerMenu[#headerMenu + 1] = {
