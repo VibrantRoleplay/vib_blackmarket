@@ -12,8 +12,8 @@ function SpawnKidnapPed()
     local player = cache.ped
     local playerCoords = GetEntityCoords(player)
 
-    lib.requestModel("a_m_m_acult_01")
-    lib.requestModel(Config.HeadBagProp)
+    lib.requestModel("a_m_m_acult_01", 60000)
+    lib.requestModel(Config.HeadBagProp, 60000)
     lib.requestAnimDict("melee@unarmed@streamed_variations")
 
     local kidnapPed = CreatePed(1, "a_m_m_acult_01", playerCoords.x-1.0, playerCoords.y-1.0, playerCoords.z, false, true)
