@@ -1,5 +1,6 @@
 RegisterNetEvent('blackmarket:server:RepairWeapon', function(data, weaponData)
     if exports.ox_inventory:RemoveItem(source, Config.MoneyItem, data.args.RepairCost) then
+
         exports.ox_inventory:SetDurability(source, weaponData.slot, 100)
         lib.notify(source, {
             title = 'Attention',

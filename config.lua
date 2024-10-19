@@ -1,24 +1,103 @@
 Config = Config or {}
 
-Config.Debug = false
+Config.Debug = true
 Config.UseAnims = true -- false = Peds have no animations and just stand still
 Config.MoneyItem = "black_money" -- Currency item used to make purchases with market peds
 Config.HeadBagProp = "prop_money_bag_01" -- Prop placed on players head when entering black market
 
 Config.BlackMarketAccess = {
     EntranceInfo = {
-        EntrancePedModel = "u_m_m_jesus_01", -- Ped model
-        EntrancePedName = "Disciple", -- Must be unique for menu reasons
-        EntrancePedLocations = { -- Random locations the entrance can spawn at per restart [Set 1 vector4() if you want a static location]
-            vector4(742.82, 4170.05, 39.53, 128.57),
-            vector4(-2080.64, 2609.72, 2.08, 105.21),
-            vector4(-279.77, 2200.63, 128.85, 112.53),
-            vector4(929.9, 2868.75, 59.91, 2.24),
-            vector4(-3013.02, 22.48, 9.11, 205.42),
+        EntranceLandingLocation = vector4(892.62, -3245.87, -98.28, 73.49), -- Where the player lands after being teleported inside
+        EntranceLocations = { -- Randomly selected upon server/resource restart
+            {
+                pedModel = "a_m_m_hasjew_01",
+                location = vector4(726.63, 4190.56, 39.7, 258.79),
+                animInfo = {
+                    active = true,
+                    dict = "amb@world_human_aa_smoke@male@idle_a",
+                    clip = "idle_c",
+                },
+                propInfo = {
+                    active = true,
+                    propModel = "prop_cs_ciggy_01",
+                    bone = 28422,
+                    placement = {
+                        x = 0.0,
+                        y = 0.0,
+                        z = 0.0,
+                        xRot = 0.0,
+                        yRot = 0.0,
+                        zRot = 0.0,
+                    },
+                },
+            },    
+            {
+                pedModel = "a_m_m_og_boss_01",
+                location = vector4(140.48, 1165.92, 228.99, 277.36),
+                animInfo = {
+                    active = true,
+                    dict = "switch@trevor@guitar_beatdown",
+                    clip = "001370_02_trvs_8_guitar_beatdown_idle_busker",
+                },
+                propInfo = {
+                    active = true,
+                    propModel = "prop_acc_guitar_01",
+                    bone = 24818,
+                    placement = {
+                        x = -0.05,
+                        y = 0.31,
+                        z = 0.10,
+                        xRot = 0.0,
+                        yRot = 20.0,
+                        zRot = 150.0,
+                    },
+                },
+            },
+            {
+                pedModel = "a_m_m_og_boss_01",
+                location = vector4(-277.23, 2208.73, 128.85, 61.23),
+                animInfo = {
+                    active = true,
+                    dict = "timetable@ron@ig_5_p3",
+                    clip = "ig_5_p3_base",
+                },
+                propInfo = {
+                    active = false,
+                    propModel = "prop_cs_ciggy_01",
+                    bone = 28422,
+                    placement = {
+                        x = 0.0,
+                        y = 0.0,
+                        z = 0.0,
+                        xRot = 0.0,
+                        yRot = 0.0,
+                        zRot = 0.0,
+                    },
+                },
+            },
+            {
+                pedModel = "a_m_m_og_boss_01",
+                location = vector4(674.87, -2726.38, 6.17, 166.96),
+                animInfo = {
+                    active = true,
+                    dict = "amb@world_human_aa_smoke@male@idle_a",
+                    clip = "idle_c",
+                },
+                propInfo = {
+                    active = true,
+                    propModel = "prop_cs_ciggy_01",
+                    bone = 28422,
+                    placement = {
+                        x = 0.0,
+                        y = 0.0,
+                        z = 0.0,
+                        xRot = 0.0,
+                        yRot = 0.0,
+                        zRot = 0.0,
+                    },
+                },
+            },
         },
-        EntrancePedAnimationDict = "amb@prop_human_seat_deckchair@male@base", -- Dictionary of animation
-        EntrancePedAnimationClip = "base", -- Animation ped plays
-        EntranceLocation = vector4(892.62, -3245.87, -98.28, 73.49), -- Where the player lands after being teleported inside
     },
     ExitInfo = {
         ExitPedModel = "a_m_m_acult_01",
@@ -90,31 +169,31 @@ Config.MarketPeds = {
             {name = "ammo-shotgun", price = 3, count = 50, currency = "black_money"},
         },
     },
-    -- {
-    --     Name = "Attachments",
-    --     Model = "s_m_m_highsec_01",
-    --     Location = vector4(908.93, -3207.19, -98.19, 115.63),
-    --     AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
-    --     AnimationClip = "idle_c",
-    --     ItemsForSale = {
-    --         {name = "at_flashlight", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_suppressor_light", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_suppressor_heavy", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_grip", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_barrel", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_clip_extended_pistol", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_clip_extended_smg", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_clip_extended_shotgun", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_clip_extended_rifle", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_clip_drum_smg", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_clip_drum_rifle", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_scope_macro", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_scope_small", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_scope_medium", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_scope_large", price = 10, count = 10, currency = "black_money"},
-    --         {name = "at_scope_holo", price = 10, count = 10, currency = "black_money"},
-    --     },
-    -- },
+    {
+        Name = "Attachments",
+        Model = "s_m_m_highsec_01",
+        Location = vector4(908.93, -3207.19, -98.19, 115.63),
+        AnimationDict = "amb@world_human_drinking@coffee@male@idle_a",
+        AnimationClip = "idle_c",
+        ItemsForSale = {
+            {name = "at_flashlight", price = 10, count = 10, currency = "black_money"},
+            {name = "at_suppressor_light", price = 10, count = 10, currency = "black_money"},
+            {name = "at_suppressor_heavy", price = 10, count = 10, currency = "black_money"},
+            {name = "at_grip", price = 10, count = 10, currency = "black_money"},
+            {name = "at_barrel", price = 10, count = 10, currency = "black_money"},
+            {name = "at_clip_extended_pistol", price = 10, count = 10, currency = "black_money"},
+            {name = "at_clip_extended_smg", price = 10, count = 10, currency = "black_money"},
+            {name = "at_clip_extended_shotgun", price = 10, count = 10, currency = "black_money"},
+            {name = "at_clip_extended_rifle", price = 10, count = 10, currency = "black_money"},
+            {name = "at_clip_drum_smg", price = 10, count = 10, currency = "black_money"},
+            {name = "at_clip_drum_rifle", price = 10, count = 10, currency = "black_money"},
+            {name = "at_scope_macro", price = 10, count = 10, currency = "black_money"},
+            {name = "at_scope_small", price = 10, count = 10, currency = "black_money"},
+            {name = "at_scope_medium", price = 10, count = 10, currency = "black_money"},
+            {name = "at_scope_large", price = 10, count = 10, currency = "black_money"},
+            {name = "at_scope_holo", price = 10, count = 10, currency = "black_money"},
+        },
+    },
 }
 
 Config.EntranceTypes = {
@@ -193,23 +272,23 @@ Config.EntranceTypes = {
             Correct_Answer = "Some copper wire",
         },
     },
-    NumberCode = math.random(1111, 9999), -- This can be as many numbers as you want or a static number
 }
 
-Config.Hacking = {
-    HackItem = "laptop", -- Item required to begin hack
-    ZoneOptions = {
-        HackDuration = 10, -- How long the hack takes in seconds
-        HackProgressbarLabel = "Doing hacker stuff",
-        HackLabel = "Hack in", -- Label the player see's when targeting the zone
-        Cooldown = 60, -- Cooldown for obtaining [NumberCode] in seconds
-    },
-    Locations = { -- You can add as many locations here as you like
-        vector3(43.41, -668.6, 31.74),
-        vector3(475.62, -1017.01, 28.0),
-        vector3(313.93, -1439.34, 29.96),
-        vector3(1180.46, -1498.94, 34.85),
-        vector3(-2033.56, -370.31, 20.09),
+Config.Hacking = { -- Uses box zones
+    RandomNumberCode = math.random(11111, 99999),
+    RequiredHackingItem = "laptop", -- Item required to begin hack
+    HackingGlobalCooldownInMinutes = 25, -- (0.5 = 30 seconds)
+    HackingZones = {
+        {
+            coords = vec3(116.35, -747.4, 45.75),
+            size = vec3(4.1, 1.2, 1.3),
+            rotation = 294.5,
+        },
+        {
+            coords = vec3(1267.7, -1710.4, 54.5),
+            size = vec3(1.25, 1.0, 1.25),
+            rotation = 294.5,
+        },
     },
 }
 
@@ -230,7 +309,7 @@ Config.UseableWeapons = { -- List of weapons that are required in a players hand
 
 Config.Washing = {
     {
-        ShopName = "Grapseed", -- Unique name per shop (Used for cooldowwn  & target name purposes)
+        ShopName = "Grapeseed", -- Unique name per shop (Used for cooldowwn  & target name purposes)
         PedModel = "s_m_m_linecook", -- Ped model
         PedSpawn = vector4(2439.8, 4977.93, 45.81, 47.18), -- Ped Location
         WashTime = 25, -- Duration of wash in minutes (I.e 0.5 = 30 seconds)
@@ -309,25 +388,25 @@ Config.AmbientPeds = {
         },
         {
             PedModel = "s_m_m_chemsec_01",
-            SpawnLocation = vector4(896.07, -3170.7, -98.13, 347.87),
-            PlayAnim = false,
-            AnimationDict = "amb@world_human_welding@male@base",
-            AnimationClip = "base",
+            SpawnLocation = vector4(891.74, -3211.22, -99.2, 205.19),
+            PlayAnim = true,
+            AnimationDict = "mini@repair",
+            AnimationClip = "fixing_a_ped",
             PlayScenario = false,
             Scenario = 'WORLD_HUMAN_WELDING',
-            IsPedArmed = true,
+            IsPedArmed = false,
             WeaponIfArmed = 453432689,
             
         },
         {
             PedModel = "s_m_m_chemsec_01",
-            SpawnLocation = vector4(892.59, -3170.18, -98.13, 345.9),
-            PlayAnim = false,
-            AnimationDict = "amb@world_human_welding@male@base",
-            AnimationClip = "base",
+            SpawnLocation = vector4(903.17, -3182.84, -98.05, 99.65),
+            PlayAnim = true,
+            AnimationDict = "anim@amb@business@bgen@bgen_no_work@",
+            AnimationClip = "stand_phone_phoneputdown_idle_nowork",
             PlayScenario = false,
             Scenario = 'WORLD_HUMAN_WELDING',
-            IsPedArmed = true,
+            IsPedArmed = false,
             WeaponIfArmed = 736523883,
         },
     },

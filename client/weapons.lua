@@ -1,11 +1,11 @@
-----------------------
---Weapon Attachments--
-----------------------
+    ----------------------
+    --Weapon Attachments--
+    ----------------------
 
 RegisterNetEvent('blackmarket:client:getcomponentinformation', function()
-   local player = cache.ped
-   local currentWeapon = GetSelectedPedWeapon(player)
-   local labels = {}
+    local player = cache.ped
+    local currentWeapon = GetSelectedPedWeapon(player)
+    local labels = {}
 
     for k, v in pairs(exports.ox_inventory:Items()) do
         local stringSearch = string.sub(k, 1, 3)
@@ -46,9 +46,9 @@ RegisterNetEvent('blackmarket:client:getcomponentinformation', function()
     })
 end)
 
-------------------
---Weapon Repairs--
-------------------
+    ------------------
+    --Weapon Repairs--
+    ------------------
 
 RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
     local repairingWeapon = false

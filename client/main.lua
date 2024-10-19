@@ -16,24 +16,34 @@ function SpawnKidnapPed()
     lib.requestModel(Config.HeadBagProp, 60000)
     lib.requestAnimDict("melee@unarmed@streamed_variations")
 
-    local kidnapPed = CreatePed(1, "a_m_m_acult_01", playerCoords.x-1.0, playerCoords.y-1.0, playerCoords.z, false, true)
+    local kidnapPed = CreatePed(1, "a_m_m_acult_01", playerCoords.x-1.0, playerCoords.y-1.0, playerCoords.z, false, true, true)
+    SetModelAsNoLongerNeeded("a_m_m_acult_01")
+    SetModelAsNoLongerNeeded(Config.HeadBagProp)
+
     local kidnapPedCoords = GetEntityCoords(kidnapPed)
     SetEntityHeading(kidnapPed, playerCoords)
     TaskTurnPedToFaceCoord(kidnapPed, playerCoords.x, playerCoords.y, playerCoords.z, 1000)
     Wait(2000)
+
     TaskPlayAnim(kidnapPed, 'melee@unarmed@streamed_variations', 'plyr_takedown_rear_lefthook', 8.0, 8.0, -1, 10, 0, true, true, true)
+    RemoveAnimDict("melee@unarmed@streamed_variations")
     Wait(750)
+
     SetPedToRagdollWithFall(player, 7500, 9000, 1, GetEntityForwardVector(player), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     Wait(1500)
+
     headbagObject = CreateObject(Config.HeadBagProp, 0, 0, 0, true, true, true)
     AttachEntityToEntity(headbagObject, player, GetPedBoneIndex(player, 12844), 0.2, 0.04, 0, 0, 270.0, 60.0, true, true, false, true, 1, true)
     SetEntityCompletelyDisableCollision(headbagObject, false, true)
+
     SendNUIMessage({
         type = "openGeneral"
     })
+
     Wait(1500)
-    TeleportPlayer()
-    DeleteEntity(kidnapPed)
+
+    -- TeleportPlayer()
+    SetEntityAsNoLongerNeeded(kidnapPed)
 end
 
 function TeleportPlayer()
@@ -51,9 +61,11 @@ function TeleportPlayer()
     Wait(100)
 
     DoScreenFadeIn(1000)
+
     FreezeEntityPosition(player, false)
-    ClearPedTasksImmediately(player)
+    ClearPedTasks(player)
     DeleteEntity(headbagObject)
+
     SendNUIMessage({
         type = "closeAll"
     })
@@ -74,7 +86,10 @@ function LeavingMarket()
 
     SetEntityCoords(player, dropoffLocation.x, dropoffLocation.y, dropoffLocation.z, false, false, false, false)
     TaskPlayAnim(player, 'anim@amb@nightclub@lazlow@lo_sofa@', 'lowsofa_dlg_shit2strong_laz', 8.0, 8.0, -1, 01, 0, true, true, true)
+    RemoveAnimDict("timetable@tracy@sleep@")
     DoScreenFadeIn(1000)
+
     Wait(1500)
-    ClearPedTasksImmediately(player)
+
+    ClearPedTasks(player)
 end

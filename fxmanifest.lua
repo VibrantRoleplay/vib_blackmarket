@@ -3,7 +3,7 @@ game 'gta5'
 
 description 'Black Market'
 author 'Vibrant Resources'
-version '1.0'
+version '1.2.3'
 
 shared_scripts {
     '@ox_lib/init.lua',

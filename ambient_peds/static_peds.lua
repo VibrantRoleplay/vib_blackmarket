@@ -1,6 +1,6 @@
 CreateThread(function()
     for k, pedInfo in pairs(Config.AmbientPeds.Static) do
-        lib.requestModel(pedInfo.PedModel, 5000)
+        lib.requestModel(pedInfo.PedModel, 60000)
         
         local ambientPed = CreatePed(0, pedInfo.PedModel, pedInfo.SpawnLocation.xyz, pedInfo.SpawnLocation.w, false, false, true)
         SetBlockingOfNonTemporaryEvents(ambientPed, true)
