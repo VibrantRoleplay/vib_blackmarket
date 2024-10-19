@@ -287,7 +287,7 @@ Config.Hacking = { -- Uses box zones
         {
             coords = vec3(1267.7, -1710.4, 54.5),
             size = vec3(1.25, 1.0, 1.25),
-            rotation = 294.5,
+            rotation = 294.4,
         },
     },
 }
