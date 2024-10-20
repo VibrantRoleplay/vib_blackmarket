@@ -18,22 +18,17 @@ CreateThread(function()
             RemoveAnimDict(v.AnimationDict)
         end
 
-        exports.ox_target:addSphereZone({
-            coords = vec3(v.Location.x, v.Location.y, v.Location.z+1),
-            radius = 1,
-            debug = Config.Debug,
-            options = {
-                {
-                    label = 'Trade '..v.Name,
-                    onSelect = function()
-                        PlayPedAmbientSpeechNative(v.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
-                        exports.ox_inventory:openInventory('shop', {type = v.Name})
-                    end,
-                    args = v,
-                    icon = 'fa-solid fa-box-archive',
-                    iconColor = "yellow",
-                    distance = 2, 
-                },
+        exports.ox_target:addLocalEntity(marketPed, {
+            {
+                label = 'Trade '..v.Name,
+                onSelect = function()
+                    PlayPedAmbientSpeechNative(v.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
+                    exports.ox_inventory:openInventory('shop', {type = v.Name})
+                end,
+                args = v,
+                icon = 'fa-solid fa-box-archive',
+                iconColor = "yellow",
+                distance = 2, 
             },
         })
 
@@ -99,19 +94,14 @@ CreateThread(function()
         RemoveAnimDict(exit.ExitPedAnimationDict)
     end
 
-    exports.ox_target:addSphereZone({
-        coords = vec3(pedCoords.x, pedCoords.y, pedCoords.z+1),
-        radius = 1,
-        debug = Config.Debug,
-        options = {
-            {
-                label = 'Speak to '..exit.ExitPedName,
-                event = 'blackmarket:ExitMenu',
-                args = exit.ExitPedName,
-                icon = 'fa-solid fa-box-archive',
-                iconColor = 'yellow',
-                distance = 2, 
-            },
+    exports.ox_target:addLocalEntity(exitPed, {
+        {
+            label = 'Speak to '..exit.ExitPedName,
+            event = 'blackmarket:ExitMenu',
+            args = exit.ExitPedName,
+            icon = 'fa-solid fa-box-archive',
+            iconColor = 'yellow',
+            distance = 2, 
         },
     })
 
