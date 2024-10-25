@@ -42,13 +42,14 @@ function SpawnKidnapPed()
 
     Wait(1500)
 
-    -- TeleportPlayer()
     SetEntityAsNoLongerNeeded(kidnapPed)
+
+    TeleportPlayer()
 end
 
 function TeleportPlayer()
     local player = cache.ped
-    local coords = Config.BlackMarketAccess.EntranceInfo.EntranceLocation
+    local coords = Config.BlackMarketAccess.EntranceInfo.EntranceLandingLocation
 
     DoScreenFadeOut(500)
     while not IsScreenFadedOut() do
@@ -60,7 +61,7 @@ function TeleportPlayer()
 
     Wait(100)
 
-    DoScreenFadeIn(1000)
+    DoScreenFadeIn(3000)
 
     FreezeEntityPosition(player, false)
     ClearPedTasks(player)
