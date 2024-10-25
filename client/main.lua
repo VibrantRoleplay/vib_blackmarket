@@ -82,7 +82,7 @@ function LeavingMarket()
     local dropoffLocation = Exit.ExitLocations[randomLocation]
 
     lib.requestAnimDict("timetable@tracy@sleep@")
-    DoScreenFadeOut(500)
+    DoScreenFadeOut(3000)
 
     while not IsScreenFadedOut() do
         Wait(10)
@@ -91,9 +91,11 @@ function LeavingMarket()
     SetEntityCoords(player, dropoffLocation.x, dropoffLocation.y, dropoffLocation.z, false, false, false, false)
     TaskPlayAnim(player, 'anim@amb@nightclub@lazlow@lo_sofa@', 'lowsofa_dlg_shit2strong_laz', 8.0, 8.0, -1, 01, 0, true, true, true)
     RemoveAnimDict("timetable@tracy@sleep@")
-    DoScreenFadeIn(1000)
+    DoScreenFadeIn(5000)
 
-    Wait(1500)
+    while not IsScreenFadedIn() do
+        Wait(10)
+    end
 
     ClearPedTasks(player)
 end
