@@ -51,7 +51,7 @@ function TeleportPlayer()
     local player = cache.ped
     local coords = Config.BlackMarketAccess.EntranceInfo.EntranceLandingLocation
 
-    DoScreenFadeOut(500)
+    DoScreenFadeOut(3000)
     while not IsScreenFadedOut() do
         Wait(10)
     end
@@ -61,11 +61,14 @@ function TeleportPlayer()
 
     Wait(100)
 
-    DoScreenFadeIn(3000)
+    DoScreenFadeIn(5000)
+    while not IsScreenFadedIn() do
+        Wait(10)
+    end
 
+    DeleteEntity(headbagObject)
     FreezeEntityPosition(player, false)
     ClearPedTasks(player)
-    DeleteEntity(headbagObject)
 
     SendNUIMessage({
         type = "closeAll"
