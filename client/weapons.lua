@@ -1,6 +1,6 @@
-    ----------------------
-    --Weapon Attachments--
-    ----------------------
+----------------------
+--Weapon Attachments--
+----------------------
 
 RegisterNetEvent('blackmarket:client:getcomponentinformation', function()
     local player = cache.ped
@@ -46,9 +46,9 @@ RegisterNetEvent('blackmarket:client:getcomponentinformation', function()
     })
 end)
 
-    ------------------
-    --Weapon Repairs--
-    ------------------
+------------------
+--Weapon Repairs--
+------------------
 
 RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
     local repairingWeapon = false
