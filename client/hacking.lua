@@ -42,10 +42,11 @@ RegisterNetEvent("blackmarket:client:GetCode", function(data)
 
     if success then
         ClearPedTasks(player)
-        local correctCode = lib.callback.await('blackmarket:server:GetAccessCode', false)
+        local requiredCode = lib.callback.await('blackmarket:server:GenerateNumberCode', false)
+
         lib.notify({
             title = "Attention",
-            description = 'The access code is: '..correctCode.. '. Make sure you write it down!',
+            description = 'The access code is: '..requiredCode.. '. Make sure you write it down!',
             type = 'inform',
             duration = 6000,
         })

@@ -12,29 +12,28 @@ function SpawnKidnapPed()
     local player = cache.ped
     local playerCoords = GetEntityCoords(player)
 
-    lib.requestModel("a_m_m_acult_01", 60000)
-    lib.requestModel(Config.HeadBagProp, 60000)
-    lib.requestAnimDict("melee@unarmed@streamed_variations")
-
-    local kidnapPed = CreatePed(1, "a_m_m_acult_01", playerCoords.x-1.0, playerCoords.y-1.0, playerCoords.z, false, true, true)
-    SetModelAsNoLongerNeeded("a_m_m_acult_01")
-    SetModelAsNoLongerNeeded(Config.HeadBagProp)
+    local kidnapModel = lib.requestModel("a_m_m_acult_01", 60000)
+    local kidnapPed = CreatePed(1, kidnapModel, playerCoords.x-1.0, playerCoords.y-1.0, playerCoords.z, false, true, true)
+    SetModelAsNoLongerNeeded(kidnapModel)
 
     local kidnapPedCoords = GetEntityCoords(kidnapPed)
     SetEntityHeading(kidnapPed, playerCoords)
     TaskTurnPedToFaceCoord(kidnapPed, playerCoords.x, playerCoords.y, playerCoords.z, 1000)
     Wait(2000)
 
-    TaskPlayAnim(kidnapPed, 'melee@unarmed@streamed_variations', 'plyr_takedown_rear_lefthook', 8.0, 8.0, -1, 10, 0, true, true, true)
-    RemoveAnimDict("melee@unarmed@streamed_variations")
+    local animToPlay = lib.requestAnimDict("melee@unarmed@streamed_variations")
+    TaskPlayAnim(kidnapPed, animToPlay, 'plyr_takedown_rear_lefthook', 8.0, 8.0, -1, 10, 0, true, true, true)
+    RemoveAnimDict(animToPlay)
     Wait(750)
 
     SetPedToRagdollWithFall(player, 7500, 9000, 1, GetEntityForwardVector(player), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     Wait(1500)
 
-    headbagObject = CreateObject(Config.HeadBagProp, 0, 0, 0, true, true, true)
+    local headBagModel = lib.requestModel(Config.HeadBagProp, 60000)
+    local headbagObject = CreateObject(headBagModel, 0, 0, 0, true, true, true)
     AttachEntityToEntity(headbagObject, player, GetPedBoneIndex(player, 12844), 0.2, 0.04, 0, 0, 270.0, 60.0, true, true, false, true, 1, true)
     SetEntityCompletelyDisableCollision(headbagObject, false, true)
+    SetModelAsNoLongerNeeded(headBagModel)
 
     SendNUIMessage({
         type = "openGeneral"
@@ -44,10 +43,10 @@ function SpawnKidnapPed()
 
     SetEntityAsNoLongerNeeded(kidnapPed)
 
-    TeleportPlayer()
+    TeleportPlayer(headbagObject)
 end
 
-function TeleportPlayer()
+function TeleportPlayer(headbagObject)
     local player = cache.ped
     local coords = Config.BlackMarketAccess.EntranceInfo.EntranceLandingLocation
 

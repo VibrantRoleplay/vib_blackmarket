@@ -23,7 +23,9 @@ CreateThread(function()
                 label = 'Trade '..v.Name,
                 onSelect = function()
                     PlayPedAmbientSpeechNative(v.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
-                    exports.ox_inventory:openInventory('shop', {type = v.Name})
+                    exports.ox_inventory:openInventory('shop', {
+                        type = v.Name
+                    })
                 end,
                 args = v,
                 icon = 'fa-solid fa-box-archive',
@@ -31,8 +33,6 @@ CreateThread(function()
                 distance = 2, 
             },
         })
-
-        TriggerServerEvent('blackmarket:server:UpdateMarkets', k, v)
         SetModelAsNoLongerNeeded(v.Model)
     end
 
@@ -47,8 +47,6 @@ CreateThread(function()
     SetEntityInvincible(entrancePed, true)
     SetBlockingOfNonTemporaryEvents(entrancePed, true)
     FreezeEntityPosition(entrancePed, true)
-
-    SetModelAsNoLongerNeeded(entranceInfo.pedModel)
     
     if entranceInfo.animInfo.active then
         lib.requestAnimDict(entranceInfo.animInfo.dict)
@@ -73,6 +71,7 @@ CreateThread(function()
             distance = 2,
         },
     })
+    SetModelAsNoLongerNeeded(entranceInfo.pedModel)
 
     ------------------
     --Exiting Market--
@@ -104,7 +103,6 @@ CreateThread(function()
             distance = 2, 
         },
     })
-
     SetModelAsNoLongerNeeded(exit.ExitPedModel)
 
     ------------------
@@ -135,7 +133,6 @@ CreateThread(function()
                 distance = 2, 
             },
         })
-
         SetModelAsNoLongerNeeded(v.RepairsPedModel)
     end
 
@@ -151,8 +148,6 @@ CreateThread(function()
             SetEntityInvincible(shopKeeper, true)
             SetBlockingOfNonTemporaryEvents(shopKeeper, true)
             FreezeEntityPosition(shopKeeper, true)
-
-            SetModelAsNoLongerNeeded(shop.PedModel)
 
             if shop.PlayAnim then
                 lib.requestAnimDict(shop.AnimationDict)
@@ -178,6 +173,7 @@ CreateThread(function()
                     distance = 2,
                 },
             })
+            SetModelAsNoLongerNeeded(shop.PedModel)
 
             TriggerServerEvent('blackmarket:server:UpdateStores', shop)
         end

@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.Debug = true
+Config.Debug = false
 Config.UseAnims = true -- false = Peds have no animations and just stand still
 Config.MoneyItem = "black_money" -- Currency item used to make purchases with market peds
 Config.HeadBagProp = "prop_money_bag_01" -- Prop placed on players head when entering black market
@@ -12,72 +12,6 @@ Config.BlackMarketAccess = {
             {
                 pedModel = "a_m_m_hasjew_01",
                 location = vector4(726.63, 4190.56, 39.7, 258.79),
-                animInfo = {
-                    active = true,
-                    dict = "amb@world_human_aa_smoke@male@idle_a",
-                    clip = "idle_c",
-                },
-                propInfo = {
-                    active = true,
-                    propModel = "prop_cs_ciggy_01",
-                    bone = 28422,
-                    placement = {
-                        x = 0.0,
-                        y = 0.0,
-                        z = 0.0,
-                        xRot = 0.0,
-                        yRot = 0.0,
-                        zRot = 0.0,
-                    },
-                },
-            },    
-            {
-                pedModel = "a_m_m_og_boss_01",
-                location = vector4(140.48, 1165.92, 228.99, 277.36),
-                animInfo = {
-                    active = true,
-                    dict = "switch@trevor@guitar_beatdown",
-                    clip = "001370_02_trvs_8_guitar_beatdown_idle_busker",
-                },
-                propInfo = {
-                    active = true,
-                    propModel = "prop_acc_guitar_01",
-                    bone = 24818,
-                    placement = {
-                        x = -0.05,
-                        y = 0.31,
-                        z = 0.10,
-                        xRot = 0.0,
-                        yRot = 20.0,
-                        zRot = 150.0,
-                    },
-                },
-            },
-            {
-                pedModel = "a_m_m_og_boss_01",
-                location = vector4(-277.23, 2208.73, 128.85, 61.23),
-                animInfo = {
-                    active = true,
-                    dict = "timetable@ron@ig_5_p3",
-                    clip = "ig_5_p3_base",
-                },
-                propInfo = {
-                    active = false,
-                    propModel = "prop_cs_ciggy_01",
-                    bone = 28422,
-                    placement = {
-                        x = 0.0,
-                        y = 0.0,
-                        z = 0.0,
-                        xRot = 0.0,
-                        yRot = 0.0,
-                        zRot = 0.0,
-                    },
-                },
-            },
-            {
-                pedModel = "a_m_m_og_boss_01",
-                location = vector4(674.87, -2726.38, 6.17, 166.96),
                 animInfo = {
                     active = true,
                     dict = "amb@world_human_aa_smoke@male@idle_a",
@@ -118,7 +52,7 @@ Config.BlackMarketAccess = {
             RepairsPedModel = "a_m_m_acult_01",
             RepairsPedName = "Christian",
             RepairsPedLocation = vector4(907.85, -3211.16, -99.23, 23.39),
-            SpawnedWeaponRepairModel = vector3(907.65, -3210.50, -98.30),
+            repairModelLocation = vector3(907.65, -3210.50, -98.30),
             SpawnedRepairModelRotation = vector3(-85.0, 0.0, 25.0),
             RepairsPedAnimationDict = "missfbi5ig_15",
             RepairsPedAnimationClip = "look_into_microscope_a_scientista",
@@ -130,7 +64,7 @@ Config.BlackMarketAccess = {
             RepairsPedModel = "s_f_y_cop_01",
             RepairsPedName = "Armorer",
             RepairsPedLocation = vector4(487.15, -997.0, 29.68, 267.62),
-            SpawnedWeaponRepairModel = vector3(487.95, -996.85, 30.52),
+            spawnedRepairModelLocation = vector3(487.95, -996.85, 30.52),
             SpawnedRepairModelRotation = vector3(0.0, 90.0, 90.0),
             RepairsPedAnimationDict = "missfbi5ig_15",
             RepairsPedAnimationClip = "look_into_microscope_a_scientista",

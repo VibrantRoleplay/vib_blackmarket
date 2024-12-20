@@ -53,7 +53,7 @@ end)
 RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
     local repairingWeapon = false
     local weaponData = lib.callback.await('blackmarket:server:CheckWeaponData', false)
-    local effectCoords = data.args.SpawnedWeaponRepairModel
+    local modelLocation = data.args.spawnedRepairModelLocation
 
     if weaponData == nil then
         return
@@ -71,14 +71,13 @@ RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
     local weaponHash = GetHashKey(weaponData.name)
     local weaponModel = GetWeapontypeModel(weaponHash)
     local gunModel = lib.requestModel(weaponModel, 60000)
-    local weaponObject = CreateObjectNoOffset(gunModel, effectCoords.x, effectCoords.y, effectCoords.z, true, true, false)
+    local weaponObject = CreateObjectNoOffset(gunModel, modelLocation.x, modelLocation.y, modelLocation.z, true, true, false)
     local weaponCoords = GetEntityCoords(weaponObject)
     SetEntityHeading(weaponObject, 25.0) -- This is the heading of the spawned weapon model
     SetEntityRotation(weaponObject, data.args.SpawnedRepairModelRotation, 1) -- This is the rotation of the spawned weapon model
 
     repairingWeapon = true
     lib.requestNamedPtfxAsset('core')
-    UseParticleFxAssetNextCall('core')
 
     CreateThread(function()
         while repairingWeapon do
@@ -87,8 +86,6 @@ RegisterNetEvent('blackmarket:client:RepairWeapon', function(data)
             Wait(300)
         end
     end)
-
-    -- RemoveAllPedWeapons(cache.ped, true)
 
     if lib.progressCircle({
         duration = data.args.RepairDuration,
